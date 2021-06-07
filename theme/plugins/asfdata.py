@@ -361,7 +361,7 @@ def truncate_words(text, words):
         if m:
             content_text = re.sub(regex, replace, content_text)
     tree_soup = BeautifulSoup(content_text, 'html.parser')
-    content_text = tree_soup.decode(formatter='html')
+    content_text = tree_soup.prettify()
     print(content_text)
     return content_text
 
