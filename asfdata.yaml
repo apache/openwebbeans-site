@@ -6,4 +6,5 @@ owb:
   # load, transform, and create a sequence of owb blogs
   blog: https://blogs.apache.org/owb/feed/entries/atom
   count: 3
+  content: 40
 
