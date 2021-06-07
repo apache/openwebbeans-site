@@ -48,6 +48,6 @@ Title: OpenWebBeans Home Page
 <div class="row">
     [for owb]<div class="col-md-4">
      	<h4><a href="[owb.href]">[owb.title]</a></h4>
-        [owb.content]
+        [format "raw"][owb.content][end]
     </div>[end]
 </div>
