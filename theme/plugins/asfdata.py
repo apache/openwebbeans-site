@@ -361,7 +361,7 @@ def process_blog(feed, count, words, debug):
         # we may want content
         content_text = ''
         if words:
-            content_text = get_element_text(entry, 'content').split(' ')[:words].join(' ') + "..."
+            content_text = ' '.join(get_element_text(entry, 'content').split(' ')[:words]) + "..."
         # we want the title and href
         v.append(
             {
