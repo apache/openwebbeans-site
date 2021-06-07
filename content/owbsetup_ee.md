@@ -77,13 +77,13 @@ From here you might want to look at our samples selection: [samples][14].
   [1]: #required-parts
   [2]: #configuring-owb
   [3]: /download.html#apis-version
-  [4]: download.html#maven-dep
+  [4]: /download.html#maven-dep
   [5]: /download.html#required-version
   [6]: /download.html#required-version
   [7]: /download.html#plugins-version
   [8]: /download.html#plugins-version
   [9]: /download.html#plugins-version
   [10]: /download.html#plugins-version
-  [12]: /download.html#plugins-version
+  [11]: /download.html#plugins-version
   [13]: /download.html#plugins-version
   [14]: /samples.html

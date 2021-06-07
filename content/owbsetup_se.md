@@ -9,7 +9,7 @@ To add OpenWebBeans to your javaSE project you need to take the following steps:
  3. Done! Congratulations.
 
 
-###Adding required jars to your project
+### Adding required jars to your project
 
 You can add OpenWebBeans to your project manually by adding jars or with Apache Maven. 
 How to download is explained here: [download page][1]. This is especially useful if you are not a maven user since the below links goes directly to the maven coordinates.
@@ -38,7 +38,7 @@ specifications.
 After you have added the jars described above to your project accordingly 
 to the download page and added them to your projects classpath.
 
-###Bootstrapping OpenWebBeans
+### Bootstrapping OpenWebBeans
 
 For now we recommend two ways for booting up the OpenWebBeans container: 
 [**Deltaspike CdiCtrl**][4] or booting it yourself in i.e. a standard main method. 
@@ -58,7 +58,6 @@ in JavaSE .
 Going native and booting Apache OpenWebBeans yourself could however be useful if you need full control 
 to do advanced things. 
 
-    :::java
     import org.apache.deltaspike.cdise.api.CdiContainer;
     import org.apache.deltaspike.cdise.api.CdiContainerLoader;
     import org.apache.deltaspike.cdise.api.ContextControl;
@@ -86,4 +85,4 @@ From here you might want to look at our samples selection: [samples][6].
   [3]: /download.html#apis-version
   [4]: https://deltaspike.apache.org/documentation.html#with-java-se
   [5]: https://deltaspike.apache.org/documentation.html#with-java-se
-  [6]: /openwebbeans/samples.html
+  [6]: /samples.html

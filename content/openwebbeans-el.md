@@ -4,7 +4,7 @@ Title: OpenWebBeans SPI
 
 Described in context here: [Getting started][1]
 
-###EL 2.2 Module
+### EL 2.2 Module
 
     <dependency>
         <groupId>org.apache.openwebbeans</groupId>

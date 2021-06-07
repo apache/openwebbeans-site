@@ -2,15 +2,14 @@ Title: OpenWebBeans SPI
 
 # OpenWebBeans SPI
 
-##What is an SPI?
+## What is an SPI?
 
 > Service Provider Interface (SPI) is an API intended to be implemented
 > or extended by a third party. It can be used to enable framework
-> extension and  replaceable components.
-- [wikipedia][1]
+> extension and  replaceable components. - [wikipedia][1]
 
 
-##Why using a SPI in OpenWebBeans?
+## Why using a SPI in OpenWebBeans?
 First off, reading about [OpenWebBeans Core](openwebbeans-impl.html) will give you
 the overall idea about the usage of SPIs in our plugin system. 
 

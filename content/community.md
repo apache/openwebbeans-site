@@ -6,7 +6,7 @@ If you are a new user and you would like to start using Apache OpenWebBeans,
 you can have a look at the [Documentation](documentation.html) and
 [subscribe](mailto:user-subscribe@openwebbeans.apache.org)
 our [mailing list for user](mailto:user@openwebbeans.apache.org).
-If you have troubles to find the information you are looking for, you can also ask in our [IRC-Channel](#IRC).
+If you have troubles to find the information you are looking for, you can also ask in our [IRC-Channel](#irc).
 
 Furthermore, you can check our [mail-archives](#mailing-lists).
 
