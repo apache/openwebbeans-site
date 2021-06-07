@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Apache OpenWebBeans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <link href="/resources/css/main.css" rel="stylesheet">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="/resources/css/idea.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="index.html"><img src="/resources/images/logo_dbg-small.png" height="25px"
+                                                           alt="owb_logo_small"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/documentation.html">Documentation</a></li>
+                <li><a href="/source.html">Source</a></li>
+                <li><a href="/download.html">Download</a></li>
+                <li><a href="/community.html">Community</a></li>
+                <!-- <li><a href="/news.html">News</a></li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true">Misc<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.apache.org">Apache Home</a></li>
+                        <li><a href="/misc/contact.html">Contact</a></li>
+                        <li><a href="/misc/legal.html">Legal</a></li>
+                        <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                        <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                        <!-- <li class="divider"/> -->
+                    </ul>
+                </li>
+            </ul>
+            <!--/.nav-collapse -->
+            <form id="search-form" action="https://www.google.com/search" method="get" class="navbar-search pull-right">
+                <input value="openwebbeans.apache.org" name="sitesearch" type="hidden"/>
+                <input class="search-query" name="q" id="query" type="search"/>
+            </form>
+            <script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=search-form"></script>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+  <div id="OwbContent_Release Checklist" class="wiki-content">
+    <h1 id="openwebbeans-release-checklist">OpenWebBeans Release Checklist<a class="headerlink" href="#openwebbeans-release-checklist" title="Permalink">&para;</a></h1>
+<p>Before performing the release you need to configure your environment if you haven't done it before.</p>
+<ol>
+<li>Publishing Maven Artifacts (<a href="https://www.apache.org/dev/publishing-maven-artifacts.html">https://www.apache.org/dev/publishing-maven-artifacts.html</a>)</li>
+<li>Go to the section SETUP YOUR DEVELOPMENT ENVIRONMENT and generate the pgp key signature. Don't forget to distribute the public key step.<br/>
+Generate PGP signature: <a href="https://blog.sonatype.com/2010/01/how-to-generate-pgp-signatures-with-maven/#.Vm9Km8q22-q">https://blog.sonatype.com/2010/01/how-to-generate-pgp-signatures-with-maven/#.Vm9Km8q22-q</a></li>
+</ol>
+<h2 id="prepare">Prepare<a class="headerlink" href="#prepare" title="Permalink">&para;</a></h2>
+<ol>
+<li>
+<p>JIRA Release Management</p>
+<ul>
+<li>Make sure that all tickets for the release are properly marked as 'released' in our issue tracker.</li>
+<li>Create ${version.next} (if not already done)</li>
+<li>Move unresolved issues from ${version} (e.g. 2.0.8) to ${version.next} (e.g. 2.0.9)</li>
+</ul>
+</li>
+<li>
+<p>Update README</p>
+<ul>
+<li>Export changelog from JIRA</li>
+<li>add it to readme/README.txt</li>
+<li>also update the version numbers in the preface</li>
+</ul>
+</li>
+<li>
+<p>Release via MVN</p>
+<ul>
+<li>mvn clean install -Papache-release</li>
+<li>mvn release:prepare -DdryRun=true</li>
+<li>mvn release:prepare -Dresume=false</li>
+<li>mvn release:perform</li>
+</ul>
+<p>if the release:perform fails on the last step (commit the new version in trunk) but the tag was successfully created,
+you can deploy the tag manually to nexus:</p>
+<ul>
+<li>commit the version change in trunk</li>
+<li>checkout the tag and execute: mvn clean install deploy -Papache-release</li>
+</ul>
+</li>
+<li>
+<p>Provide the staging repository</p>
+<ul>
+<li>login to nexus: <a href="https://repository.apache.org/#stagingRepositories">https://repository.apache.org/#stagingRepositories</a></li>
+<li>select the staging repository and "close" it</li>
+<li>the final url should be similar to <a href="https://repository.apache.org/content/repositories/orgapacheopenwebbeans-1047">https://repository.apache.org/content/repositories/orgapacheopenwebbeans-1047</a></li>
+</ul>
+</li>
+<li>
+<p>Provide assembly</p>
+<ul>
+<li>SVN <a href="https://dist.apache.org/repos/dist/dev/openwebbeans/">https://dist.apache.org/repos/dist/dev/openwebbeans/</a></li>
+<li>Commit following files inside the ${version} (2.0.8) directory:
+<ul>
+<li>openwebbeans-2.0.8-source-release.zip</li>
+<li>openwebbeans-2.0.8-source-release.zip.asc</li>
+<li>openwebbeans-2.0.8-source-release.zip.sha512</li>
+<li>openwebbeans-distribution-2.0.8-binary.tar.gz</li>
+<li>openwebbeans-distribution-2.0.8-binary.tar.gz.asc</li>
+<li>openwebbeans-distribution-2.0.8-binary.tar.gz.sha512 (must be generated manually)</li>
+<li>openwebbeans-distribution-2.0.8-binary.zip</li>
+<li>openwebbeans-distribution-2.0.8-binary.zip.asc</li>
+<li>openwebbeans-distribution-2.0.8-binary.zip.sha512 (must be generated manually)</li>
+</ul>
+</li>
+</ul>
+<p>OR</p>
+<ul>
+<li>announce the VOTE with links to the staging repo
+In this case you MUST provide at least the sha1 of the source-release.zip!</li>
+</ul>
+</li>
+<li>
+<p>Send the VOTE mail</p>
+</li>
+</ol>
+<h2 id="after-successful-vote">After successful vote<a class="headerlink" href="#after-successful-vote" title="Permalink">&para;</a></h2>
+<ol>
+<li>
+<p>Release from the staging repository</p>
+<ul>
+<li>login to nexus: <a href="https://repository.apache.org/#stagingRepositories">https://repository.apache.org/#stagingRepositories</a></li>
+<li>select the staging repository and "release" it</li>
+<li>the artifacts will be synced with the maven repos now</li>
+</ul>
+</li>
+<li>
+<p>JIRA Release Management</p>
+<ul>
+<li>Select the version and release it</li>
+<li>bulk-transition all resolved tickets of ${version} to 'closed'</li>
+</ul>
+</li>
+<li>
+<p>Upload assembly</p>
+<ul>
+<li>SVN <a href="https://dist.apache.org/repos/dist/release/openwebbeans/">https://dist.apache.org/repos/dist/release/openwebbeans/</a></li>
+<li>commit same files as in 5) under the directory for the ${version} (2.0.8)</li>
+<li>delete ${version.old} (2.0.7) directory</li>
+</ul>
+</li>
+<li>
+<p>Apache Reporter Service</p>
+<ul>
+<li>wait for the mail</li>
+<li>login to <a href="https://reporter.apache.org/addrelease.html?openwebbeans">https://reporter.apache.org/addrelease.html?openwebbeans</a></li>
+<li>add the ${version} and release date</li>
+</ul>
+</li>
+</ol>
+<h2 id="after-the-artifacts-has-been-synced-to-central-maven-repo">After the artifacts has been synced to central maven repo<a class="headerlink" href="#after-the-artifacts-has-been-synced-to-central-maven-repo" title="Permalink">&para;</a></h2>
+<ol>
+<li>
+<p>Create blog</p>
+<ul>
+<li>Login to <a href="https://blogs.apache.org/owb/">https://blogs.apache.org/owb/</a></li>
+<li>Add a post for the new release, this will automatically picked up by the site deployment</li>
+</ul>
+</li>
+<li>
+<p>Update site</p>
+<ul>
+<li>Browse <a href="https://github.com/apache/openwebbeans-site/tree/main/content">https://github.com/apache/openwebbeans-site/tree/main/content</a></li>
+<li>Edit news.md</li>
+<li>Edit download.md</li>
+<li>Committing will cause the site to be published</li>
+</ul>
+</li>
+<li>
+<p>Send release mail</p>
+</li>
+<li>
+<p>Twitter</p>
+</li>
+</ol>
+
+  </div> <!-- /container (main block) -->
+
+        <hr>
+
+        <footer class="text-center">
+            <p>
+                <a href="https://www.apache.org"><img class="img-responsive center-block" src="https://www.apache.org/images/asf_logo_wide.png" height="55px" alt="asf_feather"/></a>
+            </p>
+            <p>Copyright &copy; 2008-2021 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.</p>
+            <p>OpenWebBeans, Apache, and the Apache feather logo are trademarks of The Apache Software Foundation.</p>
+        </footer>
+
+</div> <!-- /container -->
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/resources/js/jquery-2.1.4.min.js"></script>
+    <script src="/resources/js/bootstrap.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body></html>

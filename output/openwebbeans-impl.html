@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Apache OpenWebBeans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <link href="/resources/css/main.css" rel="stylesheet">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="/resources/css/idea.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="index.html"><img src="/resources/images/logo_dbg-small.png" height="25px"
+                                                           alt="owb_logo_small"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/documentation.html">Documentation</a></li>
+                <li><a href="/source.html">Source</a></li>
+                <li><a href="/download.html">Download</a></li>
+                <li><a href="/community.html">Community</a></li>
+                <!-- <li><a href="/news.html">News</a></li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true">Misc<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.apache.org">Apache Home</a></li>
+                        <li><a href="/misc/contact.html">Contact</a></li>
+                        <li><a href="/misc/legal.html">Legal</a></li>
+                        <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                        <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                        <!-- <li class="divider"/> -->
+                    </ul>
+                </li>
+            </ul>
+            <!--/.nav-collapse -->
+            <form id="search-form" action="https://www.google.com/search" method="get" class="navbar-search pull-right">
+                <input value="openwebbeans.apache.org" name="sitesearch" type="hidden"/>
+                <input class="search-query" name="q" id="query" type="search"/>
+            </form>
+            <script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=search-form"></script>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+  <div id="OwbContent_OpenWebBeans Core" class="wiki-content">
+    <h1 id="openwebbeans-core">OpenWebBeans Core<a class="headerlink" href="#openwebbeans-core" title="Permalink">&para;</a></h1>
+<p><strong>Hint:</strong> The actual jar is called openwebbeans-impl and is the implementation of OpenWebBeans core.</p>
+<h2 id="what-does-core-mean">What does 'core' mean?<a class="headerlink" href="#what-does-core-mean" title="Permalink">&para;</a></h2>
+<p>OpenWebBeans follows the design principle loose coupling and high cohesion.
+Everything needed to actually be a working CDI-container makes up
+OpenWebBeans core.</p>
+<p>All the logical parts in core have high cohesion with each other
+and will age in approximately the same rate.
+To conclude impl is the CDI-container as such and nothing more nothing less.
+It does not contain any other JavaEE specific dependencies beside the bare minimum:</p>
+<ul>
+<li>atinject-api.jar</li>
+<li>cdi-api.jar</li>
+<li>interceptors-api jar</li>
+<li>openwebbeans-spi.jar, our SPI for pluggable extending the core.</li>
+<li>a bytecode engineering library (javassist for 1.0.x and 1.1.x, xbean-asm for 1.2.x and above)</li>
+<li>xbean-finder for classpath scanning</li>
+</ul>
+<p>openwebbeans-core does <strong>not</strong> contain any JavaEE dependencies beyond that.
+All additional features may portably be added via our SPI (Service Provider Interface).</p>
+<p>This way core is completely unaffected by the release cycles of other
+frameworks and Java specifications and the coupling is not only low,
+it's virtually nonexistent.</p>
+<h2 id="why-not-a-monolithic-approach">Why not a monolithic approach?<a class="headerlink" href="#why-not-a-monolithic-approach" title="Permalink">&para;</a></h2>
+<p>Imagine if the power outlets in your house was tightly coupled to your various devices.
+The newest and coolest smartphone or what have you would probably not be as tempting
+if it required you hiring an electrician to rewire your entire house.
+To make it more ridiculous the new wiring would be non compatible with your TV
+because it's two years old.</p>
+<p>So if OpenWebBeans would have been built in a monolithic way with tight coupling and low cohesion,
+the newest version would have to drop support for everything but the newest frameworks
+or be a hot mess with version checks and endless if - else cases between all the framework
+combinations. Naturally it would only get worse and worse over time.</p>
+<p>Glad we avoided all that and have the exact opposite result, the latest
+OpenWebBeans still support JSF 2.0, EL-1.0, JSP, Tomcat 7 and so on.
+And you can just plug support for your own framework.</p>
+<h2 id="introduction-to-our-plugin-system">Introduction to our plugin system<a class="headerlink" href="#introduction-to-our-plugin-system" title="Permalink">&para;</a></h2>
+<p>The end users has to combine the core with their own mix of plugins and can include
+exactly what they want (including custom plugins) yet nothing they don't need.
+The committers behind OpenWebBeans also have a much easier maintenance process
+and can focus on features, speed and robustness of the dependency injection core
+rather then the compatibility matrix.</p>
+<p>This approach also eases the integration into various JavaEE Containers.</p>
+
+  </div> <!-- /container (main block) -->
+
+        <hr>
+
+        <footer class="text-center">
+            <p>
+                <a href="https://www.apache.org"><img class="img-responsive center-block" src="https://www.apache.org/images/asf_logo_wide.png" height="55px" alt="asf_feather"/></a>
+            </p>
+            <p>Copyright &copy; 2008-2021 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.</p>
+            <p>OpenWebBeans, Apache, and the Apache feather logo are trademarks of The Apache Software Foundation.</p>
+        </footer>
+
+</div> <!-- /container -->
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/resources/js/jquery-2.1.4.min.js"></script>
+    <script src="/resources/js/bootstrap.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body></html>

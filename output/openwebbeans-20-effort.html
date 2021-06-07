@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Apache OpenWebBeans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <link href="/resources/css/main.css" rel="stylesheet">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="/resources/css/idea.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="index.html"><img src="/resources/images/logo_dbg-small.png" height="25px"
+                                                           alt="owb_logo_small"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/documentation.html">Documentation</a></li>
+                <li><a href="/source.html">Source</a></li>
+                <li><a href="/download.html">Download</a></li>
+                <li><a href="/community.html">Community</a></li>
+                <!-- <li><a href="/news.html">News</a></li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true">Misc<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.apache.org">Apache Home</a></li>
+                        <li><a href="/misc/contact.html">Contact</a></li>
+                        <li><a href="/misc/legal.html">Legal</a></li>
+                        <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                        <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                        <!-- <li class="divider"/> -->
+                    </ul>
+                </li>
+            </ul>
+            <!--/.nav-collapse -->
+            <form id="search-form" action="https://www.google.com/search" method="get" class="navbar-search pull-right">
+                <input value="openwebbeans.apache.org" name="sitesearch" type="hidden"/>
+                <input class="search-query" name="q" id="query" type="search"/>
+            </form>
+            <script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=search-form"></script>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+  <div id="OwbContent_Road to OpenWebBeans-2.0" class="wiki-content">
+    <h1 id="the-road-to-openwebbeans-20-cdi-20">The Road to OpenWebBeans-2.0 (CDI-2.0)<a class="headerlink" href="#the-road-to-openwebbeans-20-cdi-20" title="Permalink">&para;</a></h1>
+<p>The Apache OpenWebBeans team has now finished working on implementing the
+<a href="https://jcp.org/en/jsr/proposalDetails?id=365">CDI-2.0 (JSR-365)</a> specification.</p>
+<p>This specification is now finished and available for download from the official JSR page.
+Members of the OpenWebBeans team are actively involved in the CDI Expert Group which is writing the specification.
+So if you have any questions then just ping us.</p>
+<h2 id="where-to-get-further-information-about-the-cdi-specification">Where to get further information about the CDI Specification<a class="headerlink" href="#where-to-get-further-information-about-the-cdi-specification" title="Permalink">&para;</a></h2>
+<p>The CDI specification is hosted at github</p>
+<pre><code>https://github.com/cdi-spec/cdi
+</code></pre>
+<p>If you just like to get the source of the spec then install <a href="https://git-scm.com/">GIT</a>
+and invoke the following command line:</p>
+<pre><code>git clone https://github.com/cdi-spec/cdi.git
+</code></pre>
+<p>If you like to actively contribute to the spec then please use the
+'clone' button and follow the instructions on the page.</p>
+<p>You should finally end with all the sources necessary to build the specification
+locally by typing:</p>
+<pre><code>mvn clean install
+</code></pre>
+<p>You finally end up with the spec PDF in</p>
+<pre><code>./spec/target/publish/docbook/publish/en-US/pdf/cdi-2.0-*.pdf
+</code></pre>
+<h2 id="where-to-get-openwebbeans-20-sources">Where to get OpenWebBeans-2.0 sources?<a class="headerlink" href="#where-to-get-openwebbeans-20-sources" title="Permalink">&para;</a></h2>
+<p>The CDI-2.0 version of OpenWebBeans is now in our trunk.
+Please see our <a href="source.html">Source Section</a> for more information</p>
+<p>You might eventually like to also tweak the CDI API itself.
+For example if you find that some description is missing in the JavaDoc of our API.
+This package is maintained in the Apache Geronimo specs project (where we maintain all spec jars).</p>
+<pre><code>svn co https://svn.apache.org/repos/asf/geronimo/specs/trunk
+cd geronimo-jcdi_2.0_spec/
+mvn clean install
+</code></pre>
+
+  </div> <!-- /container (main block) -->
+
+        <hr>
+
+        <footer class="text-center">
+            <p>
+                <a href="https://www.apache.org"><img class="img-responsive center-block" src="https://www.apache.org/images/asf_logo_wide.png" height="55px" alt="asf_feather"/></a>
+            </p>
+            <p>Copyright &copy; 2008-2021 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.</p>
+            <p>OpenWebBeans, Apache, and the Apache feather logo are trademarks of The Apache Software Foundation.</p>
+        </footer>
+
+</div> <!-- /container -->
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/resources/js/jquery-2.1.4.min.js"></script>
+    <script src="/resources/js/bootstrap.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body></html>

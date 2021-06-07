@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <title>Meecrowave :: the customizable server</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/meecrowave/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="body-blue">
+    <div class="page-wrapper">
+    <!-- TODO: google analytics -->
+<header class="header text-center">
+  <div class="container">
+      <div class="branding">
+          <h1 class="doc-title">
+              <span aria-hidden="true" class="icon icon_puzzle_alt icon"></span>
+              <a href="/meecrowave/index.html">
+                Meecrowave
+              </a>
+          </h1>
+      </div>
+  </div><!--//container-->
+</header><!--//header-->
+<div class="doc-wrapper">
+    <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+            <h1 class="doc-title"><span aria-hidden="true" class="icon icon icon_puzzle_alt"></span> Meecrowave Testing</h1>
+        </div><!--//doc-header-->
+
+<div class="doc-body">
+    <div class="doc-content">
+        <div class="content-inner">
+
+
+
+
+<div class='btn-toolbar pull-right' style="z-index: 2000;">
+  <div class='btn-group'>
+      <a class="btn" href="/meecrowave/testing/index.pdf"><i class="fa fa-file-pdf-o"></i> Download as PDF</a>
+  </div>
+</div>
+
+
+
+            <section class="doc-section">
+                <div class="sect1"> 
+ <h2 id="_junit">JUnit</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Coordinates:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
+  &lt;artifactId&gt;meecrowave-junit&lt;/artifactId&gt;
+  &lt;version&gt;${meecrowave.version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="_rules_and_runners">Rules and Runners</h3> 
+   <div class="paragraph"> 
+    <p>Meecrowave provides two flavors of JUnit integration: standalone or runners/rules. The standalone one will ensure there is a single container for the whole JVM. It also fits standalone environments where you want to control the lifecycle. The other one will follow the JUnit lifecycle (per class or test rule).</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Here how to use the standalone flavor:</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@RunWith(MonoMeecrowave.Runner.class)
+public class MonoMeecrowaveRuleTest {
+    /* or
+    @ClassRule
+    public static final MonoMeecrowave.Rule RULE = new MonoMeecrowave.Rule();
+    */
+
+    @MonoMeecrowave.Runner.ConfigurationInject
+    private Meecrowave.Builder config;
+
+    @Test
+    public void test() throws IOException {
+        // use "http://localhost:" + config.getHttpPort()
+    }
+}</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>When using the standalone, <code>@MonoMeecrowave.Runner.ConfigurationInject</code> allows to still access the configuration and random HTTP port.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>For the configuration, the standalone runner will use a global configuration shared by all tests. To load it it will use a standard <code>ServiceLoader</code> on type <code>org.apache.meecrowave.Meecrowave$ConfigurationCustomizer</code>.</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>And here is the one bound to the JUnit lifecycle</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class MeecrowaveRuleTest {
+    @ClassRule // started once for the class, @Rule would be per method
+    public static final MeecrowaveRule RULE = new MeecrowaveRule();
+
+    @Test
+    public void test() throws IOException {
+        // use "http://localhost:" + RULE.getConfiguration().getHttpPort()
+    }
+}</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>As usual with JUnit rules, you can decide whereas the Meecrowave instance is bound to the entire test class or a method by using @ClassRule or @Rule.</p> 
+   </div> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="_junit_5">JUnit 5</h3> 
+   <div class="paragraph"> 
+    <p>JUnit 5 integrates a new <code>Extension</code> system. It is not yet very well supported by IDEs but you can already use it with Gradle and Maven (see <a href="http://junit.org/junit5/docs/current/user-guide/#running-tests" class="bare">http://junit.org/junit5/docs/current/user-guide/#running-tests</a>).</p> 
+   </div> 
+   <div class="paragraph"> 
+    <p>The usage has two annotations: <code>@MeecrowaveConfig</code> which remaps most of the configuration of Meecrowave and <code>@MonoMeecrowaveConfig</code> which is close to <code>MonoMeecrowave.Runner</code> in term of usage.</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@MeecrowaveConfig /*(some config)*/
+public class MeecrowaveConfigTest {
+    @ConfigurationInject
+    private Meecrowave.Builder config;
+
+    @Test
+    public void run() throws MalformedURLException {
+        final String base = "http://localhost:" + config.getHttpPort();
+        // asserts
+    }
+}</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>Or</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@MonoMeecrowaveConfig
+public class MeecrowaveConfigTest {
+    // ...
+}</code></pre> 
+    </div> 
+   </div> 
+   <div class="admonitionblock tip"> 
+    <table> 
+     <tbody>
+      <tr> 
+       <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+       <td class="content"> JUnit 5 integration provides an <code>@AfterFirstInjection</code> method and <code>@AfterLastTest</code> which can be used to setup/reset some environment using injections once for a set of test methods. The methods must not have any parameter. </td> 
+      </tr> 
+     </tbody>
+    </table> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_arquillian_container">Arquillian Container</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Container dependency:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
+  &lt;artifactId&gt;meecrowave-arquillian&lt;/artifactId&gt;
+  &lt;version&gt;${meecrowave.version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>For the configuration check <a href="/meecrowave/meecrowave-core/configuration.html">Core configuration</a>.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Here is a sample:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;arquillian xmlns="http://jboss.org/schema/arquillian"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd"&gt;
+  &lt;container qualifier="meecrowave" default="true"&gt;
+    &lt;configuration&gt;
+      &lt;property name="arquillianProtocol"&gt;Servlet 3.1&lt;/property&gt;
+      &lt;property name="cdiConversation"&gt;false&lt;/property&gt;
+      &lt;property name="clientAuth"&gt;&lt;/property&gt;
+      &lt;property name="conf"&gt;&lt;/property&gt;
+      &lt;property name="cxfServletParams"&gt;
+        hide-service-list-page=true
+      &lt;/property&gt;
+      &lt;property name="defaultSSLHostConfigName"&gt;&lt;/property&gt;
+      &lt;property name="deleteBaseOnStartup"&gt;true&lt;/property&gt;
+      &lt;property name="dir"&gt;&lt;/property&gt;
+      &lt;property name="host"&gt;localhost&lt;/property&gt;
+      &lt;property name="http2"&gt;false&lt;/property&gt;
+      &lt;property name="httpPort"&gt;-1&lt;/property&gt;
+      &lt;property name="httpsPort"&gt;8443&lt;/property&gt;
+      &lt;property name="initializeClientBus"&gt;true&lt;/property&gt;
+      &lt;property name="injectServletContainerInitializer"&gt;true&lt;/property&gt;
+      &lt;property name="jaxrsAutoActivateBeanValidation"&gt;true&lt;/property&gt;
+      &lt;property name="jaxrsDefaultProviders"&gt;&lt;/property&gt;
+      &lt;property name="jaxrsLogProviders"&gt;false&lt;/property&gt;
+      &lt;property name="jaxrsMapping"&gt;/*&lt;/property&gt;
+      &lt;property name="jaxrsProviderSetup"&gt;true&lt;/property&gt;
+      &lt;property name="jaxwsSupportIfAvailable"&gt;true&lt;/property&gt;
+      &lt;property name="jsonbBinaryStrategy"&gt;&lt;/property&gt;
+      &lt;property name="jsonbEncoding"&gt;UTF-8&lt;/property&gt;
+      &lt;property name="jsonbIJson"&gt;false&lt;/property&gt;
+      &lt;property name="jsonbNamingStrategy"&gt;&lt;/property&gt;
+      &lt;property name="jsonbNulls"&gt;false&lt;/property&gt;
+      &lt;property name="jsonbOrderStrategy"&gt;&lt;/property&gt;
+      &lt;property name="jsonbPrettify"&gt;false&lt;/property&gt;
+      &lt;property name="jsonpBufferStrategy"&gt;QUEUE&lt;/property&gt;
+      &lt;property name="jsonpMaxReadBufferLen"&gt;65536&lt;/property&gt;
+      &lt;property name="jsonpMaxStringLen"&gt;10485760&lt;/property&gt;
+      &lt;property name="jsonpMaxWriteBufferLen"&gt;65536&lt;/property&gt;
+      &lt;property name="jsonpPrettify"&gt;false&lt;/property&gt;
+      &lt;property name="jsonpSupportsComment"&gt;false&lt;/property&gt;
+      &lt;property name="keepServerXmlAsThis"&gt;false&lt;/property&gt;
+      &lt;property name="keyAlias"&gt;&lt;/property&gt;
+      &lt;property name="keystoreFile"&gt;&lt;/property&gt;
+      &lt;property name="keystorePass"&gt;&lt;/property&gt;
+      &lt;property name="keystoreType"&gt;JKS&lt;/property&gt;
+      &lt;property name="loggingGlobalSetup"&gt;true&lt;/property&gt;
+      &lt;property name="loginConfig"&gt;authMethod=BASIC;realmName=app&lt;/property&gt;
+      &lt;property name="meecrowaveProperties"&gt;meecrowave.properties&lt;/property&gt;
+      &lt;property name="properties"&gt;
+        jpa.property.openjpa.RuntimeUnenhancedClasses=supported
+        jpa.property.openjpa.jdbc.SynchronizeMappings=buildSchema
+      &lt;/property&gt;
+      &lt;property name="quickSession"&gt;true&lt;/property&gt;
+      &lt;property name="realm"&gt;org.apache.catalina.realm.JAASRealm:configFile=jaas.config;appName=app&lt;/property&gt;
+      &lt;property name="roles"&gt;
+        admin=admin
+        limited=admin,other
+      &lt;/property&gt;
+      &lt;property name="scanningExcludes"&gt;&lt;/property&gt;
+      &lt;property name="scanningIncludes"&gt;&lt;/property&gt;
+      &lt;property name="scanningPackageExcludes"&gt;&lt;/property&gt;
+      &lt;property name="scanningPackageIncludes"&gt;&lt;/property&gt;
+      &lt;property name="securityConstraints"&gt;collection=sc1:/api/*:POST;authRole=**|collection=sc2:/priv/*:GET;authRole=*&lt;/property&gt;
+      &lt;property name="serverXml"&gt;&lt;/property&gt;
+      &lt;property name="sharedLibraries"&gt;&lt;/property&gt;
+      &lt;property name="skipHttp"&gt;false&lt;/property&gt;
+      &lt;property name="ssl"&gt;false&lt;/property&gt;
+      &lt;property name="sslProtocol"&gt;&lt;/property&gt;
+      &lt;property name="stopPort"&gt;-1&lt;/property&gt;
+      &lt;property name="tempDir"&gt;/var/folders/cc/5g6j5x3x74154g2rmmtpz_4w0000gn/T/meecrowave_184680423404202&lt;/property&gt;
+      &lt;property name="tomcatAccessLogPattern"&gt;&lt;/property&gt;
+      &lt;property name="tomcatAutoSetup"&gt;true&lt;/property&gt;
+      &lt;property name="tomcatFilter"&gt;&lt;/property&gt;
+      &lt;property name="tomcatNoJmx"&gt;true&lt;/property&gt;
+      &lt;property name="tomcatScanning"&gt;true&lt;/property&gt;
+      &lt;property name="tomcatWrapLoader"&gt;true&lt;/property&gt;
+      &lt;property name="useLog4j2JulLogManager"&gt;true&lt;/property&gt;
+      &lt;property name="useShutdownHook"&gt;false&lt;/property&gt;
+      &lt;property name="useTomcatDefaults"&gt;true&lt;/property&gt;
+      &lt;property name="users"&gt;
+        admin=adminpwd
+        other=secret
+      &lt;/property&gt;
+      &lt;property name="webResourceCached"&gt;true&lt;/property&gt;
+      &lt;property name="webSessionCookieConfig"&gt;&lt;/property&gt;
+      &lt;property name="webSessionTimeout"&gt;&lt;/property&gt;
+      &lt;property name="webXml"&gt;&lt;/property&gt;
+    &lt;/configuration&gt;
+  &lt;/container&gt;
+&lt;/arquillian&gt;</code></pre> 
+   </div> 
+  </div> 
+ </div> 
+</div>
+            </section><!--//doc-section-->
+
+
+
+
+        </div><!--//content-inner-->
+    </div><!--//doc-content-->
+
+    <div class="doc-sidebar">
+        <nav id="doc-nav">
+            <ul id="doc-menu" class="nav doc-menu hidden-xs affix-top" data-spy="affix">
+                <li><a href="/meecrowave/index.html">Home</a></li>
+                <li><a href="/meecrowave/start.html">Quick Start</a></li>
+                <li><a href="/meecrowave/components.html">Components</a></li>
+                <li><a href="/meecrowave/download.html">Download</a></li>
+                <li><a href="/meecrowave/community.html">Community</a></li>
+            </ul><!--//doc-menu-->
+        </nav>
+    </div>
+</div>
+
+</div><!--//page-wrapper-->
+
+    <footer class="footer text-center">
+        <div class="container">
+          <div class="row">
+            <p >Copyright &copy; 2016
+                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            </p>
+          </div>
+        </div>
+
+        <div class="container"><!-- don't remove it otherwise theme is no more creative common -->
+            <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+
+    <!-- Main Javascript -->
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
+
+</body>
+</html>
+
+

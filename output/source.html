@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Apache OpenWebBeans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <link href="/resources/css/main.css" rel="stylesheet">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="/resources/css/idea.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="index.html"><img src="/resources/images/logo_dbg-small.png" height="25px"
+                                                           alt="owb_logo_small"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/documentation.html">Documentation</a></li>
+                <li><a href="/source.html">Source</a></li>
+                <li><a href="/download.html">Download</a></li>
+                <li><a href="/community.html">Community</a></li>
+                <!-- <li><a href="/news.html">News</a></li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true">Misc<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.apache.org">Apache Home</a></li>
+                        <li><a href="/misc/contact.html">Contact</a></li>
+                        <li><a href="/misc/legal.html">Legal</a></li>
+                        <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                        <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                        <!-- <li class="divider"/> -->
+                    </ul>
+                </li>
+            </ul>
+            <!--/.nav-collapse -->
+            <form id="search-form" action="https://www.google.com/search" method="get" class="navbar-search pull-right">
+                <input value="openwebbeans.apache.org" name="sitesearch" type="hidden"/>
+                <input class="search-query" name="q" id="query" type="search"/>
+            </form>
+            <script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=search-form"></script>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+  <div id="OwbContent_Source" class="wiki-content">
+    <h1 id="getting-involved">Getting Involved<a class="headerlink" href="#getting-involved" title="Permalink">&para;</a></h1>
+<p>We are always looking for new contributors to the project.</p>
+<p>Pleaes see our <a href="community.html">Community Section</a> for more information.</p>
+<h1 id="cannonical-source-repository">Cannonical Source Repository<a class="headerlink" href="#cannonical-source-repository" title="Permalink">&para;</a></h1>
+<p>The sources of Apache OpenWebBeans are maintained in the Apache Software Foundation gitbox repository.
+This is the repository where all committers work on.
+It gets mirrored to GitHub in both directions.
+That means you can either push to Apache GitBox or GitHub.</p>
+<p>The master branch currently contains our implementation of the CDI-2.0 specification and is considered production ready.</p>
+<p>The sources can be checked out read only with the following command:</p>
+<pre>
+$&gt; git clone https://github.com/apache/openwebbeans
+</pre>
+<p>or</p>
+<pre>
+$&gt; git clone https://gitbox.apache.org/repos/asf/openwebbeans.git
+</pre>
+<h2 id="maintenance-releases-targetting-older-cdi-specifications">Maintenance releases targetting older CDI specifications<a class="headerlink" href="#maintenance-releases-targetting-older-cdi-specifications" title="Permalink">&para;</a></h2>
+<h3 id="cdi-12-openwebbeans-17x">CDI-1.2 - OpenWebBeans-1.7.x<a class="headerlink" href="#cdi-12-openwebbeans-17x" title="Permalink">&para;</a></h3>
+<p>For checking out sources of the stable CDI-1.2 version of OpenWebBeans, please use the owb_1.7.x branch from here:</p>
+<pre>
+$&gt; git clone https://github.com/apache/openwebbeans
+$&gt; git checkout owb_1.7.x
+</pre>
+<h3 id="cdi-10-openwebbeans-12x">CDI-1.0 - OpenWebBeans-1.2.x<a class="headerlink" href="#cdi-10-openwebbeans-12x" title="Permalink">&para;</a></h3>
+<p>For checking out sources of the stable CDI-1.0 version of OpenWebBeans, please use the owb_1.2.x branch from here:</p>
+<pre>
+$&gt; git clone https://github.com/apache/openwebbeans
+$&gt; git checkout owb_1.2.x
+</pre>
+<h1 id="building-openwebbeans">Building OpenWebBeans<a class="headerlink" href="#building-openwebbeans" title="Permalink">&para;</a></h1>
+<p>Apache OpenWebBeans can be built by using Apache Maven. Just go into the source directory and execute</p>
+<pre>
+mvn clean install
+</pre>
+<p>The following maven profiles exist in our build to trigger additional build steps and configuration:</p>
+<ul>
+<li>tck - for executing the CDI (JSR-299, JSR-346 resp JSR-365) standalone TCK</li>
+<li>jsr330-tck - for executing the JSR-330 'atinject' TCK</li>
+</ul>
+<p>In master they are all activated by default and run every time you build OpenWebBeans.</p>
+<p>For older OpenWebBeans versions you might enable them manually.</p>
+<pre>
+mvn clean install -Ptck -Pjsr330-tck -Pdoc
+</pre>
+
+  </div> <!-- /container (main block) -->
+
+        <hr>
+
+        <footer class="text-center">
+            <p>
+                <a href="https://www.apache.org"><img class="img-responsive center-block" src="https://www.apache.org/images/asf_logo_wide.png" height="55px" alt="asf_feather"/></a>
+            </p>
+            <p>Copyright &copy; 2008-2021 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.</p>
+            <p>OpenWebBeans, Apache, and the Apache feather logo are trademarks of The Apache Software Foundation.</p>
+        </footer>
+
+</div> <!-- /container -->
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/resources/js/jquery-2.1.4.min.js"></script>
+    <script src="/resources/js/bootstrap.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body></html>

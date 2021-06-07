@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Apache OpenWebBeans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <link href="/resources/css/main.css" rel="stylesheet">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="/resources/css/idea.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="index.html"><img src="/resources/images/logo_dbg-small.png" height="25px"
+                                                           alt="owb_logo_small"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/documentation.html">Documentation</a></li>
+                <li><a href="/source.html">Source</a></li>
+                <li><a href="/download.html">Download</a></li>
+                <li><a href="/community.html">Community</a></li>
+                <!-- <li><a href="/news.html">News</a></li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true">Misc<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.apache.org">Apache Home</a></li>
+                        <li><a href="/misc/contact.html">Contact</a></li>
+                        <li><a href="/misc/legal.html">Legal</a></li>
+                        <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                        <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                        <!-- <li class="divider"/> -->
+                    </ul>
+                </li>
+            </ul>
+            <!--/.nav-collapse -->
+            <form id="search-form" action="https://www.google.com/search" method="get" class="navbar-search pull-right">
+                <input value="openwebbeans.apache.org" name="sitesearch" type="hidden"/>
+                <input class="search-query" name="q" id="query" type="search"/>
+            </form>
+            <script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=search-form"></script>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+  <div id="OwbContent_OpenWebBeans FAQ" class="wiki-content">
+    <h1 id="what-can-openwebbeans-as-cdi-container-do-for-you">What can OpenWebBeans as CDI container do for you?<a class="headerlink" href="#what-can-openwebbeans-as-cdi-container-do-for-you" title="Permalink">&para;</a></h1>
+<h2 id="an-introduction-to-cdi">An introduction to CDI<a class="headerlink" href="#an-introduction-to-cdi" title="Permalink">&para;</a></h2>
+<p>Contexts and Dependency Injection for Java a.k.a. CDI is a JavaEE specification with the number
+JSR-299 (CDI-1.0), JSR-346 (CDI-1.1/1.2) and JSR-365 (CDI-2.0).
+Apache OpenWebBeans implements these standards. This page will give you an introduction to features of
+CDI in general. We will add a special hint whenever a feature is ambiguous in the specification
+and OpenWebBeans implements it in a certain way which might be different on other CDI containers.</p>
+<h2 id="what-is-cdi-at-all">What is CDI at all?<a class="headerlink" href="#what-is-cdi-at-all" title="Permalink">&para;</a></h2>
+<p>Originally developed under the name &lsquo;Web Beans&rsquo;, the CDI specification was created
+to fill the gaps which could not be filled by Enterprise Java Beans (EJB) on the back end,
+and JavaServer Faces (JSF) in the view layer. The first draft targeted only
+Java Enterprise Edition (Java EE), but during the creation of the specification
+it became clear that most features were very useful for any Java environment,
+including Java SE.</p>
+<p>Even if the full name of the specification is</p>
+<blockquote>
+<p>Contexts and Dependency Injection for the Java Enterprise platform</p>
+</blockquote>
+<p>this does not mean that CDI applications can only run in JavaEE those days.
+At least OpenWebBeans provides CDI functionality which also runs in pure Java SE apps like Swing, JavaFX
+and even Eclipse RCP apps as well.</p>
+<h3 id="relationship-to-jsr-330">Relationship to JSR-330<a class="headerlink" href="#relationship-to-jsr-330" title="Permalink">&para;</a></h3>
+<p>Half a year before the CDI specification became final, other communities
+(Spring and guice) had begun an effort to specify the basics of injection as</p>
+<blockquote>
+<p>&ldquo;JSR-330: Dependency Injection for Java&rdquo; (nicknamed &ldquo;AtInject&rdquo;).</p>
+</blockquote>
+<p>Considering that it did not make sense to provide a new dependency injection container
+without collaborating on the actual injection API, the AtInject and CDI expert groups
+worked closely together to ensure a common solution across dependency injection frameworks.</p>
+<p>As a result, CDI uses the annotations from the AtInject specification,
+meaning that every CDI implementation fully implements the AtInject specification,
+just like Guice and Spring.</p>
+<p>CDI and AtInject are both included in Java Enterprise Edition 6 (JSR-316)
+and thus nowadays an integral part of almost every Java Enterprise Edition server.</p>
+<h2 id="cdi-features">CDI features<a class="headerlink" href="#cdi-features" title="Permalink">&para;</a></h2>
+<p>Before we go on to dive into some code, let&rsquo;s take a quick look at some key CDI features:</p>
+<ul>
+<li>
+<p><strong>Type Safety</strong>: Instead of injecting objects by a (string) name,
+CDI uses the Java type to resolve injections. When the type is not sufficient,
+a Qualifier annotation can be used. This allows the compiler to easily detect errors,
+and provides easy refactoring.</p>
+</li>
+<li>
+<p><strong>POJOs</strong>: Almost every Java object can be injected by CDI!
+This includes EJBs, JNDI resources, Persistence Units and Persistence Contexts,
+as well as any object which previously would have been created by a factory method.</p>
+</li>
+<li>
+<p><strong>Extensibility</strong>: Every CDI container can enhance its functionality
+by using &ldquo;Portable Extensions&rdquo;. The attribute &ldquo;portable&rdquo; means that
+those CDI Extensions can run on every CDI container and Java EE 6 server,
+no matter which vendor. This is accomplished by a well-specified
+SPI (Service Provider Interface) which is part of the JSR-299 specification.</p>
+</li>
+<li>
+<p><strong>Interceptors</strong>: It has never been easier to write your own Interceptors.
+Because of the portable behaviour of CDI, they now also run on every
+EE 6 or later certified server and on all standalone CDI containers.</p>
+</li>
+<li>
+<p><strong>Decorators</strong>: These allow to dynamically extend existing interface
+implementations with business aspects.</p>
+</li>
+<li>
+<p><strong>Events</strong>: CDI specifies a type-safe mechanism to send
+and receive events with loose coupling.</p>
+</li>
+<li>
+<p><strong>Unified EL integration</strong>: EL-2.2 opens a new horizon
+in regard of flexibility and functionality.
+CDI provides out-of-the-box support for it!</p>
+</li>
+</ul>
+<h2 id="a-small-cdi-example">A small CDI Example<a class="headerlink" href="#a-small-cdi-example" title="Permalink">&para;</a></h2>
+<p>The following small JSF and CDI sample application allows
+you to send eMails via a web form.
+We will only show code fragments, please checkout our samples form our
+<a href="source.html">Source Code</a> for more information.</p>
+<h4 id="the-backend">The 'Backend'<a class="headerlink" href="#the-backend" title="Permalink">&para;</a></h4>
+<p>For our mail application, we need an &ldquo;application-scoped&rdquo; MailService.
+Application-scoped objects are essentially singletons &ndash;
+the container will ensure you always get the same single instance whenever
+you inject it into your application.</p>
+<p>The <code>replyTo</code> address is taken from the ConfigurationService
+which is also application-scoped. Here we see our first injection.
+The &ldquo;configuration&rdquo; field is not set by the application&rsquo;s code,
+but is injected by CDI.
+The <code>@Inject</code> annotation tells CDI to perform the injection.</p>
+<pre><code>@ApplicationScoped
+public class MyMailService implements MailService {
+    private @Inject ConfigurationService configuration;
+
+    public send(String from, String to, String body) {
+        String replyTo = configuration.getReplyToAddress();
+        ... // send the email
+    }
+}
+</code></pre>
+<h4 id="the-user-handling">The User handling<a class="headerlink" href="#the-user-handling" title="Permalink">&para;</a></h4>
+<p>Our application also knows the currently loggedin user which we like to
+store in the Servlet Session (the login itself is not part of this sample,
+just consider  this is done via your container or a
+login page + Servlet Filter upfront).</p>
+<p>CDI provides the session scope, which ensures that you will get
+the same instance of an object per HTTP Session (in a web application).</p>
+<pre><code>@SessionScoped
+@Named
+public class User {
+    public String getName() {..}
+    public String getEmail() {..}
+    ..
+}
+</code></pre>
+<p>By default, CDI beans are not available for use in JSF via the
+Unified Expression Language. In order to expose it for use by JSF and EL,
+we simply added the <code>@Named</code> annotation.</p>
+<h4 id="the-backing-bean">The Backing Bean<a class="headerlink" href="#the-backing-bean" title="Permalink">&para;</a></h4>
+<p>Our web page is implemented with JSF-2. Thus we need a backing bean.
+We use a <code>@RequestScoped</code> backing bean which means that every request
+will get a new instance of it. Otoh, during the request you will always get
+the same instance.</p>
+<pre><code>@RequestScoped
+@Named
+public class MailForm {
+    private @Inject MailService mailService;
+    private @Inject User user;
+
+    private String text; // + getter and setter
+    private String recipient; // + getter and setter 
+
+    public String sendMail() {
+        mailService.send(user.getName(), recipient, text);
+        return "messageSent"; // forward to 'message sent' JSF2 page
+    }
+
+}
+</code></pre>
+<h4 id="the-jsf-2-page">The JSF-2 page<a class="headerlink" href="#the-jsf-2-page" title="Permalink">&para;</a></h4>
+<p>We now only miss the JSF page itself to make our example work.
+The page is implemented using <em>facelets</em>.</p>
+<pre><code>...
+&lt;h:form&gt;
+    &lt;h:outputLabel value="Username" for="username"/&gt;
+    &lt;h:outputText id="username" value="#{user.name}"/&gt;&lt;br/&gt;
+    &lt;h:outputLabel value="Recipient" for="recipient"/&gt;
+    &lt;h:inputText id="recipient" value="#{mailForm.recipient}"/&gt;&lt;br/&gt;
+    &lt;h:outputLabel value="Body" for="body"/&gt;
+    &lt;h:inputText id="body" value="#{mailForm.body}"/&gt;&lt;br/&gt;
+    
+    &lt;h:commandButton value="Send" action="#{mailForm.send}"/&gt;
+&lt;/h:form&gt;
+...
+</code></pre>
+<p>This page uses the backing bean from above via it's EL name <em>mailForm</em>.
+In the same way it uses the <code>@SessionScoped</code> <em>user</em>.</p>
+
+  </div> <!-- /container (main block) -->
+
+        <hr>
+
+        <footer class="text-center">
+            <p>
+                <a href="https://www.apache.org"><img class="img-responsive center-block" src="https://www.apache.org/images/asf_logo_wide.png" height="55px" alt="asf_feather"/></a>
+            </p>
+            <p>Copyright &copy; 2008-2021 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.</p>
+            <p>OpenWebBeans, Apache, and the Apache feather logo are trademarks of The Apache Software Foundation.</p>
+        </footer>
+
+</div> <!-- /container -->
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/resources/js/jquery-2.1.4.min.js"></script>
+    <script src="/resources/js/bootstrap.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body></html>

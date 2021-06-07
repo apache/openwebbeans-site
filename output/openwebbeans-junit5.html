@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Apache OpenWebBeans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <link href="/resources/css/main.css" rel="stylesheet">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="/resources/css/idea.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="index.html"><img src="/resources/images/logo_dbg-small.png" height="25px"
+                                                           alt="owb_logo_small"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/documentation.html">Documentation</a></li>
+                <li><a href="/source.html">Source</a></li>
+                <li><a href="/download.html">Download</a></li>
+                <li><a href="/community.html">Community</a></li>
+                <!-- <li><a href="/news.html">News</a></li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true">Misc<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.apache.org">Apache Home</a></li>
+                        <li><a href="/misc/contact.html">Contact</a></li>
+                        <li><a href="/misc/legal.html">Legal</a></li>
+                        <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                        <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                        <!-- <li class="divider"/> -->
+                    </ul>
+                </li>
+            </ul>
+            <!--/.nav-collapse -->
+            <form id="search-form" action="https://www.google.com/search" method="get" class="navbar-search pull-right">
+                <input value="openwebbeans.apache.org" name="sitesearch" type="hidden"/>
+                <input class="search-query" name="q" id="query" type="search"/>
+            </form>
+            <script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=search-form"></script>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+  <div id="OwbContent_OpenWebBeans JUnit 5" class="wiki-content">
+    <h1 id="openwebbeans-junit-5">OpenWebBeans JUnit 5<a class="headerlink" href="#openwebbeans-junit-5" title="Permalink">&para;</a></h1>
+<p>OpenWebBeans provides a JUnit 5 integration. It brings an extension which will be backed by CDI Standalone Edition API (<code>SeContainer</code>).</p>
+<p>The entry point is <code>@Cdi</code> API which maps the main methods of <code>SeContainerInitializer</code>.
+It typically enables you to define which classes you want to deploy for the test or if you want to use classpath scanning.</p>
+<p>Here is how a test can look like:</p>
+<pre><code>@Cdi(disableDiscovery = true, classes = MyService.class)
+class CdiTest {
+    @Inject
+    private MyService service;
+
+    @Test
+    void test() {
+        assertEquals("ok", service.ok());
+    }
+}
+</code></pre>
+<p>As you may notice, this test disable the default classpath scanning and only activate <code>MyService</code> bean.</p>
+<p>Once a test is marked <code>@Cdi</code> you get injections of the underlying container available in the test class. This is how previous snippet can inject <code>MyService</code> into the test class without having anything else to do.</p>
+<h2 id="dependency">Dependency<a class="headerlink" href="#dependency" title="Permalink">&para;</a></h2>
+<pre><code> &lt;dependency&gt;
+    &lt;groupId&gt;org.apache.openwebbeans&lt;/groupId&gt;
+    &lt;artifactId&gt;openwebbeans-junit5&lt;/artifactId&gt;
+    &lt;version&gt;${owb.version}&lt;/version&gt;
+  &lt;/dependency&gt;
+</code></pre>
+<p>IMPORTANT: this feature comes with OpenWebBeans &gt;= 2.0.11.</p>
+<h2 id="reusable-mode">Reusable mode<a class="headerlink" href="#reusable-mode" title="Permalink">&para;</a></h2>
+<p><code>@Cdi</code> also adds a specific API called <code>reusable</code>. When this is set to <code>true</code>, the container is started and then reused by next test.
+This enables to speed up the test suite a lot when reusing the same JVM to run all tests.</p>
+<p>For example if you have these two tests:</p>
+<pre><code>@Cdi(reusable = true)
+class MyFirstTest {
+    @Inject
+    private MyService service;
+
+    @Test
+    void test() {
+        assertEquals("ok", service.ok());
+    }
+}
+</code></pre>
+<p>and</p>
+<pre><code>@Cdi(reusable = true)
+class MySecondTest {
+    @Inject
+    private MyOtherService service;
+
+    @Test
+    void test() {
+        assertEquals("ok2", service.ok());
+    }
+}
+</code></pre>
+<p>Then CDI container will be started only once.</p>
+<p>However if the first test is:</p>
+<pre><code>@Cdi(reusable = true, disableDiscovery = true, classes = MyService.class)
+class MyFirstTest {
+    // .. as before
+}
+</code></pre>
+<p>Then the second test will not have its <code>MyOtherService</code> bean since previous test will only deploy <code>MyService</code>.</p>
+<p>To avoid that it is recommended to follow these best practises:</p>
+<ul>
+<li>Never mix reusable and not reusable tests in the same suite (define multiple surefire executions for example),</li>
+<li>For reusable tests define a meta annotation which shares the configuration for all tests, this means you must have a single <code>reusable = true</code> in your whole code (per execution).</li>
+</ul>
+<p>To define a reusable setup you just define a new annotation decorated with <code>@Cdi</code>:</p>
+<pre><code>@Target(TYPE)
+@Retention(RUNTIME)
+@Cdi(reusable = true, disableDiscovery = true, packages = MyService.class)
+public @interface TestConfig {
+}
+</code></pre>
+<p>Then your test class can look like:</p>
+<pre><code>@TestConfig
+class MySecondTest {
+    @Inject
+    private MyService service;
+
+    @Test
+    void test() {
+        assertEquals("ok", service.ok());
+    }
+}
+</code></pre>
+<h3 id="surefire">Surefire<a class="headerlink" href="#surefire" title="Permalink">&para;</a></h3>
+<p>For reusable mode to be efficient, it is recommended to use this surefire configuration:</p>
+<pre><code>&lt;plugin&gt;
+  &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+  &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+  &lt;version&gt;${surefire.version}&lt;/version&gt;
+  &lt;configuration&gt;
+    &lt;forkCount&gt;1&lt;/forkCount&gt;
+  &lt;/configuration&gt;
+&lt;/plugin&gt;
+</code></pre>
+<p>And here is how to define executions to mix reusable and not reusable tests - which can have a different deployment setup:</p>
+<pre><code>&lt;plugin&gt;
+    &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+    &lt;artifactId&gt;maven-surefire-plugin&lt;/artifactId&gt;
+    &lt;version&gt;${surefire.version}&lt;/version&gt;
+    &lt;executions&gt;
+        &lt;execution&gt; &lt;!-- skip default setup since we redefine it --&gt;
+            &lt;id&gt;default-test&lt;/id&gt;
+            &lt;configuration&gt;
+                &lt;skip&gt;true&lt;/skip&gt;
+            &lt;/configuration&gt;
+        &lt;/execution&gt;
+        &lt;execution&gt;
+            &lt;id&gt;not-reusable&lt;/id&gt;
+            &lt;phase&gt;test&lt;/phase&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;test&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+                &lt;includes&gt;**/perclass/*&lt;/includes&gt;
+            &lt;/configuration&gt;
+        &lt;/execution&gt;
+        &lt;execution&gt;
+            &lt;id&gt;reusable&lt;/id&gt;
+            &lt;phase&gt;test&lt;/phase&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;test&lt;/goal&gt;
+            &lt;/goals&gt;
+            &lt;configuration&gt;
+                &lt;includes&gt;**/reusable/*&lt;/includes&gt;
+            &lt;/configuration&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+    &lt;configuration&gt;
+      &lt;forkCount&gt;1&lt;/forkCount&gt;
+    &lt;/configuration&gt;
+&lt;/plugin&gt;
+</code></pre>
+<p>This setup assumes not reusable tests are in a <code>perclass</code> package and reusable ones are in a <code>reusable</code> package.
+Alternatively you can use categories (just define markers in your test code) but this is generally less obvious to manage on the long run.</p>
+
+  </div> <!-- /container (main block) -->
+
+        <hr>
+
+        <footer class="text-center">
+            <p>
+                <a href="https://www.apache.org"><img class="img-responsive center-block" src="https://www.apache.org/images/asf_logo_wide.png" height="55px" alt="asf_feather"/></a>
+            </p>
+            <p>Copyright &copy; 2008-2021 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.</p>
+            <p>OpenWebBeans, Apache, and the Apache feather logo are trademarks of The Apache Software Foundation.</p>
+        </footer>
+
+</div> <!-- /container -->
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/resources/js/jquery-2.1.4.min.js"></script>
+    <script src="/resources/js/bootstrap.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body></html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Apache OpenWebBeans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <link href="/resources/css/main.css" rel="stylesheet">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="/resources/css/idea.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="index.html"><img src="/resources/images/logo_dbg-small.png" height="25px"
+                                                           alt="owb_logo_small"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/documentation.html">Documentation</a></li>
+                <li><a href="/source.html">Source</a></li>
+                <li><a href="/download.html">Download</a></li>
+                <li><a href="/community.html">Community</a></li>
+                <!-- <li><a href="/news.html">News</a></li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true">Misc<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.apache.org">Apache Home</a></li>
+                        <li><a href="/misc/contact.html">Contact</a></li>
+                        <li><a href="/misc/legal.html">Legal</a></li>
+                        <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                        <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                        <!-- <li class="divider"/> -->
+                    </ul>
+                </li>
+            </ul>
+            <!--/.nav-collapse -->
+            <form id="search-form" action="https://www.google.com/search" method="get" class="navbar-search pull-right">
+                <input value="openwebbeans.apache.org" name="sitesearch" type="hidden"/>
+                <input class="search-query" name="q" id="query" type="search"/>
+            </form>
+            <script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=search-form"></script>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+  <div id="OwbContent_Source" class="wiki-content">
+    <h1 id="apache-openwebbeans-releases">Apache OpenWebBeans Releases<a class="headerlink" href="#apache-openwebbeans-releases" title="Permalink">&para;</a></h1>
+<p>This page contains download links to the latest Apache OpenWebBeans releases.</p>
+<p>All maven artifacts are available in the Maven.Central repository with the groupId <code>org.apache.openwebbeans</code>. The dependencies you can use are listed at the bottom of this page: <a href="/download.html#maven-dep">Maven Dependencies</a>.</p>
+<h2 id="keys-for-verifying-apache-releases">KEYS for verifying Apache releases<a class="headerlink" href="#keys-for-verifying-apache-releases" title="Permalink">&para;</a></h2>
+<p>The GPG keys in the <a href="https://www.apache.org/dist/openwebbeans/KEYS">OpenWebBeans KEYS file</a> to validate our releases.
+Read more about <a href="https://www.apache.org/info/verification.html">How to verify downloaded files</a></p>
+<hr/>
+<h2 id="owb-20x">OWB-2.0.x<a class="headerlink" href="#owb-20x" title="Permalink">&para;</a></h2>
+<p>OWB-2.0.x implements the CDI-2.0 (JSR-365) specification.
+It uses a shaded version of ASM-8 (Java11 support) for building our proxies and requires JavaSE 8 as minimum version.</p>
+<h4 id="binaries">Binaries<a class="headerlink" href="#binaries" title="Permalink">&para;</a></h4>
+<p>The binary distribution contains all OpenWebBeans modules.</p>
+<ul>
+<li><a href="https://www.apache.org/dyn/closer.lua/openwebbeans/2.0.23/openwebbeans-distribution-2.0.23-binary.zip">openwebbeans-distribution-2.0.23-binary.zip</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/2.0.23/openwebbeans-distribution-2.0.23-binary.zip.sha512">openwebbeans-distribution-2.0.23-binary.zip.sha512</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/2.0.23/openwebbeans-distribution-2.0.23-binary.zip.asc">openwebbeans-distribution-2.0.23-binary.zip.asc</a></li>
+<li><a href="https://www.apache.org/dyn/closer.lua/openwebbeans/2.0.23/openwebbeans-distribution-2.0.23-binary.tar.gz">openwebbeans-distribution-2.0.23-binary.tar.gz</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/2.0.23/openwebbeans-distribution-2.0.23-binary.tar.gz.sha512">openwebbeans-distribution-2.0.23-binary.tar.gz.sha512</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/2.0.23/openwebbeans-distribution-2.0.23-binary.tar.gz.asc">openwebbeans-distribution-2.0.23-binary.tar.gz.asc</a></li>
+</ul>
+<h4 id="source">Source<a class="headerlink" href="#source" title="Permalink">&para;</a></h4>
+<p>Should you want to build any of the above binaries, this source bundle is the right one and covers them all.</p>
+<ul>
+<li><a href="https://www.apache.org/dyn/closer.lua/openwebbeans/2.0.23/openwebbeans-2.0.23-source-release.zip">openwebbeans-2.0.23-source-release.zip</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/2.0.23/openwebbeans-2.0.23-source-release.zip.sha512">openwebbeans-2.0.23-source-release.zip.sha512</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/2.0.23/openwebbeans-2.0.23-source-release.zip.asc">openwebbeans-2.0.23-source-release.zip.asc</a></li>
+</ul>
+<hr/>
+<h2 id="owb-17x">OWB-1.7.x<a class="headerlink" href="#owb-17x" title="Permalink">&para;</a></h2>
+<p>OWB-1.7.x implements the full CDI-1.2 specification.
+It uses a shaded version of ASM-5 for building our proxies and needs JavaSE 7 as minimum version.</p>
+<h4 id="binaries_1">Binaries<a class="headerlink" href="#binaries_1" title="Permalink">&para;</a></h4>
+<p>The binary distribution contains all OpenWebBeans modules.</p>
+<ul>
+<li><a href="https://www.apache.org/dyn/closer.lua/openwebbeans/1.7.6/openwebbeans-distribution-1.7.6-binary.zip">openwebbeans-distribution-1.7.6-binary.zip</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/1.7.6/openwebbeans-distribution-1.7.6-binary.zip.sha1">openwebbeans-distribution-1.7.6-binary.zip.sha1</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/1.7.6/openwebbeans-distribution-1.7.6-binary.zip.asc">openwebbeans-distribution-1.7.6-binary.zip.asc</a></li>
+<li><a href="https://www.apache.org/dyn/closer.lua/openwebbeans/1.7.6/openwebbeans-distribution-1.7.6-binary.tar.gz">openwebbeans-distribution-1.7.6-binary.tar.gz</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/1.7.6/openwebbeans-distribution-1.7.6-binary.tar.gz.sha1">openwebbeans-distribution-1.7.6-binary.tar.gz.sha1</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/1.7.6/openwebbeans-distribution-1.7.6-binary.tar.gz.asc">openwebbeans-distribution-1.7.6-binary.tar.gz.asc</a></li>
+</ul>
+<h4 id="source_1">Source<a class="headerlink" href="#source_1" title="Permalink">&para;</a></h4>
+<p>Should you want to build any of the above binaries, this source bundle is the right one and covers them all.</p>
+<ul>
+<li><a href="https://www.apache.org/dyn/closer.lua/openwebbeans/1.7.6/openwebbeans-1.7.6-source-release.zip">openwebbeans-1.7.6-source-release.zip</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/1.7.6/openwebbeans-1.7.6-source-release.zip.sha1">openwebbeans-1.7.6-source-release.zip.sha1</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/1.7.6/openwebbeans-1.7.6-source-release.zip.asc">openwebbeans-1.7.6-source-release.zip.asc</a></li>
+</ul>
+<hr/>
+<h2 id="owb-12x">OWB-1.2.x<a class="headerlink" href="#owb-12x" title="Permalink">&para;</a></h2>
+<p>OWB-1.2.x implements the CDI-1.0 specification and internally already CDI-1.1.
+It uses a shaded version of ASM-5 for building our proxies and needs JavaSE 5 as minimum version.</p>
+<h4 id="binaries_2">Binaries<a class="headerlink" href="#binaries_2" title="Permalink">&para;</a></h4>
+<p>The binary distribution contains all OpenWebBeans modules.</p>
+<ul>
+<li><a href="https://www.apache.org/dyn/closer.lua/openwebbeans/1.2.8/openwebbeans-distribution-1.2.8-binary.zip">openwebbeans-distribution-1.2.8-binary.zip</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/1.2.8/openwebbeans-distribution-1.2.8-binary.zip.sha1">openwebbeans-distribution-1.2.8-binary.zip.sha1</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/1.2.8/openwebbeans-distribution-1.2.8-binary.zip.asc">openwebbeans-distribution-1.2.8-binary.zip.asc</a></li>
+<li><a href="https://www.apache.org/dyn/closer.lua/openwebbeans/1.2.8/openwebbeans-distribution-1.2.8-binary.tar.gz">openwebbeans-distribution-1.2.8-binary.tar.gz</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/1.2.8/openwebbeans-distribution-1.2.8-binary.tar.gz.sha1">openwebbeans-distribution-1.2.8-binary.tar.gz.sha1</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/1.2.8/openwebbeans-distribution-1.2.8-binary.tar.gz.asc">openwebbeans-distribution-1.2.8-binary.tar.gz.asc</a></li>
+</ul>
+<p><strong>Hint:</strong> OpenWeBeans has dependencies to several other jars and just adding our jars manually would lead to ClassNotFoundException if you choose not to use maven.
+The jars you need depends on what modules you include.
+They are all contained in the binary distribution.
+We will try to add complete lists of this in the future, meanwhile please ask on the list or maybe look at the pom.xml for the modules you want to use.</p>
+<h4 id="source_2">Source<a class="headerlink" href="#source_2" title="Permalink">&para;</a></h4>
+<p>Should you want to build any of the above binaries, this source bundle is the right one covers them all.</p>
+<ul>
+<li><a href="https://www.apache.org/dyn/closer.lua/openwebbeans/1.2.8/openwebbeans-1.2.8-source-release.zip">openwebbeans-1.2.8-source-release.zip</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/1.2.8/openwebbeans-1.2.8-source-release.zip.sha1">openwebbeans-1.2.8-source-release.zip.sha1</a></li>
+<li><a href="https://www.apache.org/dist/openwebbeans/1.2.8/openwebbeans-1.2.8-source-release.zip.asc">openwebbeans-1.2.8-source-release.zip.asc</a></li>
+</ul>
+<hr/>
+<h2 id="openwebbeans-archives">OpenWebBeans Archives<a class="headerlink" href="#openwebbeans-archives" title="Permalink">&para;</a></h2>
+<p>Older versions of Apache OpenWebBeans can be found in our <a href="https://archive.apache.org/dist/openwebbeans/">archives</a></p>
+<hr/>
+<h3 id="maven-dep">Maven Dependencies<a class="headerlink" href="#maven-dep" title="Permalink">&para;</a></h3>
+<h4 id="apis-version">APIs for OWB-2.0.x<a class="headerlink" href="#apis-version" title="Permalink">&para;</a></h4>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.geronimo.specs&lt;/groupId&gt;
+    &lt;artifactId&gt;geronimo-atinject_1.0_spec&lt;/artifactId&gt;
+    &lt;version&gt;1.2&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.geronimo.specs&lt;/groupId&gt;
+    &lt;artifactId&gt;geronimo-jcdi_2.0_spec&lt;/artifactId&gt;
+    &lt;version&gt;1.2&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.geronimo.specs&lt;/groupId&gt;
+    &lt;artifactId&gt;geronimo-interceptor_1.2_spec&lt;/artifactId&gt;
+    &lt;version&gt;1.2&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.geronimo.specs&lt;/groupId&gt;
+    &lt;artifactId&gt;geronimo-annotation_1.3_spec&lt;/artifactId&gt;
+    &lt;version&gt;1.3&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p>Note that you should set the seope of those dependencies to either <code>provided</code> or <code>compile</code> depending on whether your environment already provide them or not.</p>
+<h4 id="apis-version12">APIs for OWB-1.7.x<a class="headerlink" href="#apis-version12" title="Permalink">&para;</a></h4>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.geronimo.specs&lt;/groupId&gt;
+    &lt;artifactId&gt;geronimo-atinject_1.0_spec&lt;/artifactId&gt;
+    &lt;version&gt;1.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.geronimo.specs&lt;/groupId&gt;
+    &lt;artifactId&gt;geronimo-jcdi_1.1_spec&lt;/artifactId&gt;
+    &lt;version&gt;1.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.geronimo.specs&lt;/groupId&gt;
+    &lt;artifactId&gt;geronimo-interceptor_1.2_spec&lt;/artifactId&gt;
+    &lt;version&gt;1.0&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.geronimo.specs&lt;/groupId&gt;
+    &lt;artifactId&gt;geronimo-annotation_1.2_spec&lt;/artifactId&gt;
+    &lt;version&gt;1.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h4 id="required-version">Required<a class="headerlink" href="#required-version" title="Permalink">&para;</a></h4>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.openwebbeans&lt;/groupId&gt;
+    &lt;artifactId&gt;openwebbeans-spi&lt;/artifactId&gt;
+    &lt;version&gt;${owb.version}&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
+
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.openwebbeans&lt;/groupId&gt;
+    &lt;artifactId&gt;openwebbeans-impl&lt;/artifactId&gt;
+    &lt;version&gt;${owb.version}&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h4 id="plugins-version">Plugins<a class="headerlink" href="#plugins-version" title="Permalink">&para;</a></h4>
+<p><strong>Web Module</strong> (Required for web-apps)</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.openwebbeans&lt;/groupId&gt;
+    &lt;artifactId&gt;openwebbeans-web&lt;/artifactId&gt;
+    &lt;version&gt;${owb.version}&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p><strong>JSF 2.X Module</strong></p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.openwebbeans&lt;/groupId&gt;
+    &lt;artifactId&gt;openwebbeans-jsf&lt;/artifactId&gt;
+    &lt;version&gt;${owb.version}&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p><strong>EL 2.2 Module</strong></p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.openwebbeans&lt;/groupId&gt;
+    &lt;artifactId&gt;openwebbeans-el22&lt;/artifactId&gt;
+    &lt;version&gt;${owb.version}&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p><strong>Tomcat 7 Module</strong></p>
+<p>(also works for Tomcat-8, Tomcat-8.5 and Tomcat-9)</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.openwebbeans&lt;/groupId&gt;
+    &lt;artifactId&gt;openwebbeans-tomcat7&lt;/artifactId&gt;
+    &lt;version&gt;${owb.version}&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p><strong>JMS Module</strong></p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.openwebbeans&lt;/groupId&gt;
+    &lt;artifactId&gt;openwebbeans-jms&lt;/artifactId&gt;
+    &lt;version&gt;${owb.version}&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<p><strong>Arquillian Module</strong></p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.openwebbeans&lt;/groupId&gt;
+    &lt;artifactId&gt;openwebbeans-arquillian&lt;/artifactId&gt;
+    &lt;version&gt;${owb.version}&lt;/version&gt;
+    &lt;scope&gt;compile&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+  </div> <!-- /container (main block) -->
+
+        <hr>
+
+        <footer class="text-center">
+            <p>
+                <a href="https://www.apache.org"><img class="img-responsive center-block" src="https://www.apache.org/images/asf_logo_wide.png" height="55px" alt="asf_feather"/></a>
+            </p>
+            <p>Copyright &copy; 2008-2021 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.</p>
+            <p>OpenWebBeans, Apache, and the Apache feather logo are trademarks of The Apache Software Foundation.</p>
+        </footer>
+
+</div> <!-- /container -->
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/resources/js/jquery-2.1.4.min.js"></script>
+    <script src="/resources/js/bootstrap.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body></html>

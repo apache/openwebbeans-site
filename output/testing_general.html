@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Apache OpenWebBeans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <link href="/resources/css/main.css" rel="stylesheet">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="/resources/css/idea.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="index.html"><img src="/resources/images/logo_dbg-small.png" height="25px"
+                                                           alt="owb_logo_small"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/documentation.html">Documentation</a></li>
+                <li><a href="/source.html">Source</a></li>
+                <li><a href="/download.html">Download</a></li>
+                <li><a href="/community.html">Community</a></li>
+                <!-- <li><a href="/news.html">News</a></li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true">Misc<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.apache.org">Apache Home</a></li>
+                        <li><a href="/misc/contact.html">Contact</a></li>
+                        <li><a href="/misc/legal.html">Legal</a></li>
+                        <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                        <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                        <!-- <li class="divider"/> -->
+                    </ul>
+                </li>
+            </ul>
+            <!--/.nav-collapse -->
+            <form id="search-form" action="https://www.google.com/search" method="get" class="navbar-search pull-right">
+                <input value="openwebbeans.apache.org" name="sitesearch" type="hidden"/>
+                <input class="search-query" name="q" id="query" type="search"/>
+            </form>
+            <script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=search-form"></script>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+  <div id="OwbContent_Testing strategies" class="wiki-content">
+    <h1 id="testing-strategies-for-projects-that-leverage-cdi">Testing strategies for projects that leverage CDI<a class="headerlink" href="#testing-strategies-for-projects-that-leverage-cdi" title="Permalink">&para;</a></h1>
+<p>One could argue that unit tests are harder to write when your instances are managed by a container.
+However this is only true if the booting of said container is uncharted territory.
+But lets assume the container control is taken cared of handily. Well then it can be quite the breath of fresh air to test code
+that leverage dependency injection.</p>
+<p>Here comes the good news. Testing OpenWebBeans and CDI in general (and actually many other Java EE frameworks)
+is in a good state as of today and testing frameworks are reaching a pretty decent level of maturity. Stay with us and
+we will compare the pros and cons with
+the different strategies.</p>
+<h3 id="good-practice">Good Practice<a class="headerlink" href="#good-practice" title="Permalink">&para;</a></h3>
+<p>We won't go in to detail on how to properly use unit tests or integration tests in your project. However so called "Whitebox Testing" is
+discouraged. Using whitebox testing is often critizied regardless but with frameworks that leverage
+proxies it's simply not something you should attempt. Any reflection trick will would likely miss the mark and modify the proxy.
+Instead focus on functional tests and structure your code with high cohesion so that testing the public methods get's the job done.
+Remember to add beans.xml and other resources to your to your test path.</p>
+<h3 id="start-small-with-plain-tests">Start small with plain tests<a class="headerlink" href="#start-small-with-plain-tests" title="Permalink">&para;</a></h3>
+<p>Testing code that leverage CDI does not differ much from using CDI in your project. You should start with just a plain pojo
+in your project and likewise a plain unit test. Only when you need context should you upgrade the pojo to a CDI managed instance.
+Still this does not mean you automatically need something more then plain unit test. But when you need the container to act on your
+instances (for example to trigger <code>@PostConstruct</code>) then go ahead and upgrade the test to CDI aware. To get started with plain unit testing please
+refer to <a href="https://junit.org/">JUnit</a> or <a href="https://testng.org/doc/index.html">TestNG</a> as a starting point.</p>
+<h3 id="cdi-aware-tests">CDI aware tests<a class="headerlink" href="#cdi-aware-tests" title="Permalink">&para;</a></h3>
+<p>These frameworks for testing all rely on either JUnit or TestNG and simply adds CDI container control capabilities. None of these frameworks are exclusive
+and <code>CdiCtrl</code> can support any CDI environment including tests. Apache Deltaspike Core  may also prove useful (perhaps especially the BeanProvider). <a href="https://deltaspike.apache.org/core.html">Deltaspike Core</a>.</p>
+<p><strong><a href="testing_test-control.html">Apache Deltaspike Test-Control</a></strong><br/>
+The by far easiest and most straight forward way to write your first test is definitely with <a href="https://deltaspike.apache.org/test-control.html">Apache Deltaspike Test-Control</a>.
+This way of testing boots the CDI Container with minimal code and there's not much to learn besides CDI and unit testing with JUnit / TestNG.
+Since Test-Control is a thin layer on top of <code>CdiCtrl</code> it's advised to continue reading below for more information.</p>
+<p><strong><a href="testing_test-control.html">Apache Deltaspike CdiCtrl</a></strong><br/>
+Since <code>Test-Control</code> is very new it currently lacks support for TestNG and only offers one integration point (MyFaces-Test). If you experience Test-Control
+as insufficient the Apache Deltaspike team might propose that you use <code>Apache Deltaspike CdiCtrl</code> directly but communicating with them might be a
+good idea, please refer to <a href="https://deltaspike.apache.org/community.html">Deltaspike Community</a> for contact details. <code>CdiCtrl</code>
+is a powerful framework that Test-Control is built on top off and using it directly is another solution to consider.
+This is still common and well documented since Test-Control is a new module. <code>CdiCtrl</code> is commonly referred to as the lightweight champion of CDI testing.
+In it's nature it's simple and to the point (<code>Test-Control</code> even more so).</p>
+<p><strong><a href="testing_arquillian.html">JBoss Arquillian</a></strong><br/>
+Crowned the heavyweight champion of CDI testing certainly not all for naught. <code>Arquillian</code> offers fine grained control over the deployment and has
+many popular extensions for testing. For example testing with a web based user interface is possible. If you want to test very complex combinations in your deployments
+or you need to isolate to the bare minimum, then Arquillian really shines. It also offers several xml configuration points and similar that might be needed for large
+complicated projects.</p>
+
+  </div> <!-- /container (main block) -->
+
+        <hr>
+
+        <footer class="text-center">
+            <p>
+                <a href="https://www.apache.org"><img class="img-responsive center-block" src="https://www.apache.org/images/asf_logo_wide.png" height="55px" alt="asf_feather"/></a>
+            </p>
+            <p>Copyright &copy; 2008-2021 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.</p>
+            <p>OpenWebBeans, Apache, and the Apache feather logo are trademarks of The Apache Software Foundation.</p>
+        </footer>
+
+</div> <!-- /container -->
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/resources/js/jquery-2.1.4.min.js"></script>
+    <script src="/resources/js/bootstrap.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body></html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Apache OpenWebBeans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <link href="/resources/css/main.css" rel="stylesheet">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="/resources/css/idea.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="index.html"><img src="/resources/images/logo_dbg-small.png" height="25px"
+                                                           alt="owb_logo_small"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/documentation.html">Documentation</a></li>
+                <li><a href="/source.html">Source</a></li>
+                <li><a href="/download.html">Download</a></li>
+                <li><a href="/community.html">Community</a></li>
+                <!-- <li><a href="/news.html">News</a></li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true">Misc<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.apache.org">Apache Home</a></li>
+                        <li><a href="/misc/contact.html">Contact</a></li>
+                        <li><a href="/misc/legal.html">Legal</a></li>
+                        <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                        <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                        <!-- <li class="divider"/> -->
+                    </ul>
+                </li>
+            </ul>
+            <!--/.nav-collapse -->
+            <form id="search-form" action="https://www.google.com/search" method="get" class="navbar-search pull-right">
+                <input value="openwebbeans.apache.org" name="sitesearch" type="hidden"/>
+                <input class="search-query" name="q" id="query" type="search"/>
+            </form>
+            <script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=search-form"></script>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+  <div id="OwbContent_OpenWebBeans CdiCtrl" class="wiki-content">
+    <h1 id="testing-your-application-with-apache-deltaspike-cdictrl">Testing your application with Apache DeltaSpike CdiCtrl<a class="headerlink" href="#testing-your-application-with-apache-deltaspike-cdictrl" title="Permalink">&para;</a></h1>
+<h2 id="about-cdictrl">About CdiCtrl<a class="headerlink" href="#about-cdictrl" title="Permalink">&para;</a></h2>
+<p><code>CdiCtrl</code> is <em>not</em> part of Apache OpenWebBeans but a module of
+<a href="https://deltaspike.apache.org">Apache DeltaSpike</a>.</p>
+<p>The <code>CdiCtrl</code> interface abstracts away all the logic to boot a CDI Container
+and controls the lifecycle of it's Contexts (Request Context, Session Context, etc).</p>
+<p>The actual CDI Container is determined by using the <code>java.util.ServiceLoader</code>.
+There are a few different implementations available. Besides Apache OpenWebBeans
+there are also plugins for JBoss Weld and <a href="https://tomee.apache.org">Apache TomEE</a>.</p>
+<h2 id="adding-openwebbeans-cdictrl-to-your-project">Adding OpenWebBeans CdiCtrl to your project<a class="headerlink" href="#adding-openwebbeans-cdictrl-to-your-project" title="Permalink">&para;</a></h2>
+<p>The following are the dependencies you need in your Apache Maven pom.xml file in addition to
+OWB itself:</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.deltaspike.cdictrl&lt;/groupId&gt;
+    &lt;artifactId&gt;deltaspike-cdictrl-api&lt;/artifactId&gt;
+    &lt;version&gt;$  {deltaspike.version}&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.deltaspike.cdictrl&lt;/groupId&gt;
+    &lt;artifactId&gt;deltaspike-cdictrl-owb&lt;/artifactId&gt;
+    &lt;version&gt;$  {deltaspike.version}&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h2 id="why-use-cdictrl-for-your-unit-tests">Why use CdiCtrl for your unit tests?<a class="headerlink" href="#why-use-cdictrl-for-your-unit-tests" title="Permalink">&para;</a></h2>
+<p>Whenever you need to write unit tests for a full application, then you will need to
+have a CDI container scann all your classes, create <code>Bean&lt;T&gt;</code> from it and provide
+them for injection. All this can be done by either using JUnits <code>@RunWith</code> or
+by simply creating a common base class for your unit tests which boots up the
+container on your test classpath.</p>
+<p>There is no need to restart the container for each and every of your unit tests
+as this would cause a big performance loss. Instead it is usually sufficient to
+use the CdiCtrls <code>ContextControl</code> mechanism to just stop and restart the
+respective CDI Contexts.</p>
+<p>Such a base class could look roughly like the following:</p>
+<pre><code>import org.apache.deltaspike.cdise.api.CdiContainer;
+import org.apache.deltaspike.cdise.api.CdiContainerLoader;
+import org.apache.deltaspike.core.api.projectstage.ProjectStage;
+import org.apache.deltaspike.core.util.ProjectStageProducer;
+import org.apache.deltaspike.core.api.provider.BeanProvider;
+
+public abstract class ContainerTest  {
+
+    protected static volatile CdiContainer cdiContainer;
+    // nice to know, since testng executes tests in parallel.
+    protected static int containerRefCount = 0;
+
+    protected ProjectStage runInProjectStage()  {
+        return ProjectStage.UnitTest;
+    }
+    
+    /**
+     * Starts container
+     * @throws Exception in case of severe problem
+     */
+    @BeforeMethod
+    public final void beforeMethod() throws Exception  {
+        containerRefCount++;
+
+        if (cdiContainer == null)  {
+            // setting up the Apache DeltaSpike ProjectStage
+            ProjectStage projectStage = runInProjectStage();
+            ProjectStageProducer.setProjectStage(projectStage);
+
+            cdiContainer = CdiContainerLoader.getCdiContainer();
+
+            cdiContainer.boot();
+            cdiContainer.getContextControl().startContexts();
+        }
+        else  {
+            cleanInstances();
+        }
+    }
+
+
+    public static CdiContainer getCdiContainer()  {
+        return cdiContainer;
+    }
+
+    /**
+     * This will fill all the InjectionPoints of the current test class for you
+     */
+    @BeforeClass
+    public final void beforeClass() throws Exception  {
+        beforeMethod();
+
+        // perform injection into the very own test class
+        BeanManager beanManager = cdiContainer.getBeanManager();
+
+        CreationalContext creationalContext = beanManager.createCreationalContext(null);
+
+        AnnotatedType annotatedType = beanManager.createAnnotatedType(this.getClass());
+        InjectionTarget injectionTarget = beanManager.createInjectionTarget(annotatedType);
+        injectionTarget.inject(this, creationalContext);
+
+        // this is a trick we use to have proper DB transactions when using the entitymanager-per-request pattern
+        cleanInstances();
+        cleanUpDb();
+        cleanInstances();
+    }
+
+    /**
+     * Shuts down container.
+     * @throws Exception in case of severe problem
+     */
+    @AfterMethod
+    public final void afterMethod() throws Exception  {
+        if (cdiContainer != null)  {
+            cleanInstances();
+            containerRefCount--;
+        }
+    }
+
+    /**
+     * clean the NormalScoped contextual instances by stopping and restarting
+     * some contexts. You could also restart the ApplicationScoped context
+     * if you have some caches in your classes. 
+     */
+    public final void cleanInstances() throws Exception  {
+        cdiContainer.getContextControl().stopContext(RequestScoped.class);
+        cdiContainer.getContextControl().startContext(RequestScoped.class);
+        cdiContainer.getContextControl().stopContext(SessionScoped.class);
+        cdiContainer.getContextControl().startContext(SessionScoped.class);
+    }
+
+    @AfterSuite
+    public synchronized void shutdownContainer() throws Exception  {
+        if (cdiContainer != null)  {
+            cdiContainer.shutdown();
+            cdiContainer = null;
+        }
+    }
+
+    public void finalize() throws Throwable  {
+        shutdownContainer();
+        super.finalize();
+    }
+
+
+    /**
+     * Override this method for database clean up.
+     *
+     * @throws Exception in case of severe problem
+     */
+    protected void cleanUpDb() throws Exception  {
+        //Override in subclasses when needed
+    }
+
+    protected &lt;T&gt; T getInstance(Class&lt;T&gt; type, Qualifier... qualifiers)  {
+        return BeanProvider.getContextualReference(type, qualifiers);
+    }
+
+}
+</code></pre>
+<h2 id="testing-javaee-applications">Testing JavaEE applications<a class="headerlink" href="#testing-javaee-applications" title="Permalink">&para;</a></h2>
+<p>You can also plug in a cdictrl backend for <a href="https://tomee.apache.org">Apache TomEE</a> whenever you need to not only test CDI applications
+but a full JavaEE application which has EJBs, managed DataSources, JTA, etc
+The only thing you need to do is to replace your <code>deltaspike-cdictrl-owb</code> dependency in your pom with
+<code>deltaspike-cdictrl-openejb</code>. Since Apache TomEE and Apache OpenEJB both contain OpenWebBeans as CDI container
+you will get all the OWB functionality plus other JavaEE functionality.</p>
+<p>You can pass DataSource configuration by simply providing a <code>Properties</code> instance to
+<code>CdiContainer.boot(dbConfiguration)</code> in the beforeMethod method of the test class above:</p>
+<pre><code>public final void beforeMethod() throws Exception  {
+    containerRefCount++;
+
+    if (cdiContainer == null)  {
+        // setting up the Apache DeltaSpike ProjectStage
+        ProjectStage projectStage = runInProjectStage();
+        ProjectStageProducer.setProjectStage(projectStage);
+        cdiContainer = CdiContainerLoader.getCdiContainer();
+
+        Properties dbProperties = new Properties();
+        String dbvendor = ConfigResolver.getPropertyValue("dbvendor", "h2");
+        URL dbPropertiesUrl =  getClass().getResource("/db/db-" + dbvendor + ".properties");
+        if (dbPropertiesUrl != null)  {
+            InputStream is = dbPropertiesUrl.openStream();
+            try  {
+                dbProperties.load(is);
+            }
+            finally  {
+                is.close();
+            }
+        }
+
+        cdiContainer.boot(dbProperties);
+    }
+    else  {
+        cleanInstances();
+    }
+}
+</code></pre>
+<p>The <code>db/db-mysql.properties</code> file for Apache OpenEJB (the former name of TomEE) would look like:</p>
+<pre><code>MYDS = new://Resource?type=DataSource
+MYDS.JdbcDriver = org.h2.Driver
+MYDS.JdbcUrl = jdbc:h2:file:/tmp/h2/myappdb
+MYDS.JtaManaged = true
+MYDS.UserName = sa
+MYDS.Password =
+</code></pre>
+
+  </div> <!-- /container (main block) -->
+
+        <hr>
+
+        <footer class="text-center">
+            <p>
+                <a href="https://www.apache.org"><img class="img-responsive center-block" src="https://www.apache.org/images/asf_logo_wide.png" height="55px" alt="asf_feather"/></a>
+            </p>
+            <p>Copyright &copy; 2008-2021 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.</p>
+            <p>OpenWebBeans, Apache, and the Apache feather logo are trademarks of The Apache Software Foundation.</p>
+        </footer>
+
+</div> <!-- /container -->
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/resources/js/jquery-2.1.4.min.js"></script>
+    <script src="/resources/js/bootstrap.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body></html>

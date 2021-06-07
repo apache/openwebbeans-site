@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!-- 
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License. 
+-->
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Apache OpenWebBeans</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/resources/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+.headerlink {
+  visibility: hidden;
+}
+dt:hover > .headerlink, p:hover > .headerlink, td:hover > .headerlink, h1:hover > .headerlink, h2:hover > .headerlink, h3:hover > .headerlink, h4:hover > .headerlink, h5:hover > .headerlink, h6:hover > .headerlink {
+  visibility: visible
+}    </style>
+    <link href="/resources/css/main.css" rel="stylesheet">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="/resources/css/idea.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="navbar-brand" href="index.html"><img src="/resources/images/logo_dbg-small.png" height="25px"
+                                                           alt="owb_logo_small"/></a>
+        </div>
+
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/documentation.html">Documentation</a></li>
+                <li><a href="/source.html">Source</a></li>
+                <li><a href="/download.html">Download</a></li>
+                <li><a href="/community.html">Community</a></li>
+                <!-- <li><a href="/news.html">News</a></li> -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-haspopup="true">Misc<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://www.apache.org">Apache Home</a></li>
+                        <li><a href="/misc/contact.html">Contact</a></li>
+                        <li><a href="/misc/legal.html">Legal</a></li>
+                        <li><a href="https://www.apache.org/foundation/sponsorship.html">Sponsorship</a></li>
+                        <li><a href="https://www.apache.org/foundation/thanks.html">Thanks</a></li>
+                        <!-- <li class="divider"/> -->
+                    </ul>
+                </li>
+            </ul>
+            <!--/.nav-collapse -->
+            <form id="search-form" action="https://www.google.com/search" method="get" class="navbar-search pull-right">
+                <input value="openwebbeans.apache.org" name="sitesearch" type="hidden"/>
+                <input class="search-query" name="q" id="query" type="search"/>
+            </form>
+            <script type="text/javascript" src="https://www.google.com/coop/cse/brand?form=search-form"></script>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+  <div id="OwbContent_Testing strategies" class="wiki-content">
+    <h1 id="testing-strategies-for-unit-tests-inside-openwebbeans">Testing strategies for unit tests inside OpenWebBeans<a class="headerlink" href="#testing-strategies-for-unit-tests-inside-openwebbeans" title="Permalink">&para;</a></h1>
+<p>One could argue that unit tests are harder to write when your instances are managed by a container.
+However this is only true if the booting of said container is uncharted territory.
+But lets assume the container control is taken cared of handily. Well then it can be quite the breath of fresh air to test code
+that leverage dependency injection.</p>
+<p>Here comes the good news. Testing OpenWebBeans and CDI in general (and actually many other Java EE frameworks)
+is in a good state as of today and testing frameworks are reaching a pretty decent level of maturity. Stay with us and
+we will compare the pros and cons with
+the different strategies.</p>
+<h3 id="good-practice">Good Practice<a class="headerlink" href="#good-practice" title="Permalink">&para;</a></h3>
+<p>We won't go in to detail on how to properly use unit tests or integration tests in your project. However so called "Whitebox Testing" is
+discouraged. Using whitebox testing is often critizied regardless but with frameworks that leverage
+proxies it's simply not something you should attempt. Any reflection trick would likely miss the mark and modify the proxy.
+Instead focus on functional tests and structure your code with high cohesion so that testing the public methods get's the job done.
+Remember to add beans.xml and other resources to your to your test path.</p>
+<h3 id="start-small-with-plain-tests">Start small with plain tests<a class="headerlink" href="#start-small-with-plain-tests" title="Permalink">&para;</a></h3>
+<p>Testing code that leverage CDI does not differ much from using CDI in your project. You should start with just a plain pojo
+in your project and likewise a plain unit test. Only when you need context should you upgrade the pojo to a CDI managed instance.
+Still this does not mean you automatically need something more then plain unit test. But when you need the container to act on your
+instances (for example to trigger <code>@PostConstruct</code>) then go ahead and upgrade the test to be CDI aware.</p>
+<h3 id="cdi-aware-tests">CDI aware tests<a class="headerlink" href="#cdi-aware-tests" title="Permalink">&para;</a></h3>
+<p>In OpenWebBeans we use JUnit as testing framework. For not having to deal with the container details each time you can
+simply write a JUnit test which extends the <code>org.apache.webbeans.test.AbstractUnitTest</code> base class.</p>
+<p>Lets look at how to write a unit test which e.g. tests a method invocation on a specific CDI bean.</p>
+<p>The first thing we obviously need is the CDI bean which should get tested:</p>
+<pre><code>@RequestScoped
+public class BeanUnderTest
+{
+    public int meaningOfLife()
+    {
+        return 42;
+    }
+}
+</code></pre>
+<p>And now let's write the unit test which calls this method:</p>
+<pre><code>public class MySimpleTest extends AbstractUnitTest
+{
+    @Test
+    public void testMeaningOfLife()
+    {
+        startContainer(BeanUnderTest.class);
+        BeanUnderTest instance = getInstance(BeanUnderTest.class);
+        Assert.assertnotNull(instance);
+        Assert.assertEquals(42, instance.meaningOfLife());
+    }
+}
+</code></pre>
+<p>That's all! You don't need even need to manually shut down the container after the method.
+If you have multiple beans to test then pass all of them as argument to <code>startContainer(Class...);</code>.
+There are also startContainer variants which take a beans.xml. Also look at the other methods of <code>AbstractUnitTest</code> for more useful features.</p>
+
+  </div> <!-- /container (main block) -->
+
+        <hr>
+
+        <footer class="text-center">
+            <p>
+                <a href="https://www.apache.org"><img class="img-responsive center-block" src="https://www.apache.org/images/asf_logo_wide.png" height="55px" alt="asf_feather"/></a>
+            </p>
+            <p>Copyright &copy; 2008-2021 The Apache Software Foundation, Licensed under the Apache License, Version 2.0.</p>
+            <p>OpenWebBeans, Apache, and the Apache feather logo are trademarks of The Apache Software Foundation.</p>
+        </footer>
+
+</div> <!-- /container -->
+
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/resources/js/jquery-2.1.4.min.js"></script>
+    <script src="/resources/js/bootstrap.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.0.1/build/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+</body></html>
