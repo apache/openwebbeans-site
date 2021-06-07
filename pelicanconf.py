@@ -62,6 +62,9 @@ TAGS_SAVE_AS = ''
 # We want to serve our static files mixed with content.
 STATIC_PATHS = ['.']
 
+# we want any html to be served as is
+READERS = {'html': None}
+
 # We don't use articles, but we don't want pelican to think
 # that content/ contains articles.
 ARTICLE_PATHS = ['articles']
