@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <title>Meecrowave :: the customizable server</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/meecrowave/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="body-green">
+    <div class="page-wrapper">
+    <!-- TODO: google analytics -->
+<header class="header text-center">
+  <div class="container">
+      <div class="branding">
+          <h1 class="doc-title">
+              <span aria-hidden="true" class="icon icon_puzzle_alt icon"></span>
+              <a href="/meecrowave/index.html">
+                Meecrowave
+              </a>
+          </h1>
+      </div>
+  </div><!--//container-->
+</header><!--//header-->
+<div class="doc-wrapper">
+    <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+            <h1 class="doc-title"><span aria-hidden="true" class="icon icon icon_puzzle_alt"></span> Meecrowave OAuth2</h1>
+        </div><!--//doc-header-->
+
+<div class="doc-body">
+    <div class="doc-content">
+        <div class="content-inner">
+
+
+
+
+<div class='btn-toolbar pull-right' style="z-index: 2000;">
+  <div class='btn-group'>
+      <a class="btn" href="/meecrowave/meecrowave-oauth2/index.pdf"><i class="fa fa-file-pdf-o"></i> Download as PDF</a>
+  </div>
+</div>
+
+
+
+            <section class="doc-section">
+                <div id="preamble"> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Starting with version 0.3.0.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Coordinates:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
+  &lt;artifactId&gt;meecrowave-oauth2&lt;/artifactId&gt;
+  &lt;version&gt;${meecrowave.version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>A small OAuth2 server based on CXF implementation.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>See <a href="https://cxf.apache.org/docs/jax-rs-oauth2.html" class="bare">https://cxf.apache.org/docs/jax-rs-oauth2.html</a> for more details.</p>
+  </div> 
+  <div class="paragraph"> 
+   <p>Here is the current configuration (mainly based on CXF one):</p> 
+  </div> 
+  <table class="tableblock frame-all grid-all spread table table-bordered"> 
+   <colgroup> 
+    <col style="width: 50%;"> 
+    <col style="width: 50%;"> 
+   </colgroup> 
+   <thead> 
+    <tr> 
+     <th class="tableblock halign-left valign-top">Name</th> 
+     <th class="tableblock halign-left valign-top">Description</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-access-token-lifetime</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">How long an access token is valid, default to 3600s</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-authorization-code-support</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Is authorization code flow supported</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-block-unsecure-requests</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should unsecured requests be blocked</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-client-force</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Is a client mandatory or can a token be issued without any client</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-default-scopes</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Comma separated list of default scopes</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-encrypted-algorithm</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">The algorithm for the key for the encrypted provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-encrypted-key</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">The key for encrypted provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-invisible-scopes</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Comma separated list of invisible to client scopes</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jcache-config</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">JCache configuration uri for the cache manager (jcache or provider)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jcache-jmx</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JCache JMX MBeans be enabled</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jcache-loader</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">The loader bean or class name</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jcache-statistics</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JCache statistics be enabled</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jcache-store-jwt-token-key-only</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JCache store jwt token key only (jcache provider)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jcache-store-value</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JCache store value or not</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jcache-writer</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">The writer bean or class name</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jpa-database-driver</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">JPA database driver for jpa provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jpa-database-password</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">JPA database password for jpa provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jpa-database-url</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">JPA database url for jpa provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jpa-database-username</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">JPA database username for jpa provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jpa-max-active</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">JPA max active connections for jpa provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jpa-max-idle</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">JPA max idle connections for jpa provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jpa-max-wait</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">JPA max wait for connections for jpa provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jpa-properties</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">JPA persistence unit properties for jpa provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jpa-test-on-borrow</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">should connections be tested on borrow for jpa provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jpa-test-on-return</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">should connections be tested on return for jpa provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jpa-validation-interval</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">validation interval for jpa provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jpa-validation-query</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">validation query for jpa provider</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-jwt-access-token-claim-map</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">The jwt claims configuration</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-partial-match-scope-validation</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Is partial match for scope validation activated</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-provider</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Which provider type to use: jcache[-code], jpa[-code], encrypted[-code]</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-redirection-match-redirect-uri-with-application-uri</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">For authorization code flow, should redirect uri be matched with application one</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-redirection-max-default-session-interval</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">For authorization code flow, how long a session can be</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-redirection-scopes-requiring-no-consent</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">For authorization code flow, the scopes using no consent</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-redirection-use-registered-redirect-uri-if-possible</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">For authorization code flow, should the registered uri be used</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-refresh-token</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Is issuing of access token issuing a refreh token too</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-refresh-token-lifetime</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">How long a refresh token is valid, default to eternity (0)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-refresh-token-recycling</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should refresh token be recycled</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-required-scopes</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Comma separated list of required scopes</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-support-pre-authorized-tokens</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Are pre-authorized token supported</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-support-public-client</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Are public clients supported</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-token-support</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Are token flows supported</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-use-all-client-scopes</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Are all client scopes used for refresh tokens</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-use-jaas</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should jaas be used - alternative (default) is to delegate to meecrowave/tomcat realms</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-use-jwt-format-for-access-token</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should access token be jwt?</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-write-custom-errors</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should custom errors be written</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">--oauth2-write-optional-parameters</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should optional parameters be written</p></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div class="paragraph"> 
+   <p>These options are available through the CLI or through properties as usually with Meecrowave configuration.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Note that meecrowave also provides a bundle which is an executable jar to run an OAuth2 server.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Here is a sample usage of that bundle:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">java -jar meecrowave-oauth2-0.3.1-bundle.jar --users test=test --roles test=test</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Then just test your token endpoint:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -XPOST http://localhost:8080/oauth2/token -d username=test -d password=test -d grant_type=password</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>And you should get something like:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">{
+  "access_token":"5e2f211d4b4ccaa36a11d0876597f01e",
+  "token_type":"Bearer",
+  "expires_in":3600,
+  "scope":"refreshToken",
+  "refresh_token":"7ae5dc2e25925e5514b7e2e632cfa6a"
+}</code></pre> 
+   </div> 
+  </div> 
+  <div class="admonitionblock important"> 
+   <table> 
+    <tbody>
+     <tr> 
+      <td class="icon"> <i class="fa icon-important" title="Important"></i> </td> 
+      <td class="content"> these example use inline users but you should configure a realm for a real usage. </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <div class="admonitionblock note"> 
+   <table> 
+    <tbody>
+     <tr> 
+      <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
+      <td class="content"> this module is interesting if you plan to base your application development on Meecrowave because it shows how to use CLI configuration and wire it in your application but also how to use a 3rd party library (CXF there) and build a fatjar. </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_authorization_code_case">Authorization code case</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Authorization code flow is a bit more complicated but services (endpoints) can be activated (see configuration - <code>--oauth2-authorization-code-support</code>).</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>You will need to configure CXF to point to the keystore/key to crypt/sign the token in session. It is properties based. All CXF properties (<code>rs.security.<strong></strong></code><strong>) are supported but prefixed with <code>oauth2.cxf.</code> to avoid to mix it with another configuration starting with <code>rs.</code></strong>.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>For instance you can use:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">oauth2.cxf.rs.security.keystore.type = jks
+oauth2.cxf.rs.security.keystore.file = /opt/keystores/oauth2.jks
+oauth2.cxf.rs.security.keystore.password = password
+oauth2.cxf.rs.security.keystore.alias = alice
+oauth2.cxf.rs.security.key.password = pwd</code></pre> 
+   </div> 
+  </div> 
+ </div> 
+</div>
+            </section><!--//doc-section-->
+
+
+
+
+        </div><!--//content-inner-->
+    </div><!--//doc-content-->
+
+    <div class="doc-sidebar">
+        <nav id="doc-nav">
+            <ul id="doc-menu" class="nav doc-menu hidden-xs affix-top" data-spy="affix">
+                <li><a href="/meecrowave/index.html">Home</a></li>
+                <li><a href="/meecrowave/start.html">Quick Start</a></li>
+                <li><a href="/meecrowave/components.html">Components</a></li>
+                <li><a href="/meecrowave/download.html">Download</a></li>
+                <li><a href="/meecrowave/community.html">Community</a></li>
+            </ul><!--//doc-menu-->
+        </nav>
+    </div>
+</div>
+
+</div><!--//page-wrapper-->
+
+    <footer class="footer text-center">
+        <div class="container">
+          <div class="row">
+            <p >Copyright &copy; 2016
+                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            </p>
+          </div>
+        </div>
+
+        <div class="container"><!-- don't remove it otherwise theme is no more creative common -->
+            <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+
+    <!-- Main Javascript -->
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
+
+</body>
+</html>
+
+

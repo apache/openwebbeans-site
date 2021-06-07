@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <title>Meecrowave :: the customizable server</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/meecrowave/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="body-red">
+    <div class="page-wrapper">
+    <!-- TODO: google analytics -->
+<header class="header text-center">
+  <div class="container">
+      <div class="branding">
+          <h1 class="doc-title">
+              <span aria-hidden="true" class="icon icon_puzzle_alt icon"></span>
+              <a href="/meecrowave/index.html">
+                Meecrowave
+              </a>
+          </h1>
+      </div>
+  </div><!--//container-->
+</header><!--//header-->
+<div class="doc-wrapper">
+    <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+            <h1 class="doc-title"><span aria-hidden="true" class="icon icon icon_puzzle_alt"></span> Meecrowave Jolokia</h1>
+        </div><!--//doc-header-->
+
+<div class="doc-body">
+    <div class="doc-content">
+        <div class="content-inner">
+
+
+
+
+<div class='btn-toolbar pull-right' style="z-index: 2000;">
+  <div class='btn-group'>
+      <a class="btn" href="/meecrowave/meecrowave-jolokia/index.pdf"><i class="fa fa-file-pdf-o"></i> Download as PDF</a>
+  </div>
+</div>
+
+
+
+            <section class="doc-section">
+                <div id="preamble"> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Coordinates:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
+  &lt;artifactId&gt;meecrowave-jolokia&lt;/artifactId&gt;
+  &lt;version&gt;${meecrowave.version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_jolokia_only">Jolokia only</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>If Hawt.io is not setup (not there or inactive) the module will set up jolokia alone.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>It will deploy the jolokia servlet on <code>/jolokia/*</code> or the property <code>jolokia.web.mapping</code> set on the <code>Meecrowave.Builder</code>.</p> 
+  </div> 
+  <div class="admonitionblock important"> 
+   <table> 
+    <tbody>
+     <tr> 
+      <td class="icon"> <i class="fa icon-important" title="Important"></i> </td> 
+      <td class="content"> don’t forget to secure this endpoint cause it let you access all the JMX MBeans. See Meecrowave core configuration for more details. </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <div class="paragraph"> 
+   <p>More on <a href="https://jolokia.org/reference/html/" class="bare">https://jolokia.org/reference/html/</a></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_hawt_io">Hawt.io</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>By default hawt.io will be deployed and activated on <code>/hawtio/</code> endpoint.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>To activate it you need to add these dependencies:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.hawt&lt;/groupId&gt;
+  &lt;artifactId&gt;hawtio-springboot&lt;/artifactId&gt;
+  &lt;version&gt;1.4.67&lt;/version&gt;
+  &lt;optional&gt;true&lt;/optional&gt;
+  &lt;exclusions&gt;
+    &lt;exclusion&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/exclusion&gt;
+  &lt;/exclusions&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.logging.log4j&lt;/groupId&gt;
+  &lt;artifactId&gt;log4j-slf4j-impl&lt;/artifactId&gt;
+  &lt;version&gt;${log4j2.version}&lt;/version&gt;
+  &lt;optional&gt;true&lt;/optional&gt;
+&lt;/dependency&gt;</code></pre> 
+   </div> 
+  </div> 
+  <div class="admonitionblock note"> 
+   <table> 
+    <tbody>
+     <tr> 
+      <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
+      <td class="content"> we don’t need spring boot but we reuse hawt.io spring boot module which packages web resources in a jar. </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <div class="paragraph"> 
+   <p>By default it will setup the security to use the Servlet security which means you can use meecrowave options:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code>./meecrowave-runner --users=admin=admin --roles=admin=admin</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>And log with admin/admin user.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_running_hawtio_war">Running HawtIO war</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>To run <a href="http://hawt.io" class="bare">http://hawt.io</a>, the easiest is to setup jaas and run the hawt.io war:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code>java -Djava.security.auth.login.config=login.config \
+    -jar meecrowave-runner.jar \
+    -webapp hawtio-default-offline-1.4.67.war</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>This assumes you created a <code>login.config</code>:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code>karaf {
+  org.apache.catalina.realm.JAASMemoryLoginModule required
+	pathname="/path/to/tomcat-users.xml";
+};</code></pre> 
+   </div> 
+  </div> 
+  <div class="admonitionblock note"> 
+   <table> 
+    <tbody>
+     <tr> 
+      <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
+      <td class="content"> the JAAS login module is named <code>karaf</code> because it is the default of hawt.io (check <code>io.hawt.web.AuthenticationFilter.init()</code>). </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <div class="paragraph"> 
+   <p>And if you use - as in previous snippet - tomcat-users.xml you need to create an admin (role) user:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;tomcat-users&gt;
+  &lt;user username="admin" password="admin" role="hawtio" roles="admin" /&gt;
+&lt;/tomcat-users&gt;</code></pre> 
+   </div> 
+  </div> 
+  <div class="admonitionblock note"> 
+   <table> 
+    <tbody>
+     <tr> 
+      <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
+      <td class="content"> don’t try to use <code>io.hawt.web.tomcat.TomcatUserDatabaseLoginContext</code> of hawt.io which does the same as <code>JAASMemoryLoginModule</code> excepted it doesn’t handle absolute paths which enforce you to use a <code>catalina.base</code>. </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Using hawt.io war you don’t need to run jolokia servlet by yourself, it is already done.</p> 
+  </div> 
+ </div> 
+</div>
+            </section><!--//doc-section-->
+
+
+
+
+        </div><!--//content-inner-->
+    </div><!--//doc-content-->
+
+    <div class="doc-sidebar">
+        <nav id="doc-nav">
+            <ul id="doc-menu" class="nav doc-menu hidden-xs affix-top" data-spy="affix">
+                <li><a href="/meecrowave/index.html">Home</a></li>
+                <li><a href="/meecrowave/start.html">Quick Start</a></li>
+                <li><a href="/meecrowave/components.html">Components</a></li>
+                <li><a href="/meecrowave/download.html">Download</a></li>
+                <li><a href="/meecrowave/community.html">Community</a></li>
+            </ul><!--//doc-menu-->
+        </nav>
+    </div>
+</div>
+
+</div><!--//page-wrapper-->
+
+    <footer class="footer text-center">
+        <div class="container">
+          <div class="row">
+            <p >Copyright &copy; 2016
+                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            </p>
+          </div>
+        </div>
+
+        <div class="container"><!-- don't remove it otherwise theme is no more creative common -->
+            <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+
+    <!-- Main Javascript -->
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,5 @@
+pelican
+BeautifulSoup4
+ezt
+PyYAML
+requests

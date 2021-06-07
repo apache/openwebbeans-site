@@ -1,0 +1,53 @@
+Title: OpenWebBeans Home Page
+
+<!-- Main hero unit for a primary marketing message or call to action -->
+<div class="jumbotron">
+    <div class="row">
+        <div class="col-md-2 col-lg-2 col-sm-2 col-xs-2">
+            <img src="resources/images/logo.png" alt="owb_logo"/>
+        </div>
+        <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
+            <p>
+                Apache OpenWebBeans delivers an implementation of the
+                <a href="https://jcp.org/en/jsr/detail?id=346">Contexts and Dependency injection for Java EE</a> (CDI) 2.0 Specification (JSR-365).<br/>
+                OpenWebBeans is TCK compliant and the latest version works on Java SE 8 or later.
+            </p>
+            <p>
+                Apache OpenWebBeans is
+            <ul>
+                <li>Fast - we agressively use caches internally and deliver great performance</li>
+                <li>Modular - OpenWebBeans Core is purely JavaSE, additional EE functionality gets added via 'Modules'</li>
+                <li>Industry Proven - Many projects use OpenWebBeans in production.</li>
+                <li>Community Oriented - Please visit our mailing list and we will help you moving your project forward.</li>
+            </ul>
+            </p>
+        </div>
+        <!-- <p><a class="btn btn-primary btn-large">Learn more »</a></p> -->
+    </div>
+</div>
+<!-- Example row of columns -->
+<div class="row">
+    <div class="col-md-6">
+        <h2>Getting Started</h2>
+        <p>OpenWebBeans is packaged as modules which get activated by simply dropping them into the classpath. The below link will take you to a step-by-step guide and get you started in no time!<p>
+        <p><a class="btn btn-default" href="documentation.html#module-overview">View details »</a></p>
+    </div>
+    <div class="col-md-6">
+        <h2>Meecrowave</h2>
+        <p>Apache Meecrowave is a microprofile Server based on Apache OpenWebBeans, Tomcat, CXF and Johnzon
+            In other words it contains all you need to run a JavaEE based Microservice from the command line - and all that in only 9 MB!</p>
+        <p><a class="btn btn-default" href="meecrowave/index.html#">View details »</a></p>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <hr>
+        <h2>Latest News</h2>
+    </div>
+</div>
+<div class="row">
+    [for owb]<div class="col-md-4">
+     	<h4><a href="[owb.href]">[owb.title]</a></h4>
+        [owb.content]
+    </div>[end]
+</div>

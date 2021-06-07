@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <title>Meecrowave :: the customizable server</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/meecrowave/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="body-orange">
+    <div class="page-wrapper">
+    <!-- TODO: google analytics -->
+<header class="header text-center">
+  <div class="container">
+      <div class="branding">
+          <h1 class="doc-title">
+              <span aria-hidden="true" class="icon icon_puzzle_alt icon"></span>
+              <a href="/meecrowave/index.html">
+                Meecrowave
+              </a>
+          </h1>
+      </div>
+  </div><!--//container-->
+</header><!--//header-->
+<div class="doc-wrapper">
+    <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+            <h1 class="doc-title"><span aria-hidden="true" class="icon icon icon_puzzle_alt"></span> Components</h1>
+        </div><!--//doc-header-->
+
+<div class="doc-body">
+    <div class="doc-content">
+        <div class="content-inner">
+
+
+
+
+<div class='btn-toolbar pull-right' style="z-index: 2000;">
+  <div class='btn-group'>
+      <a class="btn" href="/meecrowave/components.pdf"><i class="fa fa-file-pdf-o"></i> Download as PDF</a>
+  </div>
+</div>
+
+
+
+            <section class="doc-section">
+                <div class="sect1"> 
+ <h2 id="_meecrowave_core">Meecrowave Core</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Core component is the backbone of Meecrowave. It is based on Tomcat embedded for Servlet container, CXF for JAX-RS, OpenWebBeans for CDI and Log4j2 for the logging.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><a href="/meecrowave/meecrowave-core/configuration.html">Read about Meecrowave configuration</a></p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><a href="/meecrowave/meecrowave-core/cli.html">Read about Meecrowave command line</a></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_meecrowave_jpa">Meecrowave JPA</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Meecrowave JPA provides a thin layer on top of JPA to make it easier to use JPA without requiring to use a full container like JavaEE or Spring. It is just a CDI extension.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><a href="/meecrowave/meecrowave-jpa/index.html">Read More</a></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_meecrowave_maven">Meecrowave Maven</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Meecrowave provides a Maven plugin to run meecrowave with your preferred build tool.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><a href="/meecrowave/meecrowave-maven/index.html">Read More</a></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_meecrowave_gradle">Meecrowave Gradle</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Meecrowave provides a Gradle plugin to run meecrowave with your preferred build tool.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><a href="/meecrowave/meecrowave-gradle/index.html">Read More</a></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_meecrowave_and_the_testing">Meecrowave and the Testing</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Meecrowave provides two main testing integration: a JUnit one and an Arquillian Container.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><a href="/meecrowave/testing/index.html">Read More</a></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_meecrowave_and_monitoring">Meecrowave and Monitoring</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Meecrowave provides few integration for the monitoring:</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><a href="/meecrowave/meecrowave-jolokia/index.html">Jolokia (JMX)</a></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_meecrowave_and_jta">Meecrowave and JTA</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>This is an experimental integration of geronimo-transaction and meecrowave.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><a href="/meecrowave/meecrowave-jta/index.html">JTA module</a></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_meecrowave_and_oauth2">Meecrowave and OAuth2</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>This is an experimental module integrating CXF OAuth2 server in Meecrowave through an embeddable dependency or a directly executable jar.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><a href="/meecrowave/meecrowave-oauth2/index.html">OAuth2 module</a></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_meecrowave_let_s_encrypt">Meecrowave Let’s Encrypt</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>This is an experimental module integrating with Let’s Encrypt to provide you free and easy SSL support on your HTTPS connectors.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><a href="/meecrowave/meecrowave-letsencrypt/index.html">Let’s Encrypt module</a></p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_going_further">Going further</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Meecrowave scope is not the full scope of microservices (whatever it means) or at least enterprise needs cause several Apache projects cover part of them in a very good way.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>See <a href="companion-projects.html">Companion Projects</a> for more information.</p> 
+  </div> 
+ </div> 
+</div>
+            </section><!--//doc-section-->
+
+
+
+
+        </div><!--//content-inner-->
+    </div><!--//doc-content-->
+
+    <div class="doc-sidebar">
+        <nav id="doc-nav">
+            <ul id="doc-menu" class="nav doc-menu hidden-xs affix-top" data-spy="affix">
+                <li><a href="/meecrowave/index.html">Home</a></li>
+                <li><a href="/meecrowave/start.html">Quick Start</a></li>
+                <li><a href="/meecrowave/components.html">Components</a></li>
+                <li><a href="/meecrowave/download.html">Download</a></li>
+                <li><a href="/meecrowave/community.html">Community</a></li>
+            </ul><!--//doc-menu-->
+        </nav>
+    </div>
+</div>
+
+</div><!--//page-wrapper-->
+
+    <footer class="footer text-center">
+        <div class="container">
+          <div class="row">
+            <p >Copyright &copy; 2016
+                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            </p>
+          </div>
+        </div>
+
+        <div class="container"><!-- don't remove it otherwise theme is no more creative common -->
+            <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+
+    <!-- Main Javascript -->
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
+
+</body>
+</html>
+
+

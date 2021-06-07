@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <title>Meecrowave :: the customizable server</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/meecrowave/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="body-green">
+    <div class="page-wrapper">
+    <!-- TODO: google analytics -->
+<header class="header text-center">
+  <div class="container">
+      <div class="branding">
+          <h1 class="doc-title">
+              <span aria-hidden="true" class="icon_documents_alt icon"></span>
+              <a href="/meecrowave/index.html">
+                Meecrowave
+              </a>
+          </h1>
+      </div>
+  </div><!--//container-->
+</header><!--//header-->
+<div class="doc-wrapper">
+    <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+            <h1 class="doc-title"><span aria-hidden="true" class="icon icon_documents_alt"></span> Quick start</h1>
+        </div><!--//doc-header-->
+
+<div class="doc-body">
+    <div class="doc-content">
+        <div class="content-inner">
+
+
+
+
+<div class='btn-toolbar pull-right' style="z-index: 2000;">
+  <div class='btn-group'>
+      <a class="btn" href="/meecrowave/start.pdf"><i class="fa fa-file-pdf-o"></i> Download as PDF</a>
+  </div>
+</div>
+
+
+
+            <section class="doc-section">
+                <div class="sect1"> 
+ <h2 id="_your_first_application">Your first application</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Meecrowave relies on JAX-RS and CDI so to start you just need to write a JAX-RS endpoint:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Path("kitchen")
+@ApplicationScoped
+public class HelloKitchen {
+    @GET
+    public String getMenu() {
+        return "good things";
+    }
+}</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Then booting Meecrowave is as easy as launching:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try (final Meecrowave meecrowave = new Meecrowave().bake()) {
+    new Scanner(System.in).nextLine();
+}</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>You should get some output containing:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code>[19:54:55.397][INFO][main][.meecrowave.cxf.CxfCdiAutoSetup] REST Application: / -&gt; org.apache.cxf.cdi.DefaultApplication
+[19:54:55.399][INFO][main][.meecrowave.cxf.CxfCdiAutoSetup]      Service URI: /kitchen  -&gt; org.app.HelloKitchen
+[19:54:55.401][INFO][main][.meecrowave.cxf.CxfCdiAutoSetup]               GET /kitchen/ -&gt;      String getMenu()</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>And you can check it works doing:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code>curl http://localhost:8080/kitchen</code></pre> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_you_re_in_a_hurry_use_groovy">You’re in a hurry? Use groovy!</h2> 
+ <div class="sectionbody"> 
+  <div class="admonitionblock important"> 
+   <table> 
+    <tbody>
+     <tr> 
+      <td class="icon"> <i class="fa icon-important" title="Important"></i> </td> 
+      <td class="content"> this feature is supported starting from version 0.3.0 only. </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Create a file called <code>hello.groovy</code>:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Grab('org.apache.meecrowave:meecrowave-core:0.3.0')
+
+import org.apache.meecrowave.Meecrowave
+
+import javax.ws.rs.GET
+import javax.ws.rs.Path
+import javax.enterprise.context.ApplicationScoped
+
+@Path("hello")
+@ApplicationScoped
+class Hello {
+    @GET
+    hi() {
+        "hi"
+    }
+}
+
+new Meecrowave().bake().await()</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>then</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">groovy hello.groovy</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Finally you can test it:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl http://localhost:8080/hello</code></pre> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_sample">Sample</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p><a href="https://github.com/apache/openwebbeans-meecrowave-examples" class="bare">https://github.com/apache/openwebbeans-meecrowave-examples</a> contains ready to use examples using meecrowave.</p> 
+  </div> 
+ </div> 
+</div>
+            </section><!--//doc-section-->
+
+
+
+
+        </div><!--//content-inner-->
+    </div><!--//doc-content-->
+
+    <div class="doc-sidebar">
+        <nav id="doc-nav">
+            <ul id="doc-menu" class="nav doc-menu hidden-xs affix-top" data-spy="affix">
+                <li><a href="/meecrowave/index.html">Home</a></li>
+                <li><a href="/meecrowave/start.html">Quick Start</a></li>
+                <li><a href="/meecrowave/components.html">Components</a></li>
+                <li><a href="/meecrowave/download.html">Download</a></li>
+                <li><a href="/meecrowave/community.html">Community</a></li>
+            </ul><!--//doc-menu-->
+        </nav>
+    </div>
+</div>
+
+</div><!--//page-wrapper-->
+
+    <footer class="footer text-center">
+        <div class="container">
+          <div class="row">
+            <p >Copyright &copy; 2016
+                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            </p>
+          </div>
+        </div>
+
+        <div class="container"><!-- don't remove it otherwise theme is no more creative common -->
+            <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+
+    <!-- Main Javascript -->
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
+
+</body>
+</html>
+
+

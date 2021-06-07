@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <title>Meecrowave :: the customizable server</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/meecrowave/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="body-blue">
+    <div class="page-wrapper">
+    <!-- TODO: google analytics -->
+<header class="header text-center">
+  <div class="container">
+      <div class="branding">
+          <h1 class="doc-title">
+              <span aria-hidden="true" class="icon icon_puzzle_alt icon"></span>
+              <a href="/meecrowave/index.html">
+                Meecrowave
+              </a>
+          </h1>
+      </div>
+  </div><!--//container-->
+</header><!--//header-->
+<div class="doc-wrapper">
+    <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+            <h1 class="doc-title"><span aria-hidden="true" class="icon icon icon_puzzle_alt"></span> Meecrowave Configuration</h1>
+        </div><!--//doc-header-->
+
+<div class="doc-body">
+    <div class="doc-content">
+        <div class="content-inner">
+
+
+
+
+<div class='btn-toolbar pull-right' style="z-index: 2000;">
+  <div class='btn-group'>
+      <a class="btn" href="/meecrowave/meecrowave-core/configuration.pdf"><i class="fa fa-file-pdf-o"></i> Download as PDF</a>
+  </div>
+</div>
+
+
+
+            <section class="doc-section">
+                <div id="preamble"> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Meecrowave configuration is centralized in <code>org.apache.meecrowave.Meecrowave$Builder</code> class.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Here are the main properties:</p> 
+  </div> 
+  <table class="tableblock frame-all grid-all spread table table-bordered"> 
+   <colgroup> 
+    <col style="width: 50%;"> 
+    <col style="width: 50%;"> 
+   </colgroup> 
+   <thead> 
+    <tr> 
+     <th class="tableblock halign-left valign-top">Name</th> 
+     <th class="tableblock halign-left valign-top">Description</th> 
+    </tr> 
+   </thead> 
+   <tbody> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">cdiConversation</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should CDI conversation be activated</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">clientAuth</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore client authentication</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">conf</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Conf folder to synchronize</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">connectors</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Custom connectors</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">cxfServletParams</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Init parameters passed to CXF servlet</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">defaultSSLHostConfigName</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">The name of the default SSLHostConfig that will be used for secure https connections.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">deleteBaseOnStartup</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should the directory be cleaned on startup if existing</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">dir</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Root folder if provided otherwise a fake one is created in tmp-dir</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">host</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Default host</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">http2</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Activate HTTP 2</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">httpPort</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTP port</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">httpsPort</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS port</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">initializeClientBus</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should the client bus be set. If false the server one will likely be reused.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">injectServletContainerInitializer</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should ServletContainerInitialize support injections.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsAutoActivateBeanValidation</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should bean validation be activated on JAX-RS endpoint if present in the classpath.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsDefaultProviders</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">If jaxrsProviderSetup is true the list of default providers to load (or defaulting to johnson jsonb and jsonp ones)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsLogProviders</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JAX-RS providers be logged</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsMapping</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Default jaxrs mapping</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsProviderSetup</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should default JAX-RS provider be configured</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jaxwsSupportIfAvailable</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should @WebService CDI beans be deployed if cxf-rt-frontend-jaxws is in the classpath.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbBinaryStrategy</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider prettify the output</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbEncoding</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Which encoding provider JSON-B should use</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbIJson</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider comply to I-JSON</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbNamingStrategy</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider prettify the output</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbNulls</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider serialize nulls</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbOrderStrategy</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider prettify the output</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbPrettify</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider prettify the output</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonpBufferStrategy</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">JSON-P JAX-RS provider buffer strategy (see johnzon)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonpMaxReadBufferLen</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">JSON-P JAX-RS provider read buffer limit size (see johnzon)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonpMaxStringLen</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">JSON-P JAX-RS provider max string limit size (see johnzon)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonpMaxWriteBufferLen</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">JSON-P JAX-RS provider write buffer limit size (see johnzon)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonpPrettify</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-P JAX-RS provider prettify the outputs (see johnzon)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonpSupportsComment</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-P JAX-RS provider support comments (see johnzon)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">keepServerXmlAsThis</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Don’t replace ports in server.xml</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">keyAlias</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore alias</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">keystoreFile</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore location</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">keystorePass</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore password</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">keystoreType</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore type</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">loggingGlobalSetup</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should logging be configured to use log4j2 (it is global)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">loginConfig</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">web.xml login config</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">meecrowaveProperties</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Loads a meecrowave properties, defaults to meecrowave.properties.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">pidFile</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">A file path to write the process id if the server starts</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">properties</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Passthrough properties</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">quickSession</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should an unsecured but fast session id generator be used</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">realm</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">realm</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">roles</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">In memory roles</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">scanningExcludes</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">A forced exclude list of jar names (comma separated values)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">scanningIncludes</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">A forced include list of jar names (comma separated values)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">scanningPackageExcludes</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">A forced exclude list of packages names (comma separated values)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">scanningPackageIncludes</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">A forced include list of packages names (comma separated values)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">securityConstraints</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">web.xml security constraint</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">serverXml</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Provided server.xml</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">sharedLibraries</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">A folder containing shared libraries.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">skipHttp</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Skip HTTP connector</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">ssl</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Use HTTPS</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">sslProtocol</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS protocol</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">stopPort</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Shutdown port if used or -1</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">tempDir</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Temporary directory</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">tomcatAccessLogPattern</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Activates and configure the access log valve. Value example: '%h %l %u %t "%r" %s %b "%{Referer}i" "%{User-Agent}i"'</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">tomcatAutoSetup</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Add default servlet</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">tomcatFilter</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">A Tomcat JarScanFilter</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">tomcatNoJmx</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">(Experimental) Should Tomcat MBeans be skipped.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">tomcatScanning</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should Tomcat scanning be used (@HandleTypes, @WebXXX)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">tomcatWrapLoader</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">(Experimental) When deploying a classpath (current classloader), should meecrowave wrap the loader to define another loader identity but still use the same classes and resources.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">useLog4j2JulLogManager</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JUL logs be redirected to Log4j2 - only works before JUL usage.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">useShutdownHook</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Use shutdown hook to automatically stop the container on Ctrl+C</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">useTomcatDefaults</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Should Tomcat default be set (session timeout, mime mapping etc…​)</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">users</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">In memory users</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">watcherBouncing</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Activate redeployment on directories update using this bouncing.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">webResourceCached</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Cache web resources</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">webSessionCookieConfig</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Force the cookie-config, it uses a properties syntax with the keys being the web.xml tag names.</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">webSessionTimeout</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Force the session timeout for webapps</p></td> 
+    </tr> 
+    <tr> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">webXml</p></td> 
+     <td class="tableblock halign-left valign-top"><p class="tableblock">Global web.xml</p></td> 
+    </tr> 
+   </tbody> 
+  </table> 
+  <div class="admonitionblock note"> 
+   <table> 
+    <tbody>
+     <tr> 
+      <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
+      <td class="content"> the class also provides some helper methods for programmatic use case like <code>randomHttpPort()</code> to automatically set an available port to <code>httpPort</code>. </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <div class="paragraph"> 
+   <p>You can also write a <code>Consumer&lt;Builder&gt;</code> to configure programmatically the <code>Builder</code> and make it active using <code>addCustomizer(Consumer&lt;Builder&gt;)</code>.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Example:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">new Meecrowave(new Builder() {{
+        randomHttpPort();
+        setTomcatScanning(false);
+        setTomcatAutoSetup(false);
+        setRealm(new JAASRealm());
+        user("admin", "secret");
+     }})
+    .bake()
+    .await();</code></pre> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_cdi_se_api">CDI SE API</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>CDI 2.0 introduces a "SE API" for CDI. It looks like:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try (final SeContainer container = SeContainerInitializer.newInstance()
+        .disableDiscovery()
+        .addBeanClasses(Configured.class)
+        .initialize()) {
+    // your main
+}</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Meecrowave inherits from OpenWebBeans SE API implementation and therefore this SE API will work out of the box.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>It is implemented as a <code>bake()</code> and you can still access the <code>Builder</code> configuration or even <code>Meecrowave</code> itself if needed:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try (final SeContainer container = SeContainerInitializer.newInstance()
+        .disableDiscovery()
+        .addBeanClasses(Configured.class)
+        .initialize()) {
+
+    // use the configuration to access extensions, custom config or even server port
+    Meecrowave.Builder config = container.select(Meecrowave.Builder.class).get();
+    int port = config.getHttpPort();
+
+    // default wait implementation relying on tomcat one
+    container.select(Meecrowave.class).get().await(); // wait for the program to be killed (tomcat.await() equivalent)
+
+}</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>All the configuration of meecrowave is still available using properties:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try (final SeContainer container = SeContainerInitializer.newInstance()
+     .addProperty("nameOfTheProperty", instanceInTheRightType)
+     .initialize()) {
+    container.select(Meecrowave.class).get().await();
+}</code></pre> 
+   </div> 
+  </div> 
+  <div class="paragraph"> 
+   <p>The type should match the type expected by the <code>Builder</code> instance. Note you can also just pass directly a <code>Builder</code> instance as value (the property name is not important) if you want something preconfigured:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try (final SeContainer container = SeContainerInitializer.newInstance()
+     .addProperty("meecrowaveConfiguration", new Meecrowave.Builder().randomPort())
+     .initialize()) {
+    container.select(Meecrowave.class).get().await();
+}</code></pre> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_automatic_configuration">Automatic configuration</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The <code>org.apache.meecrowave.Meecrowave$Builder</code> class also provides <code>loadFromProperties(Properties)</code> and <code>loadFrom(String)</code>. The last one uses the parameter to locate a propertiers file (file path or at classpath) and delegate the processing to the first one.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><code>loadFromProperties(Propertiers)</code> loads the configuraton from the properties.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>The matching is alsmot 1-1 with previous table excepted for these entries:</p> 
+  </div> 
+  <div class="ulist"> 
+   <ul> 
+    <li> <p>if <code>httpPort</code> is <code>-1</code> then <code>randomHttpPort</code> is called</p> </li> 
+    <li> <p><code>properties.x=y</code> will set the property (<code>properties</code> entry) <code>x</code> with the value <code>y</code></p> </li> 
+    <li> <p><code>users.x=y</code> will create the user <code>x</code> with the password <code>y</code></p> </li> 
+    <li> <p><code>roles.x=y</code> will create the role <code>x</code> with the users <code>y</code> (comma separated if multiple users)</p> </li> 
+    <li> <p><code>cxf.servlet.params.x=y</code> will force the CXF servlet init parameter <code>x</code> to be <code>y</code></p> </li> 
+    <li> <p><code>connector.x=y</code> will pass the property <code>x</code> to be <code>y</code> on the connector. See the <a href="https://tomcat.apache.org/tomcat-9.0-doc/config/http.html">Apache Tomcat 9 Connector Documentation</a></p> </li> 
+    <li> <p><code>connector.attributes.x=y</code> will use the property <code>x</code> with value <code>y</code> to create the connector (set a property on the instance of ̀`org.apache.catalina.connector.Connector`) See the Connector attributes referenced in the <a href="https://tomcat.apache.org/tomcat-9.0-doc/config/http.html">Apache Tomcat 9 Connector Documentation</a></p> </li> 
+    <li> <p><code>valves.*</code> will be used to create valves. This prefix must be followed by a valve identifier then you can use the built-in virtual attributes. These ones are <code>_order</code> to sort the valves (natural order) and <code>_className</code> to specify the class to instantiate. Finally you can use any dotted attribute to configure the valve (see example after this list).</p> </li> 
+    <li> <p><code>realm=y</code> will create an instance of <code>y</code> (qualified name of the class) as <code>realm</code></p> </li> 
+    <li> <p><code>realm.x=y</code> will set <code>x</code> property to <code>y</code> - needs previous property to be set</p> </li> 
+    <li> <p><code>login=</code> will create a custom <code>org.apache.meecrowave.Meecrowave$LoginConfigBuilder</code></p> </li> 
+    <li> <p><code>login.x=y</code> will customize previous instance with <code>x</code> property</p> </li> 
+    <li> <p><code>securityConstraint=</code> will create a custom <code>org.apache.meecrowave.Meecrowave$SecurityConstaintBuilder</code></p> </li> 
+    <li> <p><code>securityConstraint.x=y</code> will customize previous instance with <code>x</code> property</p> </li> 
+    <li> <p><code>configurationCustomizer=y</code> will create an instance of <code>y</code> to customize the configuration</p> </li> 
+    <li> <p><code>configurationCustomizer.x=y</code> will set <code>x</code> to <code>y</code> for the customizer</p> </li> 
+   </ul> 
+  </div> 
+  <div class="admonitionblock tip"> 
+   <table> 
+    <tbody>
+     <tr> 
+      <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+      <td class="content"> Out of the box, any <code>Builder</code> instance will read <code>meecrowave.properties</code>. <code>meecrowave.properties</code> uses CLI names (without the leading <code>--</code>). See <a href="/meecrowave/meecrowave-core/cli.html">CLI</a> page for the list. </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <div class="sect2"> 
+   <h3 id="_valve_configuration">Valve configuration</h3> 
+   <div class="paragraph"> 
+    <p>Here is an example to configure the <code>RemoteIpValve</code> and <code>LoadBalancerDrainingValve</code> using the <code>meecrowave.properties</code> syntax (which means it uses the <code>properties.</code> prefix to specify properties, drop it if you use the CLI options):</p> 
+   </div> 
+   <div class="listingblock"> 
+    <div class="content"> 
+     <pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">properties.valves.remote-ip._order = 1
+properties.valves.remote-ip._className = org.apache.catalina.valves.RemoteIpValve
+properties.valves.remote-ip.internalProxies = 192\\.168\\.0\\.10\|192\\.168\\.0\\.11
+properties.valves.remote-ip.remoteIpHeader = x-forwarded-for
+properties.valves.remote-ip.proxiesHeader = x-forwarded-by
+properties.valves.remote-ip.trustedProxies = proxy1|proxy2
+
+properties.valves.draining._order = 2
+properties.valves.draining._className = org.apache.catalina.valves.LoadBalancerDrainingValve
+properties.valves.draining.redirectStatusCode = 307
+properties.valves.draining.ignoreCookieName = draining-action
+properties.valves.draining.ignoreCookieValue = skip</code></pre> 
+    </div> 
+   </div> 
+   <div class="paragraph"> 
+    <p>This will define the <code>remote-ip</code> and <code>draining</code> valves in this order with the configuration defined thanks to the properties not having an underscore at the beginning of their name.</p> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_logging">Logging</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>Meecrowave relies by default on Log4j2 (see <a href="http://logging.apache.org/log4j/2.x/" class="bare">http://logging.apache.org/log4j/2.x/</a>). By default it uses an internal configuration which is overridden by standard log4j mechanism.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_passwords_secrets">Passwords/Secrets</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>For the configuration requiring to be ciphered you can implement <code>org.apache.meecrowave.service.ValueTransformer</code>:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code>public class MyTransformer implements ValueTransformer {
+    @Override
+    public String name() {
+        return "mine";
+    }
+
+    @Override
+    public String apply(final String encodedPassword) {
+        return ....;
+    }
+}</code></pre> 
+   </div> 
+  </div> 
+  <div class="admonitionblock note"> 
+   <table> 
+    <tbody>
+     <tr> 
+      <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
+      <td class="content"> this code being executed before the container starts you can’t use CDI there. </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <div class="paragraph"> 
+   <p>To register your implementation just put the fully qualified name of your transformer in <code>META-INF/services/org.apache.meecrowave.service.ValueTransformer</code>.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Then to use it set the value to <code>decode:mine:encodedvalue</code>. General pattern is: <code>decode:&lt;transformer name&gt;:&lt;value before decryption&gt;</code>.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Note that by default the same ciphering algorithm than in TomEE is available (Static3DES).</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>This syntax is usable on the command line and in <code>meecrowave.properties</code>.</p> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_programmatic_customization">Programmatic customization</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p><code>org.apache.meecrowave.Meecrowave$ConfigurationCustomizer</code> can be used to customize the configuration programmatically before startup. It will take the <code>Builder</code> as parameter and you can change it at that moment.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p><code>org.apache.meecrowave.Meecrowave$InstanceCustomizer</code> can be used to customize the configuration programmatically before startup. It will take the <code>Tomcat</code> as parameter and you can change it at that moment. This is very useful to automatically add valves and things like that.</p> 
+  </div> 
+ </div> 
+</div>
+            </section><!--//doc-section-->
+
+
+
+
+        </div><!--//content-inner-->
+    </div><!--//doc-content-->
+
+    <div class="doc-sidebar">
+        <nav id="doc-nav">
+            <ul id="doc-menu" class="nav doc-menu hidden-xs affix-top" data-spy="affix">
+                <li><a href="/meecrowave/index.html">Home</a></li>
+                <li><a href="/meecrowave/start.html">Quick Start</a></li>
+                <li><a href="/meecrowave/components.html">Components</a></li>
+                <li><a href="/meecrowave/download.html">Download</a></li>
+                <li><a href="/meecrowave/community.html">Community</a></li>
+            </ul><!--//doc-menu-->
+        </nav>
+    </div>
+</div>
+
+</div><!--//page-wrapper-->
+
+    <footer class="footer text-center">
+        <div class="container">
+          <div class="row">
+            <p >Copyright &copy; 2016
+                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            </p>
+          </div>
+        </div>
+
+        <div class="container"><!-- don't remove it otherwise theme is no more creative common -->
+            <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+
+    <!-- Main Javascript -->
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
+
+</body>
+</html>
+
+

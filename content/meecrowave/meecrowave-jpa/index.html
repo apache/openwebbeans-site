@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <title>Meecrowave :: the customizable server</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/meecrowave/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="body-green">
+    <div class="page-wrapper">
+    <!-- TODO: google analytics -->
+<header class="header text-center">
+  <div class="container">
+      <div class="branding">
+          <h1 class="doc-title">
+              <span aria-hidden="true" class="icon icon_puzzle_alt icon"></span>
+              <a href="/meecrowave/index.html">
+                Meecrowave
+              </a>
+          </h1>
+      </div>
+  </div><!--//container-->
+</header><!--//header-->
+<div class="doc-wrapper">
+    <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+            <h1 class="doc-title"><span aria-hidden="true" class="icon icon icon_puzzle_alt"></span> Meecrowave JPA</h1>
+        </div><!--//doc-header-->
+
+<div class="doc-body">
+    <div class="doc-content">
+        <div class="content-inner">
+
+
+
+
+<div class='btn-toolbar pull-right' style="z-index: 2000;">
+  <div class='btn-group'>
+      <a class="btn" href="/meecrowave/meecrowave-jpa/index.pdf"><i class="fa fa-file-pdf-o"></i> Download as PDF</a>
+  </div>
+</div>
+
+
+
+            <section class="doc-section">
+                <div id="preamble"> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The overall idea behind this module is to propose a CDI integration of JPA allowing to programmatically control its persistence units.</p> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Concretely you will create a persistence unit from a <code>PersistenceUnitBuilder</code> allowing you to fully configure your unit from CDI context including the datasource:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+public class JpaConfig {
+    @Produces
+    public PersistenceUnitInfoBuilder unit(final DataSource ds) {
+        return new PersistenceUnitInfoBuilder()
+                .setUnitName("test")
+                .setDataSource(ds)
+                .setExcludeUnlistedClasses(true)
+                .addManagedClazz(User.class)
+                .addProperty("openjpa.RuntimeUnenhancedClasses", "supported")
+                .addProperty("openjpa.jdbc.SynchronizeMappings", "buildSchema");
+    }
+}</code></pre> 
+   </div> 
+  </div> 
+  <div class="admonitionblock tip"> 
+   <table> 
+    <tbody>
+     <tr> 
+      <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
+      <td class="content"> if your application uses a single persistence unit this is optional and a default one will be created if a single DataSource bean is available as Bean&lt;?&gt;. </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <div class="paragraph"> 
+   <p>The datasource can be produces as you wish using your own configuration mecanism:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+public class JpaConfig {
+    @Produces // dbcp2 datasource for instance
+    @ApplicationScoped
+    public DataSource dataSource() {
+        final BasicDataSource source = new BasicDataSource();
+        source.setDriver(new Driver());
+        source.setUrl("jdbc:h2:mem:jpaextensiontest");
+        return source;
+    }
+}</code></pre> 
+   </div> 
+  </div> 
+  <div class="admonitionblock note"> 
+   <table> 
+    <tbody>
+     <tr> 
+      <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
+      <td class="content"> it is recommanded to ensure the <code>DataSource</code> is normal-scoped to not get surprises in term of behavior. </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Finally you can inject your entity manager using <code>@Unit</code>. Ensure to decorate with <code>@Jpa</code> a class/method before using the entity manager to activate the jpa CDI context:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+@Jpa(transactional = false)
+public class JPADao {
+    @Inject
+    @Unit(name = "test")
+    private EntityManager em;
+
+    @Jpa // with a resource local transaction
+    public User save(final User user) {
+        em.persist(user);
+        return user;
+    }
+
+    // inherit form class, no tx
+    public User find(final long id) {
+        return em.find(User.class, id);
+    }
+}</code></pre> 
+   </div> 
+  </div> 
+  <div class="admonitionblock important"> 
+   <table> 
+    <tbody>
+     <tr> 
+      <td class="icon"> <i class="fa icon-important" title="Important"></i> </td> 
+      <td class="content"> this integration is 100% based on <code>RESOURCE_LOCAL</code> units for now. </td> 
+     </tr> 
+    </tbody>
+   </table> 
+  </div> 
+  <div class="paragraph"> 
+   <p>Not that if a bean get injected an <code>EntityManager</code> it gets automatically <code>@Jpa(transactional=true)</code> so previous bean is equivalent to:</p> 
+  </div> 
+  <div class="listingblock"> 
+   <div class="content"> 
+    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+public class JPADao {
+    @Inject
+    @Unit(name = "test")
+    private EntityManager em;
+
+    public User save(final User user) {
+        em.persist(user);
+        return user;
+    }
+
+    @Jpa(transactional = false)
+    public User find(final long id) {
+        return em.find(User.class, id);
+    }
+}</code></pre> 
+   </div> 
+  </div> 
+ </div> 
+</div> 
+<div class="sect1"> 
+ <h2 id="_integration_with_bean_validation">Integration with Bean Validation</h2> 
+ <div class="sectionbody"> 
+  <div class="paragraph"> 
+   <p>The extension will try to find a <code>ValidatorFactory</code> in CDI context and will provide ir to the JPA provider if the <code>ValidationMode</code> is not <code>NONE</code> and a <code>Bean&lt;ValidatorFactory&gt;</code> exists.</p> 
+  </div> 
+ </div> 
+</div>
+            </section><!--//doc-section-->
+
+
+
+
+        </div><!--//content-inner-->
+    </div><!--//doc-content-->
+
+    <div class="doc-sidebar">
+        <nav id="doc-nav">
+            <ul id="doc-menu" class="nav doc-menu hidden-xs affix-top" data-spy="affix">
+                <li><a href="/meecrowave/index.html">Home</a></li>
+                <li><a href="/meecrowave/start.html">Quick Start</a></li>
+                <li><a href="/meecrowave/components.html">Components</a></li>
+                <li><a href="/meecrowave/download.html">Download</a></li>
+                <li><a href="/meecrowave/community.html">Community</a></li>
+            </ul><!--//doc-menu-->
+        </nav>
+    </div>
+</div>
+
+</div><!--//page-wrapper-->
+
+    <footer class="footer text-center">
+        <div class="container">
+          <div class="row">
+            <p >Copyright &copy; 2016
+                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            </p>
+          </div>
+        </div>
+
+        <div class="container"><!-- don't remove it otherwise theme is no more creative common -->
+            <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+
+    <!-- Main Javascript -->
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
+
+</body>
+</html>
+
+
