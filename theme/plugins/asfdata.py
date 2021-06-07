@@ -352,6 +352,20 @@ def get_element_text(entry, child):
     return get_node_text(elements[0].childNodes)
 
 
+# retrieve truncate words in html.
+def truncate_words(text, words):
+    content_text = ' '.join(text.split(' ')[:words]) + "..."
+    print(content_text)
+    for regex, replace in FIXUP_HTML:
+        m = regex.search(content_text)
+        if m:
+            content_text = re.sub(regex, replace, content_text)
+    tree_soup = BeautifulSoup(content_text, 'html.parser')
+    content_text = tree_soup.decode(formatter='html')
+    print(content_text)
+    return content_text
+
+
 # retrieve blog posts from an Atom feed.
 def process_blog(feed, count, words, debug):
     print(f'blog feed: {feed}')
@@ -368,13 +382,7 @@ def process_blog(feed, count, words, debug):
         # we may want content
         content_text = ''
         if words:
-            content_text = ' '.join(get_element_text(entry, 'content').split(' ')[:words]) + "..."
-            for regex, replace in FIXUP_HTML:
-                m = regex.search(content_text)
-                if m:
-                    content_text = re.sub(regex, replace, content_text)
-            tree_soup = BeautifulSoup(content_text, 'html.parser')
-            content_text = tree_soup.decode(formatter='html')
+            content_text = truncate_words(get_element_text(entry, 'content'), words)
         # we want the title and href
         v.append(
             {
