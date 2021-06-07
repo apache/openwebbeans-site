@@ -24,6 +24,7 @@ import os.path
 import sys
 import random
 import json
+import re
 import traceback
 import operator
 import pprint
@@ -37,11 +38,17 @@ import xml.dom.minidom
 import pelican.plugins.signals
 import pelican.utils
 
+from bs4 import BeautifulSoup
 
 ASF_DATA = {
     'metadata': { },
     'debug': False,
 }
+
+FIXUP_HTML = [
+    (re.compile(r'&lt;'),'<'),
+    (re.compile(r'&gt;'),'>'),
+]
 
 # read the asfdata configuration in order to get data load and transformation instructions.
 def read_config(config_yaml):
@@ -362,6 +369,12 @@ def process_blog(feed, count, words, debug):
         content_text = ''
         if words:
             content_text = ' '.join(get_element_text(entry, 'content').split(' ')[:words]) + "..."
+            for regex, replace in FIXUP_HTML:
+                m = regex.search(content_text)
+                if m:
+                    content_text = re.sub(regex, replace, content_text)
+            tree_soup = BeautifulSoup(content_text, 'html.parser')
+            content_text = tree_soup.decode(formatter='html')
         # we want the title and href
         v.append(
             {
