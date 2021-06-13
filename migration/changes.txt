@@ -1,0 +1,104 @@
+==== ./content/owbsetup_tomcat.md
+==== ./content/testing_arquillian.md
+==== ./content/misc/contact.md
+==== ./content/misc/legal.md
+==== ./content/examples.md
+18c18
+<   [2]: https://openwebbeans.apache.org/source.html
+---
+>   [2]: /source.html
+==== ./content/owbconfig.md
+==== ./content/testing_test-control.md
+==== ./content/openwebbeans-ee.md
+==== ./content/owbsetup_ee.md
+80c80
+<   [4]: download.html#maven-dep
+---
+>   [4]: /download.html#maven-dep
+87c87
+<   [12]: /download.html#plugins-version
+---
+>   [11]: /download.html#plugins-version
+==== ./content/community.md
+9c9
+< If you have troubles to find the information you are looking for, you can also ask in our [IRC-Channel](#IRC).
+---
+> If you have troubles to find the information you are looking for, you can also ask in our [IRC-Channel](#irc).
+==== ./content/testing_general.md
+==== ./content/owbsetup_se.md
+61d60
+<     :::java
+89c88
+<   [6]: /openwebbeans/samples.html
+\ No newline at end of file
+---
+>   [6]: /samples.html
+==== ./content/owbtest.md
+==== ./content/news.md
+==== ./content/samples.md
+==== ./content/openwebbeans-junit5.md
+==== ./content/owbinternalunittests.md
+==== ./content/source.md
+==== ./content/openwebbeans-tomcat.md
+18c18
+< [1]: https://openwebbeans.apache.org/owbsetup_ee.html
+\ No newline at end of file
+---
+> [1]: /owbsetup_ee.html
+\ No newline at end of file
+==== ./content/testing_cdictrl.md
+==== ./content/owb-eecontainers.md
+==== ./content/faq.md
+7c7
+<   - [Does OWB differ from the CDI-2.0 specification](#Does OWB differ from the CDI-2.0 specification)
+---
+>   - [Does OWB differ from the CDI-2.0 specification](#does-owb-differ-from-the-cdi-20-specification)
+==== ./content/openwebbeans-web.md
+==== ./content/modules.md
+==== ./content/cdi_explained.md
+==== ./content/openwebbeans-resource.md
+==== ./content/openwebbeans-jms.md
+==== ./content/openwebbeans-el.md
+17c17
+<   [1]: https://openwebbeans.apache.org/owbsetup_ee.html
+\ No newline at end of file
+---
+>   [1]: /owbsetup_ee.html
+\ No newline at end of file
+==== ./content/openwebbeans-osgi.md
+==== ./content/openwebbeans-spi.md
+9,10c9
+< > extension and  replaceable components.
+< - [wikipedia][1]
+---
+> > extension and  replaceable components. - [wikipedia][1]
+==== ./content/comingsoon.md
+==== ./content/release-checklist.md
+98,101c98,101
+<     - Login to https://cms.apache.org/redirect?uri=https://openwebbeans.apache.org/
+<     - Edit news.mdtext
+<     - Edit download.mdtext
+<     - Publish via https://cms.apache.org/openwebbeans/publish  
+---
+>     - Browse https://github.com/apache/openwebbeans-site/tree/main/content
+>     - Edit news.md
+>     - Edit download.md
+>     - Committing will cause the site to be published
+==== ./content/documentation.md
+19c19
+<   - [Apache Meecrowave](https://openwebbeans.apache.org/meecrowave/)
+---
+>   - [Apache Meecrowave](/meecrowave/)
+==== ./content/openwebbeans-ee-common.md
+==== ./content/openwebbeans-ejb.md
+==== ./content/openwebbeans-impl.md
+==== ./content/openwebbeans-jsf.md
+29c29
+<   [1]: https://openwebbeans.apache.org/owbsetup_ee.html
+\ No newline at end of file
+---
+>   [1]: /owbsetup_ee.html
+\ No newline at end of file
+==== ./content/download.md
+==== ./content/openwebbeans-20-effort.md
+==== ./README.md
