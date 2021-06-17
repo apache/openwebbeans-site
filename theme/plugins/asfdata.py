@@ -22,6 +22,8 @@
 
 import os.path
 import sys
+import subprocess
+import datetime
 import random
 import json
 import re
@@ -46,9 +48,10 @@ ASF_DATA = {
 }
 
 FIXUP_HTML = [
-    (re.compile(r'&lt;'),'<'),
-    (re.compile(r'&gt;'),'>'),
+    (re.compile(r'&lt;'), '<'),
+    (re.compile(r'&gt;'), '>'),
 ]
+
 
 # read the asfdata configuration in order to get data load and transformation instructions.
 def read_config(config_yaml):
@@ -75,12 +78,12 @@ def load_data(path, content):
 
 # load data source from a url.
 def url_data(url):
-    return load_data( url, requests.get(url).text )
+    return load_data( url, requests.get(url).text)
 
 
 # load data source from a file.
 def file_data(rel_path):
-    return load_data( rel_path, open(rel_path,'r').read() )
+    return load_data( rel_path, open(rel_path, 'r').read())
 
 
 # remove parts of a data source we don't want ro access
@@ -119,7 +122,7 @@ def alpha_part(reference, part):
         reference[refs]['letter'] = letter
 
 
-# rotate a roster list singleton into an name and availid 
+# rotate a roster list singleton into an name and availid
 def asfid_part(reference, part):
     for refs in reference:
         fix = reference[refs][part]
@@ -191,24 +194,24 @@ def split_list(metadata, seq, reference, split):
     # size of list
     size = len(sequence)
     # size of columns
-    percol = int((size+26+split-1)/split)
+    percol = int((size + 26 + split - 1) / split)
     # positions
     start = nseq = nrow = 0
     letter = ' '
     # create each column
     for column in range(split):
         subsequence = [ ]
-        end = min(size+26, start+percol)
+        end = min(size + 26, start + percol)
         while nrow < end:
             if letter < sequence[nseq].letter:
                 # new letter - add a letter break into the column. If a letter has no content it is skipped
                 letter = sequence[nseq].letter
-                subsequence.append(type(seq, (), { 'letter': letter, 'display_name': letter }))
+                subsequence.append(type(seq, (), { 'letter': letter, 'display_name': letter}))
             else:
                 # add the project into the sequence
                 subsequence.append(sequence[nseq])
-                nseq = nseq+1
-            nrow = nrow+1
+                nseq = nseq + 1
+            nrow = nrow + 1
         # save the column sequence in the metadata
         metadata[f'{seq}_{column}'] = subsequence
         start = end
@@ -336,6 +339,133 @@ def process_load(metadata, value, load, debug):
             process_sequence(metadata, seq, sequence, load, debug)
 
 
+# convert bytes
+def bytesto(bytes, to, bsize=1024):
+    a = {'k': 1, 'm': 2, 'g': 3, 't': 4, 'p': 5, 'e': 6}
+    r = float(bytes)
+    return r / (bsize ** a[to])
+
+
+# open a subprocess
+def os_popen(list):
+    return subprocess.Popen(list, stdout=subprocess.PIPE, universal_newlines=True)
+
+
+# retrieve the release distributions for a project from svn
+def process_distributions(project, src, sort_revision):
+    print(f'releases: {project}')
+
+    # current date information will help process svn ls results
+    gatherDate = datetime.datetime.utcnow()
+    gatherYear = gatherDate.year
+
+    # information to accumulate
+    signatures = {}
+    checksums = {}
+    fsizes = {}
+    dtms = {}
+    versions = {}
+    revisions = {}
+
+    # read the output from svn ls -Rv
+    url = f'https://dist.apache.org/repos/dist/release/{project}'
+    print(f'releases: {url}')
+    with os_popen(['svn', 'ls', '-Rv', url]) as s:
+        for line in s.stdout:
+            line = line.strip()
+            listing = line.split(' ')
+            if line[-1:] == '/':
+                # skip directories
+                continue
+            if sort_revision:
+                revision = int(listing[0])
+            else:
+                revision = 0
+            # user = listing[1]
+            if listing[-6] == '':
+                # dtm in the past year
+                dtm1 = datetime.datetime.strptime(" ".join(listing[-4:-2]) + " " + str(gatherYear), "%b %d %Y")
+                if dtm1 > gatherDate:
+                    dtm1 = datetime.datetime.strptime(" ".join(listing[-4:-2]) + " " + str(gatherYear - 1), "%b %d %Y")
+                fsize = listing[-5]
+            else:
+                # dtm older than one year
+                dtm1 = datetime.datetime.strptime(" ".join(listing[-5:-1]), "%b %d %Y")
+                fsize = listing[-6]
+            # date is close enough
+            dtm = dtm1.strftime("%m/%d/%Y")
+            # covert to number of MB
+            if float(fsize) > 524288:
+                fsize = ('%.2f' % bytesto(fsize, 'm')) + ' MB'
+            else:
+                fsize = ('%.2f' % bytesto(fsize, 'k')) + ' KB'
+            # line is path
+            line = listing[-1]
+            # fields are parts of the path
+            fields = line.split('/')
+            # filename os the final part
+            filename = fields[-1]
+            # parts includes the whole path
+            parts = line.split('.')
+            # use the path as a key for each release
+            release = line
+            if filename:
+                if re.search('KEYS(\.txt)?$', filename):
+                    # save the KEYS file url
+                    keys = f'https://downloads.apache.org/{project}/{line}'
+                elif re.search('\.(asc|sig)$', filename, flags=re.IGNORECASE):
+                    # we key a release off of a signature. remove the extension
+                    release = '.'.join(parts[:-1])
+                    signatures[release] = filename
+                    # the path to the signature is used as the version
+                    versions[release] = '/'.join(fields[:-1])
+                    # we use the revision for sorting
+                    revisions[release] = revision
+                    if re.search(src, filename):
+                        # put source distributions in the front (it is a reverse sort)
+                        revisions[release] = revision + 100000
+                elif re.search('\.(sha512|sha1|sha256|sha|md5|mds)$', filename, flags=re.IGNORECASE):
+                    # some projects checksum their signatures
+                    part0 = ".".join(line.split('.')[-2:-1])
+                    if part0 == "asc":
+                        # skip files that are hashes of signatures
+                        continue
+                    # strip the extension to get the release name
+                    release = '.'.join(parts[:-1])
+                    checksums[release] = filename
+                else:
+                    # for the released file save the size and dtm
+                    fsizes[release] = fsize
+                    dtms[release] = dtm
+
+    # separate versions.
+    each_version = {}
+    for rel in signatures:
+        version = versions[rel]
+        if version not in each_version:
+            each_version[version] = []
+        release = rel[len(version) + 1:]
+        try:
+            each_version[version].append( Distribution(release=release,
+                                                       revision=revisions[rel],
+                                                       signature=signatures[rel],
+                                                       checksum=checksums[rel],
+                                                       dtm=dtms[rel],
+                                                       fsize=fsizes[rel]))
+        except Exception:
+            traceback.print_exc()
+
+    distributions = []
+    for version in each_version:
+        each_version[version].sort(key=lambda x: (-x.revision, x.release))
+        distributions.append( Version(version=version,
+                                      name=' '.join(version.split('/')),
+                                      revision=each_version[version][0].revision,
+                                      release=each_version[version]))
+    distributions.sort(key=lambda x: (-x.revision, x.version))
+    return keys, distributions
+
+
 # get xml text node
 def get_node_text(nodelist):
     """http://www.python.org/doc/2.5.2/lib/minidom-example.txt"""
@@ -396,7 +526,7 @@ def process_blog(feed, count, words, debug):
     return [ Blog(href=s['id'],
                   title=s['title'],
                   content=s['content'])
-             for s in v ]
+             for s in v]
 
 
 # to be updated from hidden location. (Need to discuss local.)
@@ -405,10 +535,10 @@ def twitter_auth():
     try:
         for line in open(authtokens).readlines():
             if line.startswith('twitter:'):
-                token = line.strip().split(':')[1] 
+                token = line.strip().split(':')[1]
                 # do not print or display token as it is a secret
                 return token
-    except:
+    except Exception:
         traceback.print_exc()
     return None
 
@@ -426,9 +556,9 @@ def process_twitter(handle, count):
     print(f'-----\ntwitter feed: {handle}')
     bearer_token = twitter_auth()
     if not bearer_token:
-        return {
-            'text': 'Add twitter bearer token to ~/.authtokens'
-            }
+        return sequence_list('twitter',{
+            'text': 'To retrieve tweets supply a valid twitter bearer token in ~/.authtokens'
+        })
     # do not print or display bearer_token as it is a secret
     query = f'from:{handle}'
     tweet_fields = 'tweet.fields=author_id'
@@ -453,7 +583,7 @@ def process_eccn(fname):
         return [ Source(href=s['href'],
                         manufacturer=s['manufacturer'],
                         why=s['why'])
-                 for s in sources ]
+                 for s in sources]
 
     # products have one or more versions
     def make_versions(vsns):
@@ -462,7 +592,7 @@ def process_eccn(fname):
                          source=make_sources(v.get('source', [ ])),
                          )
                  for v in sorted(vsns,
-                                 key=operator.itemgetter('version')) ]
+                                 key=operator.itemgetter('version'))]
 
     # projects have one or more products
     def make_products(prods):
@@ -470,7 +600,7 @@ def process_eccn(fname):
                          versions=make_versions(p['versions']),
                          )
                  for p in sorted(prods,
-                                 key=operator.itemgetter('name')) ]
+                                 key=operator.itemgetter('name'))]
 
     # eccn matrix has one or more projects
     return [ Project(name=proj['name'],
@@ -478,7 +608,7 @@ def process_eccn(fname):
                      contact=proj['contact'],
                      product=make_products(proj['product']))
              for proj in sorted(j['eccnmatrix'],
-                                key=operator.itemgetter('name')) ]
+                                key=operator.itemgetter('name'))]
 
 
 # object wrappers
@@ -486,12 +616,30 @@ class wrapper:
     def __init__(self, **kw):
         vars(self).update(kw)
 
+
 # Improve the names when failures occur.
-class Source(wrapper): pass
-class Version(wrapper): pass
-class Product(wrapper): pass
-class Project(wrapper): pass
-class Blog(wrapper): pass
+class Source(wrapper):
+    pass
+
+
+class Version(wrapper):
+    pass
+
+
+class Product(wrapper):
+    pass
+
+
+class Project(wrapper):
+    pass
+
+
+class Blog(wrapper):
+    pass
+
+
+class Distribution(wrapper):
+    pass
 
 
 # create metadata according to instructions.
@@ -508,7 +656,7 @@ def config_read_data(pel_ob):
         print(f'config: [{key}] = {asf_data[key]}')
 
     debug = asf_data['debug']
-    
+
     # This must be present in ASF_DATA. It contains data for use
     # by our plugins, and possibly where we load/inject data from
     # other sources.
@@ -550,7 +698,7 @@ def config_read_data(pel_ob):
                     # process blog feed
                     feed = config_data[key]['blog']
                     count = config_data[key]['count']
-                    if config_data[key]['content']:
+                    if 'content' in config_data[key].keys():
                         words = config_data[key]['content']
                     else:
                         words = None
@@ -558,6 +706,18 @@ def config_read_data(pel_ob):
                     if debug:
                         print('BLOG V:', v)
                     continue
+
+                elif 'release' in value:
+                    # retrieve active release distributions
+                    src = config_data[key]['src']
+                    revision = config_data[key]['revision']
+                    project = config_data[key]['release']
+                    keys, distributions = process_distributions(project, src, revision)
+                    metadata[key] = v = distributions
+                    metadata[f"{key}-keys"] = keys
+                    metadata[f"{key}-project"] = project
+                    if debug:
+                        print('RELEASE V:', v)
 
                 elif 'url' in value:
                     # process a url based data source
@@ -601,7 +761,7 @@ def tb_initialized(pel_ob):
     """ Print any exception, before Pelican chews it into nothingness."""
     try:
         config_read_data(pel_ob)
-    except:
+    except Exception:
         print('-----', file=sys.stderr)
         traceback.print_exc()
         # exceptions here stop the build
