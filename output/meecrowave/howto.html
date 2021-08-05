@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <title>Meecrowave :: the customizable server</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/meecrowave/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/idea.min.css" integrity="sha256-rYB1c4yTU5UJB//rod7DtBo1JM6HAme/9Vd+VesFG2U=" crossorigin="anonymous" />
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="body-green">
+    <div class="page-wrapper">
+    <!-- TODO: google analytics -->
+<header class="header text-center">
+  <div class="container">
+      <div class="branding">
+          <h1 class="doc-title">
+              <span aria-hidden="true" class="icon_documents_alt icon"></span>
+              <a href="/meecrowave/index.html">
+                Meecrowave
+              </a>
+          </h1>
+      </div>
+  </div><!--//container-->
+</header><!--//header-->
+<div class="doc-wrapper">
+    <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+            <h1 class="doc-title"><span aria-hidden="true" class="icon icon_documents_alt"></span> Howto</h1>
+        </div><!--//doc-header-->
+
+<div class="doc-body">
+    <div class="doc-content">
+        <div class="content-inner">
+
+
+
+
+<div class='btn-toolbar pull-right' style="z-index: 2000;">
+  <div class='btn-group'>
+      <a class="btn" href="/meecrowave/howto.pdf"><i class="fa fa-file-pdf-o"></i> Download as PDF</a>
+  </div>
+</div>
+
+
+
+            <section class="doc-section">
+                <div class="sect1">
+<h2 id="_how_to_create_a_simple_maven_project_using_meecrowave">How to create a simple maven project using Meecrowave ?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You should add the following dependencies do the dependencies section of your pom.xml (adjust version to current stable version)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
+    &lt;artifactId&gt;meecrowave-specs-api&lt;/artifactId&gt;
+    &lt;version&gt;${meecrowave.version}&lt;/version&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
+    &lt;artifactId&gt;meecrowave-core&lt;/artifactId&gt;
+    &lt;version&gt;${meecrowave.version}&lt;/version&gt;
+&lt;/dependency&gt;
+
+&lt;!-- if you intend to have unit tests (you really should) --&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
+    &lt;artifactId&gt;meecrowave-junit&lt;/artifactId&gt;
+    &lt;version&gt;${meecrowave.version}&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and the following plugin configuration to the build/plugins section of your pom.xml</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;plugin&gt;
+    &lt;!--
+    For starting meecrowave via Maven. Just run
+    $&gt; mvn clean install meecrowave:run
+    --&gt;
+    &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
+    &lt;artifactId&gt;meecrowave-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;${meecrowave.version}&lt;/version&gt;
+&lt;/plugin&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, you can start your app by running</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">mvn clean install meecrowave:run</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_add_a_rest_endpoint">How to add a REST Endpoint ?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You should declare your endpoint path and verd :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">package org.mypackage;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+
+@Path("mypath")
+@ApplicationScoped
+public class MyEndpoint {
+
+    /**
+     * Ping / pong rest GET method, to check backend and replies to queries
+     *
+     * @return
+     */
+    @Path("/ping")
+    @GET
+    public String getPing() {
+        return "pong";
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_add_a_filter_simple_case">How to add a filter (simple case) ?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use standard Servlet 4.0 <a href="https://docs.oracle.com/javaee/6/api/javax/servlet/annotation/WebFilter.html">@WebFilter</a> annotation. A simple example :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">package org.mypackage;
+
+import java.io.IOException;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * A simple CORS filter
+ *
+ */
+@WebFilter(asyncSupported = true, urlPatterns = {"/*"})
+public class CORSFilter implements Filter {
+
+    /**
+     * A basic CORS filter, allowing everything
+     */
+    @Override
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain)
+            throws IOException, ServletException {
+
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+
+        HttpServletResponse response = (HttpServletResponse) servletResponse;
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods","GET, OPTIONS, HEAD, PUT, POST, DELETE");
+        response.addHeader("Access-Control-Allow-Headers","*");
+
+        if (request.getMethod().equals("OPTIONS")) {
+            // special case of return code for "OPTIONS" query
+            response.setStatus(HttpServletResponse.SC_ACCEPTED);
+            return;
+        }
+
+        // pass the request along the filter chain
+        chain.doFilter(request, servletResponse);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_add_a_servlet">How to add a servlet ?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If your servlet requires no configuration that you would typically put in the web.xml file, you can use the <a href="https://docs.oracle.com/javaee/6/api/javax/servlet/annotation/WebServlet.html">@WebServlet</a> annotation from the Servlet 3.0 specification.</p>
+</div>
+<div class="paragraph">
+<p>If you need to configure the servlet, you should use a <a href="https://docs.oracle.com/javaee/6/api/javax/servlet/ServletContainerInitializer.html">ServletContainerInitializer</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you would have a declaration such as :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;servlet&gt;
+    &lt;description&gt;My Servlet&lt;/description&gt;
+    &lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;org.my.servlet.ImplementationClass&lt;/servlet-class&gt;
+    &lt;init-param&gt;
+        &lt;param-name&gt;param-name&lt;/param-name&gt;
+        &lt;param-value&gt;My param value&lt;/param-value&gt;
+    &lt;/init-param&gt;
+    &lt;load-on-startup&gt;0&lt;/load-on-startup&gt;
+    &lt;async-supported&gt;true&lt;/async-supported&gt;
+&lt;/servlet&gt;
+&lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/my_mapping/*&lt;/url-pattern&gt;
+&lt;/servlet-mapping&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>in your web.xml, you would have a SerlvetContainerInitializer such as :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">package org.mypackage;
+
+import java.util.Set;
+
+import javax.servlet.ServletContainerInitializer;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRegistration;
+
+import org.my.servlet.ImplementationClass;
+
+public class MyServletContainerInitializer implements ServletContainerInitializer {
+    @Override
+    public void onStartup(final Set&lt;Class&lt;?&gt;&gt; c, final ServletContext context) {
+        final ServletRegistration.Dynamic def = context.addServlet("My Servlet", ImplementationClass.class);
+        def.setInitParameter("param-name", "My param value");
+
+        def.setLoadOnStartup(0);
+        def.addMapping("/my_mapping/*");
+        def.setAsyncSupported(true);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, you should register this implementation of ServletContainerInitializer:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>in a SPI, in src/main/resources/META-INF/services/javax.servlet.ServletContainerInitializer:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">org.mypackage.MyServletContainerInitializer</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>or add it to Meecrowave configuration using a Meecrowave.ConfigurationCustomizer such as :</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">package org.mypackage;
+
+import org.apache.meecrowave.Meecrowave;
+
+public class ServletContainerInitializerCustomizer implements Meecrowave.ConfigurationCustomizer {
+    @Override
+    public void accept(final Meecrowave.Builder builder) {
+        builder.addServletContextInitializer(new MyServletContainerInitializer());
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Using this last option, the configuration will also be performed before unit tests are executed.</p>
+</div>
+<div class="paragraph">
+<p>Your implementation of Meecrowave.ConfigurationCustomizer should be added to the configuration by appending its canonical name to the src/main/resources/META-INF/org.apache.meecrowave.Meecrowave$ConfigurationCustomizer file.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_add_a_valve">How to add a valve ?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Simple cases should be handled using <a href="http://openwebbeans.apache.org/meecrowave/meecrowave-core/configuration.html#_valve_configuration">a meecrowave.properties file</a>.</p>
+</div>
+<div class="paragraph">
+<p>More complex cases can be handled using an implementation of Meecrowave.ConfigurationCustomizer.</p>
+</div>
+<div class="paragraph">
+<p>In the following example, we instantiate a <a href="https://tomcat.apache.org/tomcat-9.0-doc/rewrite.html">Tomcat RewriteValve</a> and load the rewrite.config file we usually put in src/main/webapp/WEB-INF in a webapp packaged as a war, and that we would put in src/main/resources in a meecrowave app :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">package org.mypackage;
+
+import java.io.IOException;
+import java.io.InputStream;
+import lombok.extern.log4j.Log4j2;
+import org.apache.catalina.LifecycleException;
+import org.apache.catalina.valves.rewrite.RewriteValve;
+import org.apache.meecrowave.Meecrowave;
+
+/**
+ * A bit of glue to set proxy / RewriteValve configuration at startup
+ *
+ */
+@Log4j2
+public class RewriteValveCustomizer implements Meecrowave.ConfigurationCustomizer {
+    final String PROXY_CONFIG = "rewrite.config";
+    @Override
+    public void accept(final Meecrowave.Builder builder) {
+        log.info("Loading proxy / rewrite configuration from {}", PROXY_CONFIG);
+        log.info("This file should be in src/main/resources in project sources");
+        try (InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(PROXY_CONFIG)) {
+            if (null == stream) {
+                log.info("Rewrite configuration file {} not found", PROXY_CONFIG);
+                return;
+            }
+            configuration = new BufferedReader(new InputStreamReader(stream)).lines().collect(Collectors.joining("\n"));
+        } catch (IOException ex) {
+            log.error("Error reading rewrite / proxy configuration file {}", PROXY_CONFIG);
+            return;
+        }
+        final RewriteValve proxy = new RewriteValve() {
+            @Override
+            protected synchronized void startInternal() throws LifecycleException {
+                super.startInternal();
+                try {
+                    setConfiguration(configuration);
+                } catch (final Exception e) {
+                    throw new LifecycleException(e);
+                }
+            }
+        };
+        // at this time, we are still single threaded. So, this should be safe.
+        builder.instanceCustomizer(tomcat -&gt; tomcat.getHost().getPipeline().addValve(proxy));
+        log.info("Proxy / rewrite configuration valve configured and added to tomcat.");
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Your implementation of Meecrowave.ConfigurationCustomizer should be added to the configuration by appending its canonical name to the src/main/resources/META-INF/org.apache.meecrowave.Meecrowave$ConfigurationCustomizer file.</p>
+</div>
+<div class="paragraph">
+<p>A more complex example <a href="https://rmannibucau.metawerx.net/post/tomcat-rewrite-url">is available on Romain Manni-Bucau&#8217;s blog</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_add_a_web_frontend">How to add a web frontend ?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You should add a &lt;webapp&gt; element to the meecrowave plugin configuration. Example :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;plugin&gt;
+    &lt;!--
+        For starting meecrowave via Maven. Just run
+        $&gt; mvn clean install meecrowave:run
+    --&gt;
+    &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
+    &lt;artifactId&gt;meecrowave-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;${meecrowave.version}&lt;/version&gt;
+    &lt;configuration&gt;
+        &lt;!-- include packaged app as webapp --&gt;
+        &lt;webapp&gt;src/main/webapp/dist&lt;/webapp&gt;
+    &lt;/configuration&gt;
+&lt;/plugin&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>will add the content of the "dist" folder to your package and its files will be available on the application root.</p>
+</div>
+<div class="paragraph">
+<p>Note that your frontend will be served when executing the app (on a mvn meecrowave:run or when running a packaged app). It will not be available during unit tests.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_to_compile_a_meecrowave_application_with_graalvm">How to compile a Meecrowave application with GraalVM</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can use <code>native-image</code> directly but for this how to, we will use <a href="http://geronimo.apache.org/arthur/">Apache Arthur</a> which enables to do it through Apache Maven.
+The trick is to define the Tomcat and Meecrowave resources to use to convert the Java application in a native binary.
+For a simple application here is how it can be done.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+we use <a href="https://yupiik.github.io/yupiik-logging/">Yupiik Logging</a> in this sample to replace Log4j2 which is not GraalVM friendly, this JUL implementation enables runtime configuration even for Graalified binaries.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;plugin&gt; &lt;!-- mvn -Parthur arthur:native-image@runtime -e --&gt;
+  &lt;groupId&gt;org.apache.geronimo.arthur&lt;/groupId&gt;
+  &lt;artifactId&gt;arthur-maven-plugin&lt;/artifactId&gt;
+  &lt;version&gt;${arthur.version}&lt;/version&gt; &lt;!-- &gt;= 1.0.3 or replace openwebbeans extension by openwebbeans 2.0.22 dep + openwebbeans-knight with arthur v1.0.2 --&gt;
+  &lt;executions&gt;
+    &lt;execution&gt;
+      &lt;id&gt;graalify&lt;/id&gt;
+      &lt;phase&gt;package&lt;/phase&gt;
+      &lt;goals&gt;
+        &lt;goal&gt;native-image&lt;/goal&gt;
+      &lt;/goals&gt;
+    &lt;/execution&gt;
+  &lt;/executions&gt;
+  &lt;configuration&gt;
+    &lt;graalVersion&gt;21.0.0.2.r11&lt;/graalVersion&gt; &lt;!-- use this graal version (java 11 here) --&gt;
+    &lt;main&gt;org.apache.meecrowave.runner.Cli&lt;/main&gt; &lt;!-- set up meecrowave default main - requires commons-cli --&gt;
+    &lt;buildStaticImage&gt;false&lt;/buildStaticImage&gt; &lt;!-- up to you but using arthur docker goals it works fine and avoids some graalvm bugs --&gt;
+    &lt;usePackagedArtifact&gt;true&lt;/usePackagedArtifact&gt; &lt;!-- optional but enables a more deterministic run generally --&gt;
+    &lt;graalExtensions&gt; &lt;!-- enable CDI --&gt;
+      &lt;graalExtension&gt;openwebbeans&lt;/graalExtension&gt;
+    &lt;/graalExtensions&gt;
+    &lt;reflections&gt; &lt;!-- enable cxf/owb/tomcat main reflection points  --&gt;
+      &lt;reflection&gt; &lt;!-- used by meecrowave to test cxf presence --&gt;
+        &lt;name&gt;org.apache.cxf.BusFactory&lt;/name&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt;
+        &lt;name&gt;javax.ws.rs.core.UriInfo&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt;
+        &lt;name&gt;javax.ws.rs.core.HttpHeaders&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt;
+        &lt;name&gt;javax.ws.rs.core.Request&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt;
+        &lt;name&gt;javax.ws.rs.core.SecurityContext&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt;
+        &lt;name&gt;javax.ws.rs.ext.Providers&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt;
+        &lt;name&gt;javax.ws.rs.ext.ContextResolver&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt;
+        &lt;name&gt;javax.servlet.http.HttpServletRequest&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt;
+        &lt;name&gt;javax.servlet.http.HttpServletResponse&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt;
+        &lt;name&gt;javax.ws.rs.core.Application&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- meecrowave registers it programmatically --&gt;
+        &lt;name&gt;org.apache.meecrowave.cxf.JAXRSFieldInjectionInterceptor&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.bus.managers.CXFBusLifeCycleManager&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.bus.managers.ClientLifeCycleManagerImpl&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.bus.managers.EndpointResolverRegistryImpl&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.bus.managers.HeaderManagerImpl&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.bus.managers.PhaseManagerImpl&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.bus.managers.ServerLifeCycleManagerImpl&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.bus.managers.ServerRegistryImpl&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.bus.managers.WorkQueueManagerImpl&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.bus.resource.ResourceManagerImpl&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.catalog.OASISCatalogManager&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.common.spi.ClassLoaderProxyService&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.common.util.ASMHelperImpl&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.service.factory.FactoryBeanListenerManager&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.transport.http.HTTPTransportFactory&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.catalog.OASISCatalogManager&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.endpoint.ClientLifeCycleManager&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.buslifecycle.BusLifeCycleManager&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.phase.PhaseManager&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.resource.ResourceManager&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.headers.HeaderManager&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.common.util.ASMHelper&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.common.spi.ClassLoaderService&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.endpoint.EndpointResolverRegistry&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.endpoint.ServerLifeCycleManager&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.workqueue.WorkQueueManager&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- CXF SPI --&gt;
+        &lt;name&gt;org.apache.cxf.endpoint.ServerRegistry&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt;
+        &lt;name&gt;org.apache.cxf.cdi.DefaultApplication&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt;
+        &lt;name&gt;org.apache.cxf.transport.http.Headers&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt;
+        &lt;name&gt;org.apache.cxf.jaxrs.JAXRSBindingFactory&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- used by cxf-cdi to test owb-web presence --&gt;
+        &lt;name&gt;org.apache.webbeans.web.lifecycle.WebContainerLifecycle&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- instantiated by a SPI --&gt;
+        &lt;name&gt;org.apache.meecrowave.logging.tomcat.LogFacade&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- for default binding since meecrowave uses a filter for jaxrs --&gt;
+        &lt;name&gt;org.apache.catalina.servlets.DefaultServlet&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- tomcat does reflection on it --&gt;
+        &lt;name&gt;org.apache.catalina.loader.WebappClassLoader&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- tomcat does reflection on it --&gt;
+        &lt;name&gt;org.apache.tomcat.util.descriptor.web.WebXml&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- tomcat does reflection on it --&gt;
+        &lt;name&gt;org.apache.coyote.http11.Http11NioProtocol&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- tomcat instantiates it by reflection --&gt;
+        &lt;name&gt;org.apache.catalina.authenticator.NonLoginAuthenticator&lt;/name&gt;
+        &lt;allPublicConstructors&gt;true&lt;/allPublicConstructors&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- should be all API a proxy can be created for --&gt;
+        &lt;name&gt;javax.servlet.ServletContext&lt;/name&gt;
+        &lt;allPublicMethods&gt;true&lt;/allPublicMethods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- used by meecrowave integration --&gt;
+        &lt;name&gt;org.apache.cxf.jaxrs.provider.ProviderFactory&lt;/name&gt;
+        &lt;methods&gt;
+          &lt;method&gt;
+            &lt;name&gt;getReadersWriters&lt;/name&gt;
+          &lt;/method&gt;
+        &lt;/methods&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- used by meecrowave integration --&gt;
+        &lt;name&gt;org.apache.johnzon.jaxrs.jsonb.jaxrs.JsonbJaxrsProvider$ProvidedInstance&lt;/name&gt;
+        &lt;fields&gt;
+          &lt;field&gt;
+            &lt;name&gt;instance&lt;/name&gt;
+          &lt;/field&gt;
+        &lt;/fields&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt;
+        &lt;name&gt;org.apache.johnzon.jaxrs.jsonb.jaxrs.JsonbJaxrsProvider&lt;/name&gt;
+        &lt;fields&gt;
+          &lt;field&gt;
+            &lt;name&gt;providers&lt;/name&gt;
+          &lt;/field&gt;
+        &lt;/fields&gt;
+      &lt;/reflection&gt;
+      &lt;reflection&gt; &lt;!-- not needed with arthur 1.0.3 --&gt;
+        &lt;name&gt;org.apache.xbean.finder.AnnotationFinder&lt;/name&gt;
+        &lt;fields&gt;
+          &lt;field&gt;
+            &lt;name&gt;linking&lt;/name&gt;
+            &lt;allowWrite&gt;true&lt;/allowWrite&gt;
+          &lt;/field&gt;
+        &lt;/fields&gt;
+      &lt;/reflection&gt;
+    &lt;/reflections&gt;
+    &lt;resources&gt; &lt;!-- register tomcat resources and optionally default meecrowave app configuration --&gt;
+      &lt;resource&gt;
+        &lt;pattern&gt;org\/apache\/catalina\/.*\.properties&lt;/pattern&gt;
+      &lt;/resource&gt;
+      &lt;resource&gt;
+        &lt;pattern&gt;javax\/servlet\/(jsp\/)?resources\/.*\.(xsd|dtd)&lt;/pattern&gt;
+      &lt;/resource&gt;
+      &lt;resource&gt;
+        &lt;pattern&gt;meecrowave\.properties&lt;/pattern&gt;
+      &lt;/resource&gt;
+      &lt;resource&gt;
+        &lt;pattern&gt;META-INF/cxf/bus-extensions\.txt&lt;/pattern&gt;
+      &lt;/resource&gt;
+      &lt;resource&gt;
+        &lt;pattern&gt;org/apache/cxf/version/version\.properties&lt;/pattern&gt;
+      &lt;/resource&gt;
+    &lt;/resources&gt;
+    &lt;includeResourceBundles&gt;
+      &lt;includeResourceBundle&gt;org.apache.cxf.Messages&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.cxf.interceptor.Messages&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.cxf.bus.managers.Messages&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.cxf.jaxrs.Messages&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.cxf.jaxrs.provider.Messages&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.cxf.jaxrs.interceptor.Messages&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.cxf.jaxrs.utils.Messages&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.cxf.transport.servlet.Messages&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.authenticator.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.connector.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.core.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.deploy.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.filters.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.loader.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.manager.host.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.manager.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.mapper.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.realm.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.security.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.servlets.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.session.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.startup.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.users.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.util.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.valves.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.valves.rewrite.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.catalina.webresources.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.coyote.http11.filters.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.coyote.http11.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.coyote.http11.upgrade.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.coyote.http2.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.coyote.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.buf.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.codec.binary.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.compat.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.descriptor.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.descriptor.tld.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.descriptor.web.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.digester.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.http.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.http.parser.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.json.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.modeler.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.net.jsse.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.net.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.net.openssl.ciphers.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.net.openssl.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.scan.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.security.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;org.apache.tomcat.util.threads.res.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;javax.servlet.LocalStrings&lt;/includeResourceBundle&gt;
+      &lt;includeResourceBundle&gt;javax.servlet.http.LocalStrings&lt;/includeResourceBundle&gt;
+    &lt;/includeResourceBundles&gt;
+    &lt;extensionProperties&gt;
+      &lt;extension.annotation.custom.annotations.properties&gt;
+        javax.json.bind.annotation.JsonbProperty:allDeclaredConstructors=true|allDeclaredMethods=true|allDeclaredFields=true,
+        org.apache.meecrowave.runner.cli.CliOption:allDeclaredFields=true
+      &lt;/extension.annotation.custom.annotations.properties&gt;
+      &lt;extension.openwebbeans.extension.excludes&gt;
+        org.apache.cxf.Bus,org.apache.cxf.common.util.ClassUnwrapper,
+        org.apache.cxf.interceptor.InterceptorProvider,
+        io.yupiik.logging.jul,
+        org.apache.openwebbeans.se
+      &lt;/extension.openwebbeans.extension.excludes&gt;
+    &lt;/extensionProperties&gt;
+    &lt;customOptions&gt; &lt;!-- force JUL usage since Log4j2 does not work well at all on GraalVM --&gt;
+      &lt;customOption&gt;-Dopenwebbeans.logging.factory=org.apache.webbeans.logger.JULLoggerFactory&lt;/customOption&gt;
+      &lt;customOption&gt;-Djava.util.logging.manager=io.yupiik.logging.jul.YupiikLogManager&lt;/customOption&gt;
+    &lt;/customOptions&gt;
+  &lt;/configuration&gt;
+&lt;/plugin&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In terms of dependencies you can start with this for example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependencies&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
+    &lt;artifactId&gt;meecrowave-specs-api&lt;/artifactId&gt;
+    &lt;version&gt;${meecrowave.version}&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
+    &lt;artifactId&gt;meecrowave-core&lt;/artifactId&gt;
+    &lt;version&gt;${meecrowave.version}&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt; &lt;!-- we use this to have a reconfigurable JUL runtime in native binary --&gt;
+    &lt;groupId&gt;io.yupiik.logging&lt;/groupId&gt;
+    &lt;artifactId&gt;yupiik-logging-jul&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt; &lt;!-- using openwebbeans arthur knight, graalvm will use the scanner service from this module --&gt;
+    &lt;groupId&gt;org.apache.openwebbeans&lt;/groupId&gt;
+    &lt;artifactId&gt;openwebbeans-se&lt;/artifactId&gt;
+    &lt;version&gt;2.0.22&lt;/version&gt;
+  &lt;/dependency&gt;
+  &lt;dependency&gt;
+    &lt;groupId&gt;commons-cli&lt;/groupId&gt;
+    &lt;artifactId&gt;commons-cli&lt;/artifactId&gt;
+    &lt;version&gt;1.4&lt;/version&gt;
+  &lt;/dependency&gt;
+&lt;/dependencies&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Last step is to disable log4j2 and tomcat scanning by default - indeed previous setup works if passed on the command line but since it is always the same settings it is saner to put them in a <code>meecrowave.properties</code> in the classpath:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="properties" class="language-properties hljs">tomcat-scanning = false
+logging-global-setup = false
+log4j2-jul-bridge = false</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+using a profile or a binary dedicated module you can keep the JVM mode using Log4j2 and the native mode using Yupiik Logging (just tweak dependencies and optionally use arthur exclude configuration).
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+an Arthur knight can be developed to replace all that configuration, it will auto-setup meecrowave/cxf/tomcat needed reflection, scan present tomcat and cxf bundles, auto register CXF SPI (bus-extensions.txt - optionally filtering them and the not loadable ones) classes for reflection, spec classes (<code>org.apache.cxf.jaxrs.utils.InjectionUtils.STANDARD_CONTEXT_CLASSES</code>), and likely inherit from openwebbeans extension CDI integration.
+It means that once done, using meecrowave can be as simple as <code>&lt;graalExtension&gt;meecrowave&lt;/graalExtension&gt;</code>. If you think it is worth the effort, don&#8217;t hesitate to do a pull request on Arthur or send a mail on <a href="mailto:dev@openwebbeans.apache.org">dev@openwebbeans.apache.org</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>With this setup you should get a <code>target/*.graal.bin</code> binary executable containing your application and meecrowave, just launch it to start your application and use it as a standard Meecrowave CLI!</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+until Apache OpenWebBeans 2.0.22, annotated mode can miss some beans, ensure to use 2.0.22 or more if you don&#8217;t explicitly add a beans.xml.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+you can need to adjust a few classes depending what you use of CXF. Previous setup will be sufficient for a module containing:
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>+</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">// test with:
+// $ curl http://localhost:8080/hello?name=foo -H 'accept: application/json'
+@Path("hello")
+@ApplicationScoped
+public class MyEndpoint {
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Message get(@QueryParam("name") final String name) {
+        return new Message("Hello " + name + "!");
+    }
+
+    @Data
+    public static class Message {
+        @JsonbProperty // mark at least one property to let arthur find it, see extension.annotation.custom.annotations.properties
+        private String message;
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+            </section><!--//doc-section-->
+
+
+
+
+        </div><!--//content-inner-->
+    </div><!--//doc-content-->
+
+    <div class="doc-sidebar">
+        <nav id="doc-nav">
+            <ul id="doc-menu" class="nav doc-menu hidden-xs affix-top" data-spy="affix">
+                <li><a href="/meecrowave/index.html">Home</a></li>
+                <li><a href="/meecrowave/start.html">Quick Start</a></li>
+                <li><a href="/meecrowave/components.html">Components</a></li>
+                <li><a href="/meecrowave/download.html">Download</a></li>
+                <li><a href="/meecrowave/community.html">Community</a></li>
+            </ul><!--//doc-menu-->
+        </nav>
+    </div>
+</div>
+
+</div><!--//page-wrapper-->
+
+    <footer class="footer text-center">
+        <div class="container">
+          <div class="row">
+            <p >Copyright &copy; 2016-2020
+                <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            </p>
+          </div>
+        </div>
+
+        <div class="container"><!-- don't remove it otherwise theme is no more creative common -->
+            <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+
+    <!-- Main Javascript -->
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/java.min.js" integrity="sha256-21Z1xKC/FsaqN9z9jIER9xiX4XbV5buFEVdkZvsfBIc=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js" integrity="sha256-0B+Ps1zCncLC5JIOQ+MtIhI/UhbJkYbxWsJowD3c+tk=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js" integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/bash.min.js" integrity="sha256-zXrlim8wsIvcEFjsD3THiAfTvtPZifqx8q0rxegiWQc=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
+
+</body>
+</html>
+
+

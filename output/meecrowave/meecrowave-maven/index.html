@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
     <!-- highlighting -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/idea.min.css" integrity="sha256-rYB1c4yTU5UJB//rod7DtBo1JM6HAme/9Vd+VesFG2U=" crossorigin="anonymous" />
 
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
@@ -66,480 +66,538 @@
 
 
             <section class="doc-section">
-                <div id="preamble"> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Coordinates:</p> 
-  </div> 
-  <div class="listingblock"> 
-   <div class="content"> 
-    <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;plugin&gt;
+                <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Coordinates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;plugin&gt;
   &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
   &lt;artifactId&gt;meecrowave-maven-plugin&lt;/artifactId&gt;
   &lt;version&gt;${meecrowave.version}&lt;/version&gt;
-&lt;/plugin&gt;</code></pre> 
-   </div> 
-  </div> 
-  <div class="admonitionblock tip"> 
-   <table> 
-    <tbody>
-     <tr> 
-      <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
-      <td class="content"> most of the configuration is inherited from meecrowave-core. </td> 
-     </tr> 
-    </tbody>
-   </table> 
-  </div> 
-  <div class="paragraph"> 
-   <p>Here are the available options (see core configuration for the details):</p> 
-  </div> 
-  <table class="tableblock frame-all grid-all spread table table-bordered"> 
-   <colgroup> 
-    <col style="width: 33.3333%;"> 
-    <col style="width: 33.3333%;"> 
-    <col style="width: 33.3334%;"> 
-   </colgroup> 
-   <thead> 
-    <tr> 
-     <th class="tableblock halign-left valign-top">Name</th> 
-     <th class="tableblock halign-left valign-top">Default</th> 
-     <th class="tableblock halign-left valign-top">Property</th> 
-    </tr> 
-   </thead> 
-   <tbody> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">cdiConversation</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.cdiConversation}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">clientAuth</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.clientAuth}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">conf</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.conf}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">context</p></td> 
-     <td class="tableblock halign-left valign-top"></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.context}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">defaultSSLHostConfigName</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.default-ssl-hostconfig-name}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">deleteBaseOnStartup</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.deleteBaseOnStartup}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">dir</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.dir}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">forceLog4j2Shutdown</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.force-log4j2-shutdown}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">host</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">localhost</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.host}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">http2</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.http2}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">httpPort</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">8080</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.http}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">httpsPort</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">8443</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.https}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">initializeClientBus</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.initialiaze-client-bus}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">injectServletContainerInitializer</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.servlet-container-initializer-injections}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsAutoActivateBeanValidation</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jaxrs-beanvalidation}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsDefaultProviders</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jaxrs-default-providers}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsLogProviders</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jaxrsLogProviders}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsMapping</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">/*</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jaxrsMapping}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsProviderSetup</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jaxrs-provider-setup}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jaxwsSupportIfAvailable</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jaxws-support}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbBinaryStrategy</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-binary-strategy}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbEncoding</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">UTF-8</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-encoding}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbIJson</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-ijson}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbNamingStrategy</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-naming-strategy}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbNulls</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-nulls}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbOrderStrategy</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-order-strategy}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonbPrettify</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-prettify}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonpBufferStrategy</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">QUEUE</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonp-buffer-strategy}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonpMaxReadBufferLen</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">65536</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonp-max-read-buffer-size}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonpMaxStringLen</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">10485760</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonp-max-string-length}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonpMaxWriteBufferLen</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">65536</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonp-max-write-buffer-size}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonpPrettify</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonp-prettify}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">jsonpSupportsComment</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonp-comments}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">keepServerXmlAsThis</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.keepServerXmlAsThis}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">keyAlias</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.keyAlias}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">keystoreFile</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.keystoreFile}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">keystorePass</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.keystorePass}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">keystoreType</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">JKS</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.keystoreType}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">loggingGlobalSetup</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.logging-global-setup}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">meecrowaveProperties</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">meecrowave.properties</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.meecrowave-properties}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">modules</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${project.build.outputDirectory}</p></td> 
-     <td class="tableblock halign-left valign-top"></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">project</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${project}</p></td> 
-     <td class="tableblock halign-left valign-top"></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">quickSession</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.quickSession}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">scanningExcludes</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.scanning-exclude}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">scanningIncludes</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.scanning-include}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">scanningPackageExcludes</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.scanning-package-exclude}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">scanningPackageIncludes</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.scanning-package-include}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">serverXml</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.serverXml}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">sharedLibraries</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.shared-libraries}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">skip</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.skip}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">skipHttp</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.skipHttp}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">ssl</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.ssl}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">sslProtocol</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.sslProtocol}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">stopPort</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">8005</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.stop}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">tempDir</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tempDir}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">tomcatAccessLogPattern</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tomcatAccessLogPattern}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">tomcatAutoSetup</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tomcatAutoSetup}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">tomcatFilter</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tomcatFilter}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">tomcatNoJmx</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tomcatNoJmx}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">tomcatScanning</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tomcatScanning}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">tomcatWrapLoader</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tomcatWrapLoader}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">useClasspathDeployment</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.force-classpath-deployment}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">useLog4j2JulLogManager</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.log4j2-jul-bridge}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">useShutdownHook</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.shutdown-hook}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">useTomcatDefaults</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.useTomcatDefaults}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">watcherBouncing</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.watcher-bounding}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">webResourceCached</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.webResourceCached}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">webSessionCookieConfig</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.session-cookie-config}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">webSessionTimeout</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.session-timeout}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">webXml</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.webXml}</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">webapp</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${project.basedir}/src/main/webapp</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.webapp}</p></td> 
-    </tr> 
-   </tbody> 
-  </table> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_bundling">Bundling</h2> 
- <div class="sectionbody"> 
-  <div class="listingblock"> 
-   <div class="content"> 
-    <pre class="highlightjs highlight"><code>mvn meecrowave:bundle</code></pre> 
-   </div> 
-  </div> 
-  <div class="paragraph"> 
-   <p>This maven goal will create a zip/tar.gz (configurable) ready to launch your application.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p>The layout if the following one:</p> 
-  </div> 
-  <div class="listingblock"> 
-   <div class="content"> 
-    <pre class="highlightjs highlight"><code>.
+&lt;/plugin&gt;</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+most of the configuration is inherited from meecrowave-core.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Here are the available options (see core configuration for the details):</p>
+</div>
+<table class="tableblock frame-all grid-all stretch table table-bordered">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Property</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">antiResourceLocking</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.antiResourceLocking}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cdiConversation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.cdiConversation}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">clientAuth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.clientAuth}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">conf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.conf}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">context</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.context}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">defaultSSLHostConfigName</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.default-ssl-hostconfig-name}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">deleteBaseOnStartup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.deleteBaseOnStartup}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.dir}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">forceLog4j2Shutdown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.force-log4j2-shutdown}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">host</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">localhost</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.host}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">http2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.http2}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpPort</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8080</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.http}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">httpsPort</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8443</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.https}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">initializeClientBus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.initialiaze-client-bus}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">injectServletContainerInitializer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.servlet-container-initializer-injections}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsAutoActivateBeanValidation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jaxrs-beanvalidation}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsDefaultProviders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jaxrs-default-providers}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsLogProviders</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jaxrsLogProviders}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsMapping</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/*</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jaxrsMapping}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jaxrsProviderSetup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jaxrs-provider-setup}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jaxwsSupportIfAvailable</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jaxws-support}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsonbBinaryStrategy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-binary-strategy}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsonbEncoding</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">UTF-8</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-encoding}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsonbIJson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-ijson}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsonbNamingStrategy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-naming-strategy}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsonbNulls</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-nulls}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsonbOrderStrategy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-order-strategy}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsonbPrettify</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonb-prettify}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsonpBufferStrategy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">QUEUE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonp-buffer-strategy}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsonpMaxReadBufferLen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">65536</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonp-max-read-buffer-size}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsonpMaxStringLen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10485760</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonp-max-string-length}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsonpMaxWriteBufferLen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">65536</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonp-max-write-buffer-size}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsonpPrettify</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonp-prettify}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jsonpSupportsComment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.jsonp-comments}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keepServerXmlAsThis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.keepServerXmlAsThis}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keyAlias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.keyAlias}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keystoreFile</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.keystoreFile}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keystorePass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.keystorePass}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">keystoreType</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JKS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.keystoreType}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">loggingGlobalSetup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.logging-global-setup}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meecrowaveProperties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meecrowave.properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.meecrowave-properties}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">modules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${project.build.outputDirectory}</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">project</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${project}</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">quickSession</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.quickSession}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">reloadGoals</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.reload-goals}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scanningExcludes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.scanning-exclude}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scanningIncludes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.scanning-include}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scanningPackageExcludes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.scanning-package-exclude}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">scanningPackageIncludes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.scanning-package-include}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">serverXml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.serverXml}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">session</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${session}</p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sharedLibraries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.shared-libraries}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">skip</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.skip}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">skipHttp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.skipHttp}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ssl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.ssl}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sslProtocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.sslProtocol}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">stopPort</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8005</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.stop}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tempDir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tempDir}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tomcatAccessLogPattern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tomcatAccessLogPattern}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tomcatAutoSetup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tomcatAutoSetup}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tomcatFilter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tomcatFilter}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tomcatJspDevelopment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tomcatJspDevelopment}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tomcatNoJmx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tomcatNoJmx}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tomcatScanning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tomcatScanning}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">tomcatWrapLoader</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.tomcatWrapLoader}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">useClasspathDeployment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.force-classpath-deployment}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">useLog4j2JulLogManager</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.log4j2-jul-bridge}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">useShutdownHook</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.shutdown-hook}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">useTomcatDefaults</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.useTomcatDefaults}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">watcherBouncing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">0</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.watcher-bounding}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">webResourceCached</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.webResourceCached}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">webSessionCookieConfig</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.session-cookie-config}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">webSessionTimeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.session-timeout}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">webXml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.webXml}</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">webapp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${project.basedir}/src/main/webapp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">${meecrowave.webapp}</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_run">Run</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><code>mvn meecrowave:run</code> enables you to start a server configured in your <code>pom.xml</code>.
+Once started, you have a few commands you can use to interact with the server:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>quit</code>/<code>exit</code>: shutdown properly the server.</p>
+</li>
+<li>
+<p><code>reload</code> (since 1.2.9): optionally relaunch a maven compilation - see configuration - and reload the web context.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_bundling">Bundling</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">mvn meecrowave:bundle</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This maven goal will create a zip/tar.gz (configurable) ready to launch your application.</p>
+</div>
+<div class="paragraph">
+<p>The layout if the following one:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">.
 ├── bin
-│&nbsp;&nbsp; └── meecrowave.sh
+│   └── meecrowave.sh
 ├── conf
-│&nbsp;&nbsp; ├── log4j2.xml
-│&nbsp;&nbsp; └── meecrowave.properties
+│   ├── log4j2.xml
+│   └── meecrowave.properties
 ├── lib
-│&nbsp;&nbsp; └── *.jar
+│   └── *.jar
 ├── logs
-│&nbsp;&nbsp; └── meecrowave.logls l
-└── temp</code></pre> 
-   </div> 
-  </div> 
-  <div class="paragraph"> 
-   <p>conf folder supports out of the box these files (but you can add your own if needed):</p> 
-  </div> 
-  <div class="ulist"> 
-   <ul> 
-    <li> <p>log4j2.xml</p> </li> 
-    <li> <p>server.xml</p> </li> 
-    <li> <p>meecrowave.properties</p> </li> 
-   </ul> 
-  </div> 
-  <div class="paragraph"> 
-   <p>You can acess the root folder of the distribution reading the system property <code>meecrowave.base</code>.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p><code>meecrowave.properties</code> supports all configuration options of the cli (just remove the <code>--</code>): <a href="https://openwebbeans.apache.org/meecrowave/meecrowave-core/cli.html" class="bare">https://openwebbeans.apache.org/meecrowave/meecrowave-core/cli.html</a>.</p>
-  </div> 
-  <div class="paragraph"> 
-   <p>Note: you can also split like Tomcat MEECROWAVE_BASE and MEECROWAVE_HOME if you want to extract meecrowave stack in a separate folder (from the application) to be able to update it independently.</p> 
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_shading">Shading</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Plain Maven shade plugin enables you to build fatjar with Maven.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p>Points to take care are:</p> 
-  </div> 
-  <div class="olist arabic"> 
-   <ol class="arabic"> 
-    <li> <p>merge CXF resources</p> </li> 
-    <li> <p>merge Log4j2 resources</p> </li> 
-    <li> <p>merge OpenWebBeans resources</p> </li> 
-    <li> <p>merge SPI files (META-INF/services)</p> </li> 
-    <li> <p>ensure signatures are still valid in the aggregated jar</p> </li> 
-   </ol> 
-  </div> 
-  <div class="listingblock"> 
-   <div class="content"> 
-    <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;plugin&gt;
+│   └── meecrowave.logls l
+└── temp</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>conf folder supports out of the box these files (but you can add your own if needed):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>log4j2.xml</p>
+</li>
+<li>
+<p>server.xml</p>
+</li>
+<li>
+<p>meecrowave.properties</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can acess the root folder of the distribution reading the system property <code>meecrowave.base</code>.</p>
+</div>
+<div class="paragraph">
+<p><code>meecrowave.properties</code> supports all configuration options of the cli (just remove the <code>--</code>): <a href="http://openwebbeans.apache.org/meecrowave/meecrowave-core/cli.html" class="bare">http://openwebbeans.apache.org/meecrowave/meecrowave-core/cli.html</a>.</p>
+</div>
+<div class="paragraph">
+<p>Note: you can also split like Tomcat MEECROWAVE_BASE and MEECROWAVE_HOME if you want to extract meecrowave stack in a separate folder (from the application) to be able to update
+it independently.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_shading">Shading</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Plain Maven shade plugin enables you to build fatjar with Maven.</p>
+</div>
+<div class="paragraph">
+<p>Points to take care are:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>merge CXF resources</p>
+</li>
+<li>
+<p>merge Log4j2 resources</p>
+</li>
+<li>
+<p>merge OpenWebBeans resources</p>
+</li>
+<li>
+<p>merge SPI files (META-INF/services)</p>
+</li>
+<li>
+<p>ensure signatures are still valid in the aggregated jar</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;plugin&gt;
   &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
   &lt;artifactId&gt;maven-shade-plugin&lt;/artifactId&gt;
-  &lt;version&gt;2.4.3&lt;/version&gt;
+  &lt;version&gt;3.2.4&lt;/version&gt;
   &lt;executions&gt;
     &lt;execution&gt;
       &lt;id&gt;bundle&lt;/id&gt;
@@ -561,9 +619,8 @@
           &lt;transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer"&gt;
             &lt;resource&gt;log4j2.component.properties&lt;/resource&gt;
           &lt;/transformer&gt;
-          &lt;transformer
-              implementation="com.github.edwgiz.mavenShadePlugin.log4j2CacheTransformer.PluginsCacheFileTransformer"/&gt;
-          &lt;transformer implementation="org.apache.openwebbeans.maven.shade.OpenWebBeansPropertiesTransformer"/&gt;
+          &lt;transformer implementation="com.github.edwgiz.maven_shade_plugin.log4j2_cache_transformer.PluginsCacheFileTransformer" /&gt;
+          &lt;transformer implementation="org.apache.maven.plugins.shade.resource.properties.OpenWebBeansPropertiesTransformer" /&gt;
           &lt;transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/&gt;
         &lt;/transformers&gt;
         &lt;filters&gt;
@@ -585,20 +642,15 @@
   &lt;/executions&gt;
   &lt;dependencies&gt;
     &lt;dependency&gt;
-      &lt;groupId&gt;org.apache.openwebbeans&lt;/groupId&gt;
-      &lt;artifactId&gt;openwebbeans-maven&lt;/artifactId&gt;
-      &lt;version&gt;1.7.0&lt;/version&gt;
-    &lt;/dependency&gt;
-    &lt;dependency&gt;
       &lt;groupId&gt;com.github.edwgiz&lt;/groupId&gt;
       &lt;artifactId&gt;maven-shade-plugin.log4j2-cachefile-transformer&lt;/artifactId&gt;
-      &lt;version&gt;2.1&lt;/version&gt;
+      &lt;version&gt;2.13.3&lt;/version&gt;
     &lt;/dependency&gt;
   &lt;/dependencies&gt;
-&lt;/plugin&gt;</code></pre> 
-   </div> 
-  </div> 
- </div> 
+&lt;/plugin&gt;</code></pre>
+</div>
+</div>
+</div>
 </div>
             </section><!--//doc-section-->
 
@@ -626,8 +678,8 @@
     <footer class="footer text-center">
         <div class="container">
           <div class="row">
-            <p >Copyright &copy; 2016
-                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            <p >Copyright &copy; 2016-2020
+                <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
             </p>
           </div>
         </div>
@@ -642,7 +694,11 @@
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/java.min.js" integrity="sha256-21Z1xKC/FsaqN9z9jIER9xiX4XbV5buFEVdkZvsfBIc=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js" integrity="sha256-0B+Ps1zCncLC5JIOQ+MtIhI/UhbJkYbxWsJowD3c+tk=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js" integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/bash.min.js" integrity="sha256-zXrlim8wsIvcEFjsD3THiAfTvtPZifqx8q0rxegiWQc=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
 
 </body>

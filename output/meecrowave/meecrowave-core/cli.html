@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
     <!-- highlighting -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/idea.min.css" integrity="sha256-rYB1c4yTU5UJB//rod7DtBo1JM6HAme/9Vd+VesFG2U=" crossorigin="anonymous" />
 
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
@@ -66,358 +66,380 @@
 
 
             <section class="doc-section">
-                <div id="preamble"> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Meecrowave provides a CLI (Command Line Interface) called <code>org.apache.meecrowave.runner.Cli</code>.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p>It can be used to deploy the java classpath or a war. Here are the main options:</p> 
-  </div> 
-  <table class="tableblock frame-all grid-all spread table table-bordered"> 
-   <colgroup> 
-    <col style="width: 50%;"> 
-    <col style="width: 50%;"> 
-   </colgroup> 
-   <thead> 
-    <tr> 
-     <th class="tableblock halign-left valign-top">Name</th> 
-     <th class="tableblock halign-left valign-top">Description</th> 
-    </tr> 
-   </thead> 
-   <tbody> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--cdi-conversation</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should CDI conversation be activated</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--client-auth</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore client authentication</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--conf</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Conf folder to synchronize</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--connector</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Custom connectors</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--cxf-servlet-params</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Init parameters passed to CXF servlet</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--default-ssl-hostconfig-name</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">The name of the default SSLHostConfig that will be used for secure https connections.</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--delete-on-startup</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should the directory be cleaned on startup if existing</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--dir</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Root folder if provided otherwise a fake one is created in tmp-dir</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--host</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Default host</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--http2</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Activate HTTP 2</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--http</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTP port</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--https</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS port</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--cxf-initialize-client-bus</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should the client bus be set. If false the server one will likely be reused.</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--servlet-container-initializer-injection</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should ServletContainerInitialize support injections.</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jaxrs-beanvalidation</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should bean validation be activated on JAX-RS endpoint if present in the classpath.</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jaxrs-default-providers</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">If jaxrsProviderSetup is true the list of default providers to load (or defaulting to johnson jsonb and jsonp ones)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jaxrs-log-provider</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JAX-RS providers be logged</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jaxrs-mapping</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Default jaxrs mapping</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jaxrs-provider-setup</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should default JAX-RS provider be configured</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jaxws-support-if-present</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should @WebService CDI beans be deployed if cxf-rt-frontend-jaxws is in the classpath.</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-binary-strategy</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider prettify the output</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-encoding</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Which encoding provider JSON-B should use</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-ijson</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider comply to I-JSON</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-naming-strategy</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider prettify the output</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-nulls</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider serialize nulls</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-order-strategy</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider prettify the output</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-prettify</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider prettify the output</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jsonp-buffer-strategy</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">JSON-P JAX-RS provider buffer strategy (see johnzon)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jsonp-read-buffer-length</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">JSON-P JAX-RS provider read buffer limit size (see johnzon)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jsonp-max-string-length</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">JSON-P JAX-RS provider max string limit size (see johnzon)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jsonp-write-buffer-length</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">JSON-P JAX-RS provider write buffer limit size (see johnzon)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jsonp-supports-comment</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-P JAX-RS provider prettify the outputs (see johnzon)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--jsonp-supports-comment</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-P JAX-RS provider support comments (see johnzon)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--keep-server-xml-as-this</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Don’t replace ports in server.xml</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--keystore-alias</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore alias</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--keystore-file</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore location</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--keystore-password</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore password</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--keystore-type</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore type</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--logging-global-setup</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should logging be configured to use log4j2 (it is global)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--login-config</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">web.xml login config</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--meecrowave-properties</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Loads a meecrowave properties, defaults to meecrowave.properties.</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--pid-file</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">A file path to write the process id if the server starts</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--properties</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Passthrough properties</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--quick-session</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should an unsecured but fast session id generator be used</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--realm</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">realm</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--roles</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">In memory roles</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--scanning-exclude</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">A forced exclude list of jar names (comma separated values)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--scanning-include</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">A forced include list of jar names (comma separated values)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--scanning-package-exclude</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">A forced exclude list of packages names (comma separated values)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--scanning-package-include</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">A forced include list of packages names (comma separated values)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--security-constraint</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">web.xml security constraint</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--server-xml</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Provided server.xml</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--shared-libraries</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">A folder containing shared libraries.</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--skip-http</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Skip HTTP connector</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--ssl</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Use HTTPS</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--ssl-protocol</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS protocol</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--stop</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Shutdown port if used or -1</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--tmp-dir</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Temporary directory</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-access-log-pattern</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Activates and configure the access log valve. Value example: '%h %l %u %t "%r" %s %b "%{Referer}i" "%{User-Agent}i"'</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-default-setup</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Add default servlet</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-filter</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">A Tomcat JarScanFilter</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-skip-jmx</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">(Experimental) Should Tomcat MBeans be skipped.</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-scanning</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should Tomcat scanning be used (@HandleTypes, @WebXXX)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-wrap-loader</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">(Experimental) When deploying a classpath (current classloader), should meecrowave wrap the loader to define another loader identity but still use the same classes and resources.</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--log4j2-jul-bridge</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should JUL logs be redirected to Log4j2 - only works before JUL usage.</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--use-shutdown-hook</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Use shutdown hook to automatically stop the container on Ctrl+C</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-default</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Should Tomcat default be set (session timeout, mime mapping etc…​)</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--users</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">In memory users</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--watcher-bouncing</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Activate redeployment on directories update using this bouncing.</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--web-resource-cached</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Cache web resources</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--web-session-cookie-config</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Force the cookie-config, it uses a properties syntax with the keys being the web.xml tag names.</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--web-session-timeout</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Force the session timeout for webapps</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--web-xml</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Global web.xml</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--help</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Show the CLI help/usage</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--context</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">The context to use to deploy the webapp</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--webapp</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Location of the webapp, if not set the classpath will be deployed</p></td> 
-    </tr> 
-    <tr> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">--docbase</p></td> 
-     <td class="tableblock halign-left valign-top"><p class="tableblock">Location of the docbase for a classpath deployment</p></td> 
-    </tr> 
-   </tbody> 
-  </table> 
-  <div class="paragraph"> 
-   <p>Note that <code>help</code> command is supported as well.</p> 
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_extending_the_cli">Extending the CLI</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>You can add your own CLI options implementing <code>org.apache.meecrowave.runner.Cli$Options</code> (just a marker interface, no logic to code) and use <code>@CliOption</code> to define fields as coming from the CLI arguments. To register your option bean just add it in <code>META-INF/services/org.apache.meecrowave.runner.Cli$Options</code>.</p> 
-  </div> 
-  <div class="admonitionblock tip"> 
-   <table> 
-    <tbody>
-     <tr> 
-      <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
-      <td class="content"> <code>Meecrowave.Builder</code> provides a <code>getExtension(type)</code> which can be used to get this kind of extension. This is common and works in all modes (arquillian, JUnit, embedded etc…​) replacing the arguments by properties on <code>Meecrowave.Builder</code> instance. </td> 
-     </tr> 
-    </tbody>
-   </table> 
-  </div> 
- </div> 
+                <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Meecrowave provides a CLI (Command Line Interface) called <code>org.apache.meecrowave.runner.Cli</code>.</p>
+</div>
+<div class="paragraph">
+<p>It can be used to deploy the java classpath or a war. Here are the main options:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch table table-bordered">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-antiresourcelocking</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should Tomcat anti resource locking feature be activated on StandardContext.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--cdi-conversation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should CDI conversation be activated</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--client-auth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore client authentication</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--conf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Conf folder to synchronize</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--connector</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Custom connectors</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-context-configurer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configurers for all webapps. The Consumer&lt;Context&gt; instances will be applied to all deployments.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--cxf-servlet-params</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Init parameters passed to CXF servlet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--default-ssl-hostconfig-name</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The name of the default SSLHostConfig that will be used for secure https connections.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--delete-on-startup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should the directory be cleaned on startup if existing</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--dir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Root folder if provided otherwise a fake one is created in tmp-dir</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--host</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default host</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--http2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Activate HTTP 2</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--http</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTP port</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--https</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS port</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--cxf-initialize-client-bus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should the client bus be set. If false the server one will likely be reused.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--servlet-container-initializer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ServletContainerInitializer instances.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--servlet-container-initializer-injection</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should ServletContainerInitialize support injections.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jaxrs-beanvalidation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should bean validation be activated on JAX-RS endpoint if present in the classpath.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jaxrs-default-providers</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">If jaxrsProviderSetup is true the list of default providers to load (or defaulting to johnson jsonb and jsonp ones)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jaxrs-log-provider</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should JAX-RS providers be logged</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jaxrs-mapping</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Default jaxrs mapping</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jaxrs-provider-setup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should default JAX-RS provider be configured</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jaxws-support-if-present</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should @WebService CDI beans be deployed if cxf-rt-frontend-jaxws is in the classpath.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-binary-strategy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider prettify the output</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-encoding</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Which encoding provider JSON-B should use</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-ijson</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider comply to I-JSON</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-naming-strategy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider prettify the output</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-nulls</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider serialize nulls</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-order-strategy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider prettify the output</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jsonb-prettify</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-B provider prettify the output</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jsonp-buffer-strategy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON-P JAX-RS provider buffer strategy (see johnzon)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jsonp-read-buffer-length</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON-P JAX-RS provider read buffer limit size (see johnzon)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jsonp-max-string-length</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON-P JAX-RS provider max string limit size (see johnzon)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jsonp-write-buffer-length</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JSON-P JAX-RS provider write buffer limit size (see johnzon)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jsonp-supports-comment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-P JAX-RS provider prettify the outputs (see johnzon)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--jsonp-supports-comment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should JSON-P JAX-RS provider support comments (see johnzon)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--keep-server-xml-as-this</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Don&#8217;t replace ports in server.xml</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--keystore-alias</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore alias</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--keystore-file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore location</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--keystore-password</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore password</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--keystore-type</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS keystore type</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--logging-global-setup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should logging be configured to use log4j2 (it is global)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--login-config</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">web.xml login config</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--meecrowave-properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Loads a meecrowave properties, defaults to meecrowave.properties.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--pid-file</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A file path to write the process id if the server starts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--properties</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Passthrough properties</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--quick-session</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should an unsecured but fast session id generator be used</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--realm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">realm</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--roles</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In memory roles</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--scanning-exclude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A forced exclude list of jar names (comma separated values)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--scanning-include</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A forced include list of jar names (comma separated values)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--scanning-package-exclude</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A forced exclude list of packages names (comma separated values)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--scanning-package-include</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A forced include list of packages names (comma separated values)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--security-constraint</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">web.xml security constraint</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--server-xml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provided server.xml</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--shared-libraries</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A folder containing shared libraries.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--skip-http</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Skip HTTP connector</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--ssl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use HTTPS</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--ssl-protocol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HTTPS protocol</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--stop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Shutdown port if used or -1</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--tmp-dir</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Temporary directory</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-access-log-pattern</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Activates and configure the access log valve. Value example: '%h %l %u %t "%r" %s %b "%{Referer}i" "%{User-Agent}i"'</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-default-setup</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add default servlet</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-filter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">A Tomcat JarScanFilter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-default-setup-jsp-development</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should JSP support if available be set in development mode</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-skip-jmx</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Experimental) Should Tomcat MBeans be skipped.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-scanning</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should Tomcat scanning be used (@HandleTypes, @WebXXX)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-wrap-loader</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Experimental) When deploying a classpath (current classloader), should meecrowave wrap the loader to define another loader identity but still use the same classes and resources.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--log4j2-jul-bridge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should JUL logs be redirected to Log4j2 - only works before JUL usage.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--use-shutdown-hook</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Use shutdown hook to automatically stop the container on Ctrl+C</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--tomcat-default</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should Tomcat default be set (session timeout, mime mapping etc&#8230;&#8203;)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--users</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">In memory users</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--watcher-bouncing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Activate redeployment on directories update using this bouncing.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--web-resource-cached</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cache web resources</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--web-session-cookie-config</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Force the cookie-config, it uses a properties syntax with the keys being the web.xml tag names.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--web-session-timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Force the session timeout for webapps</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--web-xml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Global web.xml</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--help</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Show the CLI help/usage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--context</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The context to use to deploy the webapp</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--webapp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location of the webapp, if not set the classpath will be deployed</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--docbase</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Location of the docbase for a classpath deployment</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Note that <code>help</code> command is supported as well.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_extending_the_cli">Extending the CLI</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can add your own CLI options implementing <code>org.apache.meecrowave.runner.Cli$Options</code>
+(just a marker interface, no logic to code) and use <code>@CliOption</code> to define fields
+as coming from the CLI arguments. To register your option bean just add it in <code>META-INF/services/org.apache.meecrowave.runner.Cli$Options</code>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<code>Meecrowave.Builder</code> provides a <code>getExtension(type)</code> which can be used to get this
+kind of extension. This is common and works in all modes (arquillian, JUnit, embedded etc&#8230;&#8203;)
+replacing the arguments by properties on <code>Meecrowave.Builder</code> instance.
+</td>
+</tr>
+</table>
+</div>
+</div>
 </div>
             </section><!--//doc-section-->
 
@@ -445,8 +467,8 @@
     <footer class="footer text-center">
         <div class="container">
           <div class="row">
-            <p >Copyright &copy; 2016
-                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            <p >Copyright &copy; 2016-2020
+                <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
             </p>
           </div>
         </div>
@@ -461,7 +483,11 @@
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/java.min.js" integrity="sha256-21Z1xKC/FsaqN9z9jIER9xiX4XbV5buFEVdkZvsfBIc=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js" integrity="sha256-0B+Ps1zCncLC5JIOQ+MtIhI/UhbJkYbxWsJowD3c+tk=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js" integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/bash.min.js" integrity="sha256-zXrlim8wsIvcEFjsD3THiAfTvtPZifqx8q0rxegiWQc=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
 
 </body>

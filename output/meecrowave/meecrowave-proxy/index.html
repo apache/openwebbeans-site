@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <title>Meecrowave :: the customizable server</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="/meecrowave/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Plugins CSS -->
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
+    <!-- highlighting -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/idea.min.css" integrity="sha256-rYB1c4yTU5UJB//rod7DtBo1JM6HAme/9Vd+VesFG2U=" crossorigin="anonymous" />
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="blue-green">
+    <div class="page-wrapper">
+    <!-- TODO: google analytics -->
+<header class="header text-center">
+  <div class="container">
+      <div class="branding">
+          <h1 class="doc-title">
+              <span aria-hidden="true" class="icon icon_puzzle_alt icon"></span>
+              <a href="/meecrowave/index.html">
+                Meecrowave
+              </a>
+          </h1>
+      </div>
+  </div><!--//container-->
+</header><!--//header-->
+<div class="doc-wrapper">
+    <div class="container">
+        <div id="doc-header" class="doc-header text-center">
+            <h1 class="doc-title"><span aria-hidden="true" class="icon icon icon_puzzle_alt"></span> Meecrowave Proxy</h1>
+        </div><!--//doc-header-->
+
+<div class="doc-body">
+    <div class="doc-content">
+        <div class="content-inner">
+
+
+
+
+<div class='btn-toolbar pull-right' style="z-index: 2000;">
+  <div class='btn-group'>
+      <a class="btn" href="/meecrowave/meecrowave-proxy/index.pdf"><i class="fa fa-file-pdf-o"></i> Download as PDF</a>
+  </div>
+</div>
+
+
+
+            <section class="doc-section">
+                <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Coordinates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
+  &lt;artifactId&gt;meecrowave-proxy&lt;/artifactId&gt;
+  &lt;version&gt;${meecrowave.version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Simple proxy module using Meecrowave as backbone.
+It can be extended using CDI programming model and JAX-RS client.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration">Configuration</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch table table-bordered">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--proxy-async-timeout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Asynchronous execution timeout.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--proxy-configuration</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The route file.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--proxy-mapping</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Where to bind the proxy (url pattern).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--proxy-multipart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Is multipart explicit.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--proxy-multipart-maxfilesizethreshold</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Max file size threshold for multipart requests.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--proxy-multipart-location</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The multipart temporary folder.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--proxy-multipart-maxfilesize</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Max file size for multipart requests.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--proxy-multipart-maxrequestsize</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Max request size for multipart requests.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--proxy-skip</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Should default setup be ignored</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+you can use that servlet in a plain Servlet container (adding JAX-RS+JSON-B client).
+An integration example can be found in <code>org.apache.meecrowave.proxy.servlet.meecrowave.ProxyServletSetup#accept</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration_file">Configuration File</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Each route defines an execution context which means:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A way to match the incoming request (by method + prefix for now),</p>
+</li>
+<li>
+<p>A way to forward the incoming request (which target server is called),</p>
+</li>
+<li>
+<p>A way to execute the request isolated in a dedicated thread (how many threads are allocated to the route, which timeout to use, &#8230;&#8203;).</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The routes file follows the following shape:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="json" class="language-json hljs">{
+  "defaultRoute": { // optional
+    // ... anything a route can get, it is used as default for plain "routes"
+  },
+  "routes": [
+    {
+      "id": "get-simple",
+      "requestConfiguration": {
+        "method": "GET",
+        "prefix": "/prefix-to-match",
+        "addedHeaders" : { "Authorization": "Value", ... },
+        "skippedHeaders" : [ "Content-Length", ... ],
+        "skippedCookies" : [ "Cookie", ... ],
+      },
+      "responseConfiguration": {
+        "target": "http://....",
+        "skippedHeaders" : [ "Content-Length", ... ],
+        "skippedCookies" : [ "Cookie", ... ],
+      },
+      "clientConfiguration": {
+        "executor": {
+            "core": 8,
+            "max": 512,
+            "keepAlive": 60000,
+            "shutdownTimeout": 1
+        },
+        "timeouts": {
+            "connect": 30000,
+            "read": 30000,
+            "execution": 60000
+        },
+        "sslConfiguration": {
+            "acceptAnyCertificate": false,
+            "keystoreLocation": "...",
+            "keystoreType": "...",
+            "keystorePassword": "...",
+            "truststoreType": "...",
+            "verifiedHostnames": ["..."]
+        }
+      },
+      "extensions": { // optional, used for custom extensions and let the user enrich the route configuration
+      }
+    },
+    // ...
+  ],
+  "extensions": { // optional
+  }
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+the file is filtered with system properties so you can use <code>${system-prop-key}</code>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_extend">Extend</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The default implementation uses <code>CDIProxyServlet</code> which triggers multiple events to let you extend the proxy implementation:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>BeforeRequest</code> and <code>AfterResponse</code> which are sent around the proxying,</p>
+</li>
+<li>
+<p><code>OnRequest</code> and <code>OnResponse</code> which enables you to replace the way the request is mapped to the proxied server and the way the response of the proxied server is mapped to the client.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Since <code>meecrowave-proxy</code> is a simple meecrowave module you can embed it and customize it as any CDI application.</p>
+</div>
+</div>
+</div>
+            </section><!--//doc-section-->
+
+
+
+
+        </div><!--//content-inner-->
+    </div><!--//doc-content-->
+
+    <div class="doc-sidebar">
+        <nav id="doc-nav">
+            <ul id="doc-menu" class="nav doc-menu hidden-xs affix-top" data-spy="affix">
+                <li><a href="/meecrowave/index.html">Home</a></li>
+                <li><a href="/meecrowave/start.html">Quick Start</a></li>
+                <li><a href="/meecrowave/components.html">Components</a></li>
+                <li><a href="/meecrowave/download.html">Download</a></li>
+                <li><a href="/meecrowave/community.html">Community</a></li>
+            </ul><!--//doc-menu-->
+        </nav>
+    </div>
+</div>
+
+</div><!--//page-wrapper-->
+
+    <footer class="footer text-center">
+        <div class="container">
+          <div class="row">
+            <p >Copyright &copy; 2016-2020
+                <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            </p>
+          </div>
+        </div>
+
+        <div class="container"><!-- don't remove it otherwise theme is no more creative common -->
+            <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+        </div><!--//container-->
+    </footer><!--//footer-->
+
+
+    <!-- Main Javascript -->
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/java.min.js" integrity="sha256-21Z1xKC/FsaqN9z9jIER9xiX4XbV5buFEVdkZvsfBIc=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js" integrity="sha256-0B+Ps1zCncLC5JIOQ+MtIhI/UhbJkYbxWsJowD3c+tk=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js" integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/bash.min.js" integrity="sha256-zXrlim8wsIvcEFjsD3THiAfTvtPZifqx8q0rxegiWQc=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
+
+</body>
+</html>
+
+

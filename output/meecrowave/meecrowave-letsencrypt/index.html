@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
     <!-- highlighting -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/idea.min.css" integrity="sha256-rYB1c4yTU5UJB//rod7DtBo1JM6HAme/9Vd+VesFG2U=" crossorigin="anonymous" />
 
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
@@ -66,73 +66,74 @@
 
 
             <section class="doc-section">
-                <div class="paragraph"> 
- <p>Meecrowave provides a Let’s Encrypt integration which will grab the default tomcat connector and reload regularly its certificate based on Let’s Encrypt protocol.</p> 
-</div> 
-<div class="paragraph"> 
- <p>You must configure the domain(s) to include during Let’s Encrypt discussion to activate that feature.</p> 
-</div> 
-<table class="tableblock frame-all grid-all spread table table-bordered"> 
- <colgroup> 
-  <col style="width: 50%;"> 
-  <col style="width: 50%;"> 
- </colgroup> 
- <thead> 
-  <tr> 
-   <th class="tableblock halign-left valign-top">Name</th> 
-   <th class="tableblock halign-left valign-top">Description</th> 
-  </tr> 
- </thead> 
- <tbody> 
-  <tr> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-certificate-domain-location</p></td> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">Where the domain certificate must be stored</p></td> 
-  </tr> 
-  <tr> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-chain-domain-location</p></td> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">Where the domain chain must be stored</p></td> 
-  </tr> 
-  <tr> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-key-domain-location</p></td> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">Where the domain key must be stored</p></td> 
-  </tr> 
-  <tr> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-key-domain-size</p></td> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">Domain key size</p></td> 
-  </tr> 
-  <tr> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-domains</p></td> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">Comma separated list of domains to manage</p></td> 
-  </tr> 
-  <tr> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-endpoint</p></td> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">Endpoint to use to get the certificates</p></td> 
-  </tr> 
-  <tr> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-refresh-interval</p></td> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">Number of second between let’sencrypt refreshes</p></td> 
-  </tr> 
-  <tr> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-retry-count</p></td> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">How many retries to do</p></td> 
-  </tr> 
-  <tr> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-retry-timeout-ms</p></td> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">How long to wait before retrying to get the certificate, default is 3s</p></td> 
-  </tr> 
-  <tr> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-endpoint-staging</p></td> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">Ignore if endpoint is set, otherwise it set the endpoint accordingly</p></td> 
-  </tr> 
-  <tr> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-key-user-location</p></td> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">Where the user key must be stored</p></td> 
-  </tr> 
-  <tr> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-key-user-size</p></td> 
-   <td class="tableblock halign-left valign-top"><p class="tableblock">User key size</p></td> 
-  </tr> 
- </tbody> 
+                <div class="paragraph">
+<p>Meecrowave provides a Let&#8217;s Encrypt integration which will grab the default tomcat connector
+and reload regularly its certificate based on Let&#8217;s Encrypt protocol.</p>
+</div>
+<div class="paragraph">
+<p>You must configure the domain(s) to include during Let&#8217;s Encrypt discussion to activate that feature.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch table table-bordered">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-certificate-domain-location</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Where the domain certificate must be stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-chain-domain-location</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Where the domain chain must be stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-key-domain-location</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Where the domain key must be stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-key-domain-size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Domain key size</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-domains</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Comma separated list of domains to manage</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-endpoint</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Endpoint to use to get the certificates</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-refresh-interval</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Number of second between let&#8217;sencrypt refreshes</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-retry-count</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How many retries to do</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-retry-timeout-ms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">How long to wait before retrying to get the certificate, default is 3s</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-endpoint-staging</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ignore if endpoint is set, otherwise it set the endpoint accordingly</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-key-user-location</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Where the user key must be stored</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">--letsencrypt-key-user-size</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">User key size</p></td>
+</tr>
+</tbody>
 </table>
             </section><!--//doc-section-->
 
@@ -160,8 +161,8 @@
     <footer class="footer text-center">
         <div class="container">
           <div class="row">
-            <p >Copyright &copy; 2016
-                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            <p >Copyright &copy; 2016-2020
+                <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
             </p>
           </div>
         </div>
@@ -176,7 +177,11 @@
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/java.min.js" integrity="sha256-21Z1xKC/FsaqN9z9jIER9xiX4XbV5buFEVdkZvsfBIc=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js" integrity="sha256-0B+Ps1zCncLC5JIOQ+MtIhI/UhbJkYbxWsJowD3c+tk=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js" integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/bash.min.js" integrity="sha256-zXrlim8wsIvcEFjsD3THiAfTvtPZifqx8q0rxegiWQc=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
 
 </body>

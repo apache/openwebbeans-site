@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
     <!-- highlighting -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/idea.min.css" integrity="sha256-rYB1c4yTU5UJB//rod7DtBo1JM6HAme/9Vd+VesFG2U=" crossorigin="anonymous" />
 
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
@@ -66,118 +66,136 @@
 
 
             <section class="doc-section">
-                <div class="sect1"> 
- <h2 id="_meecrowave_core">Meecrowave Core</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Core component is the backbone of Meecrowave. It is based on Tomcat embedded for Servlet container, CXF for JAX-RS, OpenWebBeans for CDI and Log4j2 for the logging.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p><a href="/meecrowave/meecrowave-core/configuration.html">Read about Meecrowave configuration</a></p> 
-  </div> 
-  <div class="paragraph"> 
-   <p><a href="/meecrowave/meecrowave-core/cli.html">Read about Meecrowave command line</a></p> 
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_meecrowave_jpa">Meecrowave JPA</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Meecrowave JPA provides a thin layer on top of JPA to make it easier to use JPA without requiring to use a full container like JavaEE or Spring. It is just a CDI extension.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p><a href="/meecrowave/meecrowave-jpa/index.html">Read More</a></p> 
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_meecrowave_maven">Meecrowave Maven</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Meecrowave provides a Maven plugin to run meecrowave with your preferred build tool.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p><a href="/meecrowave/meecrowave-maven/index.html">Read More</a></p> 
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_meecrowave_gradle">Meecrowave Gradle</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Meecrowave provides a Gradle plugin to run meecrowave with your preferred build tool.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p><a href="/meecrowave/meecrowave-gradle/index.html">Read More</a></p> 
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_meecrowave_and_the_testing">Meecrowave and the Testing</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Meecrowave provides two main testing integration: a JUnit one and an Arquillian Container.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p><a href="/meecrowave/testing/index.html">Read More</a></p> 
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_meecrowave_and_monitoring">Meecrowave and Monitoring</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Meecrowave provides few integration for the monitoring:</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p><a href="/meecrowave/meecrowave-jolokia/index.html">Jolokia (JMX)</a></p> 
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_meecrowave_and_jta">Meecrowave and JTA</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>This is an experimental integration of geronimo-transaction and meecrowave.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p><a href="/meecrowave/meecrowave-jta/index.html">JTA module</a></p> 
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_meecrowave_and_oauth2">Meecrowave and OAuth2</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>This is an experimental module integrating CXF OAuth2 server in Meecrowave through an embeddable dependency or a directly executable jar.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p><a href="/meecrowave/meecrowave-oauth2/index.html">OAuth2 module</a></p> 
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_meecrowave_let_s_encrypt">Meecrowave Let’s Encrypt</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>This is an experimental module integrating with Let’s Encrypt to provide you free and easy SSL support on your HTTPS connectors.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p><a href="/meecrowave/meecrowave-letsencrypt/index.html">Let’s Encrypt module</a></p> 
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_going_further">Going further</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Meecrowave scope is not the full scope of microservices (whatever it means) or at least enterprise needs cause several Apache projects cover part of them in a very good way.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p>See <a href="companion-projects.html">Companion Projects</a> for more information.</p> 
-  </div> 
- </div> 
+                <div class="sect1">
+<h2 id="_meecrowave_core">Meecrowave Core</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Core component is the backbone of Meecrowave. It is based on Tomcat embedded for
+Servlet container, CXF for JAX-RS, OpenWebBeans for CDI and Log4j2 for the logging.</p>
+</div>
+<div class="paragraph">
+<p><a href="/meecrowave/meecrowave-core/configuration.html">Read about Meecrowave configuration</a></p>
+</div>
+<div class="paragraph">
+<p><a href="/meecrowave/meecrowave-core/cli.html">Read about Meecrowave command line</a></p>
+</div>
+<div class="paragraph">
+<p><a href="/meecrowave/meecrowave-core/deploy-webapp.html">Read about Meecrowave and webapp/wars</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_meecrowave_jpa">Meecrowave JPA</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Meecrowave JPA provides a thin layer on top of JPA to make it easier to use JPA
+without requiring to use a full container like JavaEE or Spring. It is just a
+CDI extension.</p>
+</div>
+<div class="paragraph">
+<p><a href="/meecrowave/meecrowave-jpa/index.html">Read More</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_meecrowave_maven">Meecrowave Maven</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Meecrowave provides a Maven plugin to run meecrowave with your preferred build tool.</p>
+</div>
+<div class="paragraph">
+<p><a href="/meecrowave/meecrowave-maven/index.html">Read More</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_meecrowave_gradle">Meecrowave Gradle</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Meecrowave provides a Gradle plugin to run meecrowave with your preferred build tool.</p>
+</div>
+<div class="paragraph">
+<p><a href="/meecrowave/meecrowave-gradle/index.html">Read More</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_meecrowave_and_the_testing">Meecrowave and the Testing</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Meecrowave provides two main testing integration: a JUnit one and an Arquillian Container.</p>
+</div>
+<div class="paragraph">
+<p><a href="/meecrowave/testing/index.html">Read More</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_meecrowave_and_monitoring">Meecrowave and Monitoring</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>For monitoring, <a href="https://microprofile.io/">Microprofile</a> can be a neat companion of Apache Meecrowave.
+You can have a look to <a href="http://geronimo.apache.org/microprofile/">Geronimo</a> implementation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_meecrowave_and_jta">Meecrowave and JTA</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is an experimental integration of geronimo-transaction and meecrowave.</p>
+</div>
+<div class="paragraph">
+<p><a href="/meecrowave/meecrowave-jta/index.html">JTA module</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_meecrowave_and_oauth2">Meecrowave and OAuth2</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is an experimental module integrating CXF OAuth2 server in Meecrowave
+through an embeddable dependency or a directly executable jar.</p>
+</div>
+<div class="paragraph">
+<p><a href="/meecrowave/meecrowave-oauth2/index.html">OAuth2 module</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_meecrowave_lets_encrypt">Meecrowave Let&#8217;s Encrypt</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is an experimental module integrating with Let&#8217;s Encrypt to provide you
+free and easy SSL support on your HTTPS connectors.</p>
+</div>
+<div class="paragraph">
+<p><a href="/meecrowave/meecrowave-letsencrypt/index.html">Let&#8217;s Encrypt module</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_meecrowave_websocket">Meecrowave Websocket</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is an experimental module wrapping <code>tomcat-websocket</code> to make it CDI friendly for server endpoints.</p>
+</div>
+<div class="paragraph">
+<p><a href="/meecrowave/meecrowave-websocket/index.html">Websocket module</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_going_further">Going further</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Meecrowave scope is not the full scope of microservices (whatever it means) or at least enterprise needs
+cause several Apache projects cover part of them in a very good way.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="companion-projects.html">Companion Projects</a> for more information.</p>
+</div>
+</div>
 </div>
             </section><!--//doc-section-->
 
@@ -205,8 +223,8 @@
     <footer class="footer text-center">
         <div class="container">
           <div class="row">
-            <p >Copyright &copy; 2016
-                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            <p >Copyright &copy; 2016-2020
+                <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
             </p>
           </div>
         </div>
@@ -221,7 +239,11 @@
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/java.min.js" integrity="sha256-21Z1xKC/FsaqN9z9jIER9xiX4XbV5buFEVdkZvsfBIc=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js" integrity="sha256-0B+Ps1zCncLC5JIOQ+MtIhI/UhbJkYbxWsJowD3c+tk=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js" integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/bash.min.js" integrity="sha256-zXrlim8wsIvcEFjsD3THiAfTvtPZifqx8q0rxegiWQc=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
 
 </body>

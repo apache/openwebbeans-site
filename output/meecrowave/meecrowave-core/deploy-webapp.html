@@ -29,7 +29,7 @@
     <![endif]-->
 </head>
 
-<body class="body-green">
+<body class="body-blue">
     <div class="page-wrapper">
     <!-- TODO: google analytics -->
 <header class="header text-center">
@@ -47,7 +47,7 @@
 <div class="doc-wrapper">
     <div class="container">
         <div id="doc-header" class="doc-header text-center">
-            <h1 class="doc-title"><span aria-hidden="true" class="icon icon icon_puzzle_alt"></span> Community</h1>
+            <h1 class="doc-title"><span aria-hidden="true" class="icon icon icon_puzzle_alt"></span> Meecrowave and webapps</h1>
         </div><!--//doc-header-->
 
 <div class="doc-body">
@@ -59,7 +59,7 @@
 
 <div class='btn-toolbar pull-right' style="z-index: 2000;">
   <div class='btn-group'>
-      <a class="btn" href="/meecrowave/community.pdf"><i class="fa fa-file-pdf-o"></i> Download as PDF</a>
+      <a class="btn" href="/meecrowave/meecrowave-core/deploy-webapp.pdf"><i class="fa fa-file-pdf-o"></i> Download as PDF</a>
   </div>
 </div>
 
@@ -69,62 +69,61 @@
                 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>For now please use OpenWebBeans mailing-lists, JIRA and IRC channel.</p>
+<p>Meecrowave is a development enabler and simplifier thanks to its classpath deployment. However it is
+still a plain Apache Tomcat and you can deploy existing webapp you developed with no particular constraint.</p>
 </div>
 <div class="paragraph">
-<p>See <a href="https://openwebbeans.apache.org/community.html">OpenWebBeans Community</a> page for more details.</p>
+<p>From now on, we will assume you have a Servlet or Spring webapp <code>myapp.war</code>.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_source_code">Source code</h2>
+<h2 id="_deployment_with_a_meecrowave_bundle">Deployment with a Meecrowave bundle</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Source code can be found at <a href="https://gitbox.apache.org/repos/asf/openwebbeans-meecrowave.git" class="bare">https://gitbox.apache.org/repos/asf/openwebbeans-meecrowave.git</a></p>
+<p>This part assumed you built a bundle with <a href="../meecrowave-maven/index.html">Meecrowave Maven Plugin</a>. It gives
+you a zip which has a tomcat layout once exploded:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">$&gt; git clone https://gitbox.apache.org/repos/asf/openwebbeans-meecrowave.git</code></pre>
+<pre class="highlightjs highlight"><code class="language-none hljs">.
+|- bin
+|- conf
+|- logs
+`- lib</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>A mirror is available on github at <a href="https://github.com/apache/openwebbeans-meecrowave" class="bare">https://github.com/apache/openwebbeans-meecrowave</a>.</p>
-</div>
-<div class="paragraph">
-<p>The github mirror is linked in both directions.
-That means it doesn&#8217;t matter whether you push to GitHub or Apache GitBox.</p>
-</div>
-<div class="sect2">
-<h3 id="_build_it">Build it</h3>
-<div class="paragraph">
-<p>To build the project just run maven:</p>
+<p>If you didn&#8217;t package a webapp at bundle time you can create a <code>webapps</code> folder in this layout and add your war inside.
+Then to launch this war you can either use a <code>server.xml</code> in <code>conf</code> and add as in any Tomcat your <code>&lt;Context /&gt;</code> in it
+or you can launch it directly using:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">mvn clean install</code></pre>
-</div>
+<pre class="highlightjs highlight"><code data-lang="sh" class="language-sh hljs">./bin/meecrowave.sh run --webapp=webapps/myapp.war</code></pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_example_source_code">Example Source Code</h2>
+<h2 id="_deployment_with_the_runner">Deployment with the runner</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>The Apache Meecrowave community also hosts some examples which show how Meecrowave is to be used.
-Those examples are hosted in a separate repository and can be found at <a href="https://github.com/apache/openwebbeans-meecrowave-examples" class="bare">https://github.com/apache/openwebbeans-meecrowave-examples</a></p>
-</div>
-<div class="paragraph">
-<p>The github repo works fine for pull requests.
-Please use our official <a href="https://issues.apache.org/jira/projects/MEECROWAVE">Meecrowave Bug Tracker</a> for reporting bugs or enhancement requests.</p>
-</div>
-<div class="paragraph">
-<p>The cannonical repository hosted directly at the Apache Software Foundation intended to be used by committers is</p>
+<p>If you prefer to use the runner you can deploy a war with the following command:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">git clone https://gitbox.apache.org/repos/asf/openwebbeans-meecrowave-examples.git</code></pre>
+<pre class="highlightjs highlight"><code data-lang="sh" class="language-sh hljs">java -jar meecrowave-core-runner.jar --webapp=webapps/myapp.war</code></pre>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_going_further">Going further</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can find more information about deployment checking out the <a href="cli.html">CLI</a> documentation
+which presents all options of the several ways to launch Meecrowave.</p>
 </div>
 </div>
 </div>
