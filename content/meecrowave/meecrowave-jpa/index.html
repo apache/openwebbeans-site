@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
     <!-- highlighting -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/idea.min.css" integrity="sha256-rYB1c4yTU5UJB//rod7DtBo1JM6HAme/9Vd+VesFG2U=" crossorigin="anonymous" />
 
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
@@ -66,17 +66,19 @@
 
 
             <section class="doc-section">
-                <div id="preamble"> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>The overall idea behind this module is to propose a CDI integration of JPA allowing to programmatically control its persistence units.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p>Concretely you will create a persistence unit from a <code>PersistenceUnitBuilder</code> allowing you to fully configure your unit from CDI context including the datasource:</p> 
-  </div> 
-  <div class="listingblock"> 
-   <div class="content"> 
-    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+                <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>The overall idea behind this module is to propose a CDI integration of JPA
+allowing to programmatically control its persistence units.</p>
+</div>
+<div class="paragraph">
+<p>Concretely you will create a persistence unit from a <code>PersistenceUnitBuilder</code>
+allowing you to fully configure your unit from CDI context including the datasource:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@ApplicationScoped
 public class JpaConfig {
     @Produces
     public PersistenceUnitInfoBuilder unit(final DataSource ds) {
@@ -88,25 +90,28 @@ public class JpaConfig {
                 .addProperty("openjpa.RuntimeUnenhancedClasses", "supported")
                 .addProperty("openjpa.jdbc.SynchronizeMappings", "buildSchema");
     }
-}</code></pre> 
-   </div> 
-  </div> 
-  <div class="admonitionblock tip"> 
-   <table> 
-    <tbody>
-     <tr> 
-      <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
-      <td class="content"> if your application uses a single persistence unit this is optional and a default one will be created if a single DataSource bean is available as Bean&lt;?&gt;. </td> 
-     </tr> 
-    </tbody>
-   </table> 
-  </div> 
-  <div class="paragraph"> 
-   <p>The datasource can be produces as you wish using your own configuration mecanism:</p> 
-  </div> 
-  <div class="listingblock"> 
-   <div class="content"> 
-    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+if your application uses a single persistence unit this is optional and
+a default one will be created if a single DataSource bean is available as Bean&lt;?&gt;.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The datasource can be produces as you wish using your own configuration mecanism:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@ApplicationScoped
 public class JpaConfig {
     @Produces // dbcp2 datasource for instance
     @ApplicationScoped
@@ -116,25 +121,29 @@ public class JpaConfig {
         source.setUrl("jdbc:h2:mem:jpaextensiontest");
         return source;
     }
-}</code></pre> 
-   </div> 
-  </div> 
-  <div class="admonitionblock note"> 
-   <table> 
-    <tbody>
-     <tr> 
-      <td class="icon"> <i class="fa icon-note" title="Note"></i> </td> 
-      <td class="content"> it is recommanded to ensure the <code>DataSource</code> is normal-scoped to not get surprises in term of behavior. </td> 
-     </tr> 
-    </tbody>
-   </table> 
-  </div> 
-  <div class="paragraph"> 
-   <p>Finally you can inject your entity manager using <code>@Unit</code>. Ensure to decorate with <code>@Jpa</code> a class/method before using the entity manager to activate the jpa CDI context:</p> 
-  </div> 
-  <div class="listingblock"> 
-   <div class="content"> 
-    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+it is recommanded to ensure the <code>DataSource</code> is normal-scoped to not get surprises in term of behavior.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Finally you can inject your entity manager using <code>@Unit</code>. Ensure to
+decorate with <code>@Jpa</code> a class/method before using the entity manager to activate
+the jpa CDI context:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@ApplicationScoped
 @Jpa(transactional = false)
 public class JPADao {
     @Inject
@@ -151,25 +160,28 @@ public class JPADao {
     public User find(final long id) {
         return em.find(User.class, id);
     }
-}</code></pre> 
-   </div> 
-  </div> 
-  <div class="admonitionblock important"> 
-   <table> 
-    <tbody>
-     <tr> 
-      <td class="icon"> <i class="fa icon-important" title="Important"></i> </td> 
-      <td class="content"> this integration is 100% based on <code>RESOURCE_LOCAL</code> units for now. </td> 
-     </tr> 
-    </tbody>
-   </table> 
-  </div> 
-  <div class="paragraph"> 
-   <p>Not that if a bean get injected an <code>EntityManager</code> it gets automatically <code>@Jpa(transactional=true)</code> so previous bean is equivalent to:</p> 
-  </div> 
-  <div class="listingblock"> 
-   <div class="content"> 
-    <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+this integration is 100% based on <code>RESOURCE_LOCAL</code> units for now.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Not that if a bean get injected an <code>EntityManager</code> it gets automatically <code>@Jpa(transactional=true)</code>
+so previous bean is equivalent to:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@ApplicationScoped
 public class JPADao {
     @Inject
     @Unit(name = "test")
@@ -184,18 +196,19 @@ public class JPADao {
     public User find(final long id) {
         return em.find(User.class, id);
     }
-}</code></pre> 
-   </div> 
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_integration_with_bean_validation">Integration with Bean Validation</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>The extension will try to find a <code>ValidatorFactory</code> in CDI context and will provide ir to the JPA provider if the <code>ValidationMode</code> is not <code>NONE</code> and a <code>Bean&lt;ValidatorFactory&gt;</code> exists.</p> 
-  </div> 
- </div> 
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_integration_with_bean_validation">Integration with Bean Validation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The extension will try to find a <code>ValidatorFactory</code> in CDI context and will provide ir to the JPA provider
+if the <code>ValidationMode</code> is not <code>NONE</code> and a <code>Bean&lt;ValidatorFactory&gt;</code> exists.</p>
+</div>
+</div>
 </div>
             </section><!--//doc-section-->
 
@@ -223,8 +236,8 @@ public class JPADao {
     <footer class="footer text-center">
         <div class="container">
           <div class="row">
-            <p >Copyright &copy; 2016
-                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            <p >Copyright &copy; 2016-2020
+                <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
             </p>
           </div>
         </div>
@@ -239,7 +252,11 @@ public class JPADao {
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/java.min.js" integrity="sha256-21Z1xKC/FsaqN9z9jIER9xiX4XbV5buFEVdkZvsfBIc=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js" integrity="sha256-0B+Ps1zCncLC5JIOQ+MtIhI/UhbJkYbxWsJowD3c+tk=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js" integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/bash.min.js" integrity="sha256-zXrlim8wsIvcEFjsD3THiAfTvtPZifqx8q0rxegiWQc=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
 
 </body>

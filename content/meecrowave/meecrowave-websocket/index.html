@@ -29,14 +29,14 @@
     <![endif]-->
 </head>
 
-<body class="body-green">
+<body class="body-red">
     <div class="page-wrapper">
     <!-- TODO: google analytics -->
 <header class="header text-center">
   <div class="container">
       <div class="branding">
           <h1 class="doc-title">
-              <span aria-hidden="true" class="icon icon_puzzle_alt icon"></span>
+              <span aria-hidden="true" class="icon icon_chat icon"></span>
               <a href="/meecrowave/index.html">
                 Meecrowave
               </a>
@@ -47,7 +47,7 @@
 <div class="doc-wrapper">
     <div class="container">
         <div id="doc-header" class="doc-header text-center">
-            <h1 class="doc-title"><span aria-hidden="true" class="icon icon icon_puzzle_alt"></span> Community</h1>
+            <h1 class="doc-title"><span aria-hidden="true" class="icon icon icon_chat"></span> Meecrowave WebSocket</h1>
         </div><!--//doc-header-->
 
 <div class="doc-body">
@@ -59,74 +59,63 @@
 
 <div class='btn-toolbar pull-right' style="z-index: 2000;">
   <div class='btn-group'>
-      <a class="btn" href="/meecrowave/community.pdf"><i class="fa fa-file-pdf-o"></i> Download as PDF</a>
+      <a class="btn" href="/meecrowave/meecrowave-websocket/index.pdf"><i class="fa fa-file-pdf-o"></i> Download as PDF</a>
   </div>
 </div>
 
 
 
             <section class="doc-section">
-                <div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p>For now please use OpenWebBeans mailing-lists, JIRA and IRC channel.</p>
+                <div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+this module is available with Apache Meecrowave &gt;= 1.2.11.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>See <a href="https://openwebbeans.apache.org/community.html">OpenWebBeans Community</a> page for more details.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_source_code">Source code</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Source code can be found at <a href="https://gitbox.apache.org/repos/asf/openwebbeans-meecrowave.git" class="bare">https://gitbox.apache.org/repos/asf/openwebbeans-meecrowave.git</a></p>
+<p>Coordinates:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">$&gt; git clone https://gitbox.apache.org/repos/asf/openwebbeans-meecrowave.git</code></pre>
+<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;
+  &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
+  &lt;artifactId&gt;meecrowave-websocket&lt;/artifactId&gt;
+  &lt;version&gt;${meecrowave.version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p>A mirror is available on github at <a href="https://github.com/apache/openwebbeans-meecrowave" class="bare">https://github.com/apache/openwebbeans-meecrowave</a>.</p>
-</div>
-<div class="paragraph">
-<p>The github mirror is linked in both directions.
-That means it doesn&#8217;t matter whether you push to GitHub or Apache GitBox.</p>
-</div>
-<div class="sect2">
-<h3 id="_build_it">Build it</h3>
-<div class="paragraph">
-<p>To build the project just run maven:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">mvn clean install</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_example_source_code">Example Source Code</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The Apache Meecrowave community also hosts some examples which show how Meecrowave is to be used.
-Those examples are hosted in a separate repository and can be found at <a href="https://github.com/apache/openwebbeans-meecrowave-examples" class="bare">https://github.com/apache/openwebbeans-meecrowave-examples</a></p>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+this module requires <code>org.apache.tomcat:tomcat-websocket-api</code> but replaces <code>org.apache.tomcat:tomcat-websocket</code> until Tomcat enables a better way to extend its default.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
-<p>The github repo works fine for pull requests.
-Please use our official <a href="https://issues.apache.org/jira/projects/MEECROWAVE">Meecrowave Bug Tracker</a> for reporting bugs or enhancement requests.</p>
+<p>Once this module added, you can implement a server websocket endpoint as a CDI bean, it will use <code>CDI.current().select(endpointType).get()</code> to resolve it.</p>
 </div>
-<div class="paragraph">
-<p>The cannonical repository hosted directly at the Apache Software Foundation intended to be used by committers is</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-none hljs">git clone https://gitbox.apache.org/repos/asf/openwebbeans-meecrowave-examples.git</code></pre>
-</div>
-</div>
-</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+you can still pass a custom <code>Configurator</code> to your endpoint to customize the lookup or runtime of the endpoint.
+</td>
+</tr>
+</table>
 </div>
             </section><!--//doc-section-->
 

@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
     <!-- highlighting -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/idea.min.css" integrity="sha256-rYB1c4yTU5UJB//rod7DtBo1JM6HAme/9Vd+VesFG2U=" crossorigin="anonymous" />
 
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
@@ -66,32 +66,35 @@
 
 
             <section class="doc-section">
-                <div class="sect1"> 
- <h2 id="_junit">JUnit</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Coordinates:</p> 
-  </div> 
-  <div class="listingblock"> 
-   <div class="content"> 
-    <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+                <div class="sect1">
+<h2 id="_junit">JUnit</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Coordinates:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;
   &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
   &lt;artifactId&gt;meecrowave-junit&lt;/artifactId&gt;
   &lt;version&gt;${meecrowave.version}&lt;/version&gt;
-&lt;/dependency&gt;</code></pre> 
-   </div> 
-  </div> 
-  <div class="sect2"> 
-   <h3 id="_rules_and_runners">Rules and Runners</h3> 
-   <div class="paragraph"> 
-    <p>Meecrowave provides two flavors of JUnit integration: standalone or runners/rules. The standalone one will ensure there is a single container for the whole JVM. It also fits standalone environments where you want to control the lifecycle. The other one will follow the JUnit lifecycle (per class or test rule).</p> 
-   </div> 
-   <div class="paragraph"> 
-    <p>Here how to use the standalone flavor:</p> 
-   </div> 
-   <div class="listingblock"> 
-    <div class="content"> 
-     <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@RunWith(MonoMeecrowave.Runner.class)
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rules_and_runners">Rules and Runners</h3>
+<div class="paragraph">
+<p>Meecrowave provides two flavors of JUnit integration: standalone or runners/rules. The standalone one will
+ensure there is a single container for the whole JVM. It also fits standalone environments where you want to control the lifecycle.
+The other one will follow the JUnit lifecycle (per class or test rule).</p>
+</div>
+<div class="paragraph">
+<p>Here how to use the standalone flavor:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@RunWith(MonoMeecrowave.Runner.class)
 public class MonoMeecrowaveRuleTest {
     /* or
     @ClassRule
@@ -105,21 +108,23 @@ public class MonoMeecrowaveRuleTest {
     public void test() throws IOException {
         // use "http://localhost:" + config.getHttpPort()
     }
-}</code></pre> 
-    </div> 
-   </div> 
-   <div class="paragraph"> 
-    <p>When using the standalone, <code>@MonoMeecrowave.Runner.ConfigurationInject</code> allows to still access the configuration and random HTTP port.</p> 
-   </div> 
-   <div class="paragraph"> 
-    <p>For the configuration, the standalone runner will use a global configuration shared by all tests. To load it it will use a standard <code>ServiceLoader</code> on type <code>org.apache.meecrowave.Meecrowave$ConfigurationCustomizer</code>.</p> 
-   </div> 
-   <div class="paragraph"> 
-    <p>And here is the one bound to the JUnit lifecycle</p> 
-   </div> 
-   <div class="listingblock"> 
-    <div class="content"> 
-     <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class MeecrowaveRuleTest {
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When using the standalone, <code>@MonoMeecrowave.Runner.ConfigurationInject</code> allows to still
+access the configuration and random HTTP port.</p>
+</div>
+<div class="paragraph">
+<p>For the configuration, the standalone runner will use a global configuration shared by all tests. To load it
+it will use a standard <code>ServiceLoader</code> on type <code>org.apache.meecrowave.Meecrowave$ConfigurationCustomizer</code>.</p>
+</div>
+<div class="paragraph">
+<p>And here is the one bound to the JUnit lifecycle</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">public class MeecrowaveRuleTest {
     @ClassRule // started once for the class, @Rule would be per method
     public static final MeecrowaveRule RULE = new MeecrowaveRule();
 
@@ -127,24 +132,28 @@ public class MonoMeecrowaveRuleTest {
     public void test() throws IOException {
         // use "http://localhost:" + RULE.getConfiguration().getHttpPort()
     }
-}</code></pre> 
-    </div> 
-   </div> 
-   <div class="paragraph"> 
-    <p>As usual with JUnit rules, you can decide whereas the Meecrowave instance is bound to the entire test class or a method by using @ClassRule or @Rule.</p> 
-   </div> 
-  </div> 
-  <div class="sect2"> 
-   <h3 id="_junit_5">JUnit 5</h3> 
-   <div class="paragraph"> 
-    <p>JUnit 5 integrates a new <code>Extension</code> system. It is not yet very well supported by IDEs but you can already use it with Gradle and Maven (see <a href="http://junit.org/junit5/docs/current/user-guide/#running-tests" class="bare">http://junit.org/junit5/docs/current/user-guide/#running-tests</a>).</p> 
-   </div> 
-   <div class="paragraph"> 
-    <p>The usage has two annotations: <code>@MeecrowaveConfig</code> which remaps most of the configuration of Meecrowave and <code>@MonoMeecrowaveConfig</code> which is close to <code>MonoMeecrowave.Runner</code> in term of usage.</p> 
-   </div> 
-   <div class="listingblock"> 
-    <div class="content"> 
-     <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@MeecrowaveConfig /*(some config)*/
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As usual with JUnit rules, you can decide whereas the Meecrowave instance is bound to the entire test class
+or a method by using @ClassRule or @Rule.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_junit_5">JUnit 5</h3>
+<div class="paragraph">
+<p>JUnit 5 integrates a new <code>Extension</code> system. It is not yet very well supported by IDEs but you can already use it with
+Gradle and Maven (see <a href="http://junit.org/junit5/docs/current/user-guide/#running-tests" class="bare">http://junit.org/junit5/docs/current/user-guide/#running-tests</a>).</p>
+</div>
+<div class="paragraph">
+<p>The usage has two annotations: <code>@MeecrowaveConfig</code> which remaps most of the configuration of Meecrowave and <code>@MonoMeecrowaveConfig</code>
+which is close to <code>MonoMeecrowave.Runner</code> in term of usage.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@MeecrowaveConfig /*(some config)*/
+@TestInstance(PER_CLASS)
 public class MeecrowaveConfigTest {
     @ConfigurationInject
     private Meecrowave.Builder config;
@@ -154,62 +163,83 @@ public class MeecrowaveConfigTest {
         final String base = "http://localhost:" + config.getHttpPort();
         // asserts
     }
-}</code></pre> 
-    </div> 
-   </div> 
-   <div class="paragraph"> 
-    <p>Or</p> 
-   </div> 
-   <div class="listingblock"> 
-    <div class="content"> 
-     <pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@MonoMeecrowaveConfig
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@MonoMeecrowaveConfig
 public class MeecrowaveConfigTest {
     // ...
-}</code></pre> 
-    </div> 
-   </div> 
-   <div class="admonitionblock tip"> 
-    <table> 
-     <tbody>
-      <tr> 
-       <td class="icon"> <i class="fa icon-tip" title="Tip"></i> </td> 
-       <td class="content"> JUnit 5 integration provides an <code>@AfterFirstInjection</code> method and <code>@AfterLastTest</code> which can be used to setup/reset some environment using injections once for a set of test methods. The methods must not have any parameter. </td> 
-      </tr> 
-     </tbody>
-    </table> 
-   </div> 
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_arquillian_container">Arquillian Container</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Container dependency:</p> 
-  </div> 
-  <div class="listingblock"> 
-   <div class="content"> 
-    <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+}</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+JUnit 5 integration provides an <code>@AfterFirstInjection</code> method and <code>@AfterLastTest</code>
+which can be used to setup/reset some environment using injections once for a set of test methods.
+The methods must not have any parameter.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+when not using <code>@TestInstance(PER_CLASS)</code>, container is started per test method. Generally speaking you should  try to align the scope of your container to the scope of validity of your beans.
+For a library it is generally the class (so <code>@MeecrowaveConfig @TestInstance(PER_CLASS)</code>) and for an application the whole test set (so <code>@MonoMeecrowaveConfig</code>).
+Note that using an <code>Extension</code> you can adjust mocks or spy beans dynamically without a container restart.
+Having the longest life time for the container will make your test suite faster to execute.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_arquillian_container">Arquillian Container</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Container dependency:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;
   &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
   &lt;artifactId&gt;meecrowave-arquillian&lt;/artifactId&gt;
   &lt;version&gt;${meecrowave.version}&lt;/version&gt;
-&lt;/dependency&gt;</code></pre> 
-   </div> 
-  </div> 
-  <div class="paragraph"> 
-   <p>For the configuration check <a href="/meecrowave/meecrowave-core/configuration.html">Core configuration</a>.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p>Here is a sample:</p> 
-  </div> 
-  <div class="listingblock"> 
-   <div class="content"> 
-    <pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+  &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For the configuration check <a href="/meecrowave/meecrowave-core/configuration.html">Core configuration</a>.</p>
+</div>
+<div class="paragraph">
+<p>Here is a sample:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;arquillian xmlns="http://jboss.org/schema/arquillian"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd"&gt;
   &lt;container qualifier="meecrowave" default="true"&gt;
     &lt;configuration&gt;
+      &lt;property name="antiResourceLocking"&gt;false&lt;/property&gt;
       &lt;property name="arquillianProtocol"&gt;Servlet 3.1&lt;/property&gt;
       &lt;property name="cdiConversation"&gt;false&lt;/property&gt;
       &lt;property name="clientAuth"&gt;&lt;/property&gt;
@@ -274,10 +304,11 @@ public class MeecrowaveConfigTest {
       &lt;property name="ssl"&gt;false&lt;/property&gt;
       &lt;property name="sslProtocol"&gt;&lt;/property&gt;
       &lt;property name="stopPort"&gt;-1&lt;/property&gt;
-      &lt;property name="tempDir"&gt;/var/folders/cc/5g6j5x3x74154g2rmmtpz_4w0000gn/T/meecrowave_184680423404202&lt;/property&gt;
+      &lt;property name="tempDir"&gt;/tmp/meecrowave_16133794495335&lt;/property&gt;
       &lt;property name="tomcatAccessLogPattern"&gt;&lt;/property&gt;
       &lt;property name="tomcatAutoSetup"&gt;true&lt;/property&gt;
       &lt;property name="tomcatFilter"&gt;&lt;/property&gt;
+      &lt;property name="tomcatJspDevelopment"&gt;false&lt;/property&gt;
       &lt;property name="tomcatNoJmx"&gt;true&lt;/property&gt;
       &lt;property name="tomcatScanning"&gt;true&lt;/property&gt;
       &lt;property name="tomcatWrapLoader"&gt;true&lt;/property&gt;
@@ -294,10 +325,10 @@ public class MeecrowaveConfigTest {
       &lt;property name="webXml"&gt;&lt;/property&gt;
     &lt;/configuration&gt;
   &lt;/container&gt;
-&lt;/arquillian&gt;</code></pre> 
-   </div> 
-  </div> 
- </div> 
+&lt;/arquillian&gt;</code></pre>
+</div>
+</div>
+</div>
 </div>
             </section><!--//doc-section-->
 
@@ -325,8 +356,8 @@ public class MeecrowaveConfigTest {
     <footer class="footer text-center">
         <div class="container">
           <div class="row">
-            <p >Copyright &copy; 2016
-                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            <p >Copyright &copy; 2016-2020
+                <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
             </p>
           </div>
         </div>
@@ -341,7 +372,11 @@ public class MeecrowaveConfigTest {
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/java.min.js" integrity="sha256-21Z1xKC/FsaqN9z9jIER9xiX4XbV5buFEVdkZvsfBIc=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js" integrity="sha256-0B+Ps1zCncLC5JIOQ+MtIhI/UhbJkYbxWsJowD3c+tk=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js" integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/bash.min.js" integrity="sha256-zXrlim8wsIvcEFjsD3THiAfTvtPZifqx8q0rxegiWQc=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
 
 </body>

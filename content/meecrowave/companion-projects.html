@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/meecrowave/assets/plugins/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/meecrowave/assets/plugins/elegant_font/css/style.css?version=1">
     <!-- highlighting -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/idea.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/idea.min.css" integrity="sha256-rYB1c4yTU5UJB//rod7DtBo1JM6HAme/9Vd+VesFG2U=" crossorigin="anonymous" />
 
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="/meecrowave/assets/css/styles.css">
@@ -66,37 +66,50 @@
 
 
             <section class="doc-section">
-                <div class="sect1"> 
- <h2 id="_apache_deltaspike">Apache DeltaSpike</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Apache DeltaSpike will cover several useful areas:</p> 
-  </div> 
-  <div class="ulist"> 
-   <ul> 
-    <li> <p>Configuration</p> </li> 
-    <li> <p>Exception handling</p> </li> 
-    <li> <p>Advanced CDI utilities like partial bean binding (you define a bean behavior from a CDI handler implementation)</p> </li> 
-    <li> <p>Quartz integration</p> </li> 
-    <li> <p>Data/JPA integration (it is different than the Meecrowave one but depending your need can be useful)</p> </li> 
-    <li> <p>And much more</p> </li> 
-   </ul> 
-  </div> 
-  <div class="paragraph"> 
-   <p>See <a href="https://deltaspike.apache.org/" class="bare">https://deltaspike.apache.org/</a> for more information.</p>
-  </div> 
- </div> 
-</div> 
-<div class="sect1"> 
- <h2 id="_apache_sirona">Apache Sirona</h2> 
- <div class="sectionbody"> 
-  <div class="paragraph"> 
-   <p>Sirona aims to provide some monitoring capabilities (metrics on the runtime). By default its servlet integration makes it smooth to integrate with Meecrowave.</p> 
-  </div> 
-  <div class="paragraph"> 
-   <p>See <a href="http://sirona.apache.org/" class="bare">http://sirona.apache.org/</a> for more information.</p> 
-  </div> 
- </div> 
+                <div class="sect1">
+<h2 id="_apache_deltaspike">Apache DeltaSpike</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Apache DeltaSpike will cover several useful areas:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Configuration</p>
+</li>
+<li>
+<p>Exception handling</p>
+</li>
+<li>
+<p>Advanced CDI utilities like partial bean binding (you define a bean behavior from a CDI handler implementation)</p>
+</li>
+<li>
+<p>Quartz integration</p>
+</li>
+<li>
+<p>Data/JPA integration (it is different than the Meecrowave one but depending your need can be useful)</p>
+</li>
+<li>
+<p>And much more</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See <a href="http://deltaspike.apache.org/" class="bare">http://deltaspike.apache.org/</a> for more information.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_apache_sirona">Apache Sirona</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sirona aims to provide some monitoring capabilities (metrics on the runtime).
+By default its servlet integration makes it smooth to integrate with Meecrowave.</p>
+</div>
+<div class="paragraph">
+<p>See <a href="http://sirona.apache.org/" class="bare">http://sirona.apache.org/</a> for more information.</p>
+</div>
+</div>
 </div>
             </section><!--//doc-section-->
 
@@ -124,8 +137,8 @@
     <footer class="footer text-center">
         <div class="container">
           <div class="row">
-            <p >Copyright &copy; 2016
-                <a href="https://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
+            <p >Copyright &copy; 2016-2020
+                <a href="http://www.apache.org/">The Apache Software Foundation</a>. All rights reserved.
             </p>
           </div>
         </div>
@@ -140,7 +153,11 @@
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-1.12.3.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/meecrowave/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/java.min.js" integrity="sha256-21Z1xKC/FsaqN9z9jIER9xiX4XbV5buFEVdkZvsfBIc=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/groovy.min.js" integrity="sha256-0B+Ps1zCncLC5JIOQ+MtIhI/UhbJkYbxWsJowD3c+tk=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js" integrity="sha256-nwOM3xEc6CFfrPNDN1upX+5ynjWKAXsg+bW63SSzte0=" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/bash.min.js" integrity="sha256-zXrlim8wsIvcEFjsD3THiAfTvtPZifqx8q0rxegiWQc=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="/meecrowave/assets/js/main.js?version=1"></script>
 
 </body>
