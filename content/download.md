@@ -19,22 +19,13 @@ Read more about [How to verify downloaded files](https://www.apache.org/info/ver
 OWB-2.0.x implements the CDI-2.0 (JSR-365) specification.
 It uses a shaded version of ASM-8 (Java11 support) for building our proxies and requires JavaSE 8 as minimum version.
 
-#### Binaries
-The binary distribution contains all OpenWebBeans modules.
-
-* [openwebbeans-distribution-2.0.23-binary.zip](https://www.apache.org/dyn/closer.lua/openwebbeans/2.0.23/openwebbeans-distribution-2.0.23-binary.zip)
-* [openwebbeans-distribution-2.0.23-binary.zip.sha512](https://www.apache.org/dist/openwebbeans/2.0.23/openwebbeans-distribution-2.0.23-binary.zip.sha512)
-* [openwebbeans-distribution-2.0.23-binary.zip.asc](https://www.apache.org/dist/openwebbeans/2.0.23/openwebbeans-distribution-2.0.23-binary.zip.asc)
-* [openwebbeans-distribution-2.0.23-binary.tar.gz](https://www.apache.org/dyn/closer.lua/openwebbeans/2.0.23/openwebbeans-distribution-2.0.23-binary.tar.gz)
-* [openwebbeans-distribution-2.0.23-binary.tar.gz.sha512](https://www.apache.org/dist/openwebbeans/2.0.23/openwebbeans-distribution-2.0.23-binary.tar.gz.sha512)
-* [openwebbeans-distribution-2.0.23-binary.tar.gz.asc](https://www.apache.org/dist/openwebbeans/2.0.23/openwebbeans-distribution-2.0.23-binary.tar.gz.asc)
-
 #### Source
-Should you want to build any of the above binaries, this source bundle is the right one and covers them all.
+The source distribution contains all OpenWebBeans source code.
+Binaries are available via the Apache Maven Central repository.
 
-* [openwebbeans-2.0.23-source-release.zip](https://www.apache.org/dyn/closer.lua/openwebbeans/2.0.23/openwebbeans-2.0.23-source-release.zip)
-* [openwebbeans-2.0.23-source-release.zip.sha512](https://www.apache.org/dist/openwebbeans/2.0.23/openwebbeans-2.0.23-source-release.zip.sha512)
-* [openwebbeans-2.0.23-source-release.zip.asc](https://www.apache.org/dist/openwebbeans/2.0.23/openwebbeans-2.0.23-source-release.zip.asc)
+* [openwebbeans-2.0.27-source-release.zip](https://www.apache.org/dyn/closer.lua/openwebbeans/2.0.27/openwebbeans-2.0.27-source-release.zip)
+* [openwebbeans-2.0.27-source-release.zip.sha512](https://www.apache.org/dist/openwebbeans/2.0.27/openwebbeans-2.0.27-source-release.zip.sha512)
+* [openwebbeans-2.0.27-source-release.zip.asc](https://www.apache.org/dist/openwebbeans/2.0.27/openwebbeans-2.0.27-source-release.zip.asc)
 
 
 ----------

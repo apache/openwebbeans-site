@@ -29,13 +29,13 @@ asf_headings: False
 <!-- Example row of columns -->
 <div class="row">
     <div class="col-md-6">
-        <h2>Getting Started</h2>
+        <h2>Getting Started with CDI</h2>
         <p>OpenWebBeans is packaged as modules which get activated by simply dropping them into the classpath. The below link will take you to a step-by-step guide and get you started in no time!<p>
         <p><a class="btn btn-default" href="documentation.html#module-overview">View details »</a></p>
     </div>
     <div class="col-md-6">
-        <h2>Meecrowave</h2>
-        <p>Apache Meecrowave is a microprofile Server based on Apache OpenWebBeans, Tomcat, CXF and Johnzon
+        <h2>Meecrowave Server</h2>
+        <p>Apache Meecrowave is a Microprofile Server based on Apache OpenWebBeans, Tomcat, CXF and Johnzon
             In other words it contains all you need to run a JavaEE based Microservice from the command line - and all that in only 9 MB!</p>
         <p><a class="btn btn-default" href="meecrowave/index.html#">View details »</a></p>
     </div>
