@@ -9,7 +9,7 @@ Title: Modules
 - [Web plugin](openwebbeans-web.html)
 - [EJB plugin](openwebbeans-ejb.html)
 - [Java EE plugin](openwebbeans-ee.html)
-- [Tomcat plugins 6 & 7](openwebbeans-tomcat.html)
+- [Tomcat plugin](openwebbeans-tomcat.html)
 - [JMS plugin](openwebbeans-jms.html)
 - [JSF plugins](openwebbeans-jsf.html)
 - [EL 2.2 plugin](openwebbeans-el.html)

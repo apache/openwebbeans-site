@@ -23,9 +23,9 @@ It requires Java11 or higher.
 The source distribution contains all OpenWebBeans source code.
 Binaries are available via the Apache Maven Central repository.
 
-* [openwebbeans-4.0.2-source-release.zip](https://www.apache.org/dyn/closer.lua/openwebbeans/4.0.2/openwebbeans-4.0.2-source-release.zip)
-* [openwebbeans-4.0.2-source-release.zip.sha512](https://www.apache.org/dist/openwebbeans/4.0.2/openwebbeans-4.0.2-source-release.zip.sha512)
-* [openwebbeans-4.0.2-source-release.zip.asc](https://www.apache.org/dist/openwebbeans/4.0.2/openwebbeans-4.0.2-source-release.zip.asc)
+* [openwebbeans-4.0.3-source-release.zip](https://www.apache.org/dyn/closer.lua/openwebbeans/4.0.3/openwebbeans-4.0.3-source-release.zip)
+* [openwebbeans-4.0.3-source-release.zip.sha512](https://www.apache.org/dist/openwebbeans/4.0.3/openwebbeans-4.0.3-source-release.zip.sha512)
+* [openwebbeans-4.0.3-source-release.zip.asc](https://www.apache.org/dist/openwebbeans/4.0.3/openwebbeans-4.0.3-source-release.zip.asc)
 
 
 ----------

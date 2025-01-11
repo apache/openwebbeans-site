@@ -1,7 +1,7 @@
 Title: News
 
 # News
-
+* 2024-12-11 OpenWebBeans-4.0.3 has been released - this is a Jakarta CDI-4.0 bugfix release
 * 2020-01-17 OpenWebBeans-2.0.14 has been released - this is a CDI-2.0 bugfix release
 * 2018-11-12 OpenWebBeans-2.0.8 has been released - this is a CDI-2.0 bugfix release
 * 2017-09-03 OpenWebBeans-2.0.1 has been released - this is a CDI-2.0 bugfix release

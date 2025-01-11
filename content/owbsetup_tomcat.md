@@ -6,8 +6,6 @@ By integrating OpenWebBeans with an existing tomcat installation you don't need 
 
 Instead, OpenWebBeans will get copied to the tomcat lib directory and activated for all webapps.
 
-Note that while the script mentions tomcat-7 this also works for tomcat-8.x and tomcat-9.x
-
 ## Downloading the latest OpenWebBeans distribution
 
 Download the latest [OWB distribution bundle](download.html) and unzip it.

@@ -47,8 +47,8 @@ asf_headings: False
     </div>
 </div>
 <div class="row">
-    [for owb]<div class="col-md-4">
-     	<h4><a href="[owb.href]">[owb.title]</a></h4>
-        [format "raw"][owb.content][end]
-    </div>[end]
+    <div class="col-md-4">
+        <h4><a href="news.html">Apache OpenWebBeans-4.0.3 has been released</a></h4>
+        The Apache OpenWebBeans Team is proud to announce the release of Apache OpenWebBeans-4.0.3.
+    </div>
 </div>
