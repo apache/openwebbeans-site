@@ -10,13 +10,13 @@ asf_headings: False
         <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
             <p>
                 Apache OpenWebBeans delivers an implementation of the
-                <a href="https://jcp.org/en/jsr/detail?id=346">Contexts and Dependency injection for Java EE</a> (CDI) 2.0 Specification (JSR-365).<br/>
-                OpenWebBeans is TCK compliant and the latest version works on Java SE 8 or later.
+                <a href="https://projects.eclipse.org/projects/ee4j.cdi/releases/4.0">Contexts and Dependency injection for Jakarta EE</a> (CDI) 4.0 Specification.<br/>
+                OpenWebBeans is TCK compliant and the latest version works on Java SE 11 or later.
             </p>
             <p>
                 Apache OpenWebBeans is
             <ul>
-                <li>Fast - we agressively use caches internally and deliver great performance</li>
+                <li>Fast - we aggressively use caches internally and deliver great performance</li>
                 <li>Modular - OpenWebBeans Core is purely JavaSE, additional EE functionality gets added via 'Modules'</li>
                 <li>Industry Proven - Many projects use OpenWebBeans in production.</li>
                 <li>Community Oriented - Please visit our mailing list and we will help you moving your project forward.</li>
