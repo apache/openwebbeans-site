@@ -1,4 +1,4 @@
-Title: Source
+  Title: Source
 
 # Apache OpenWebBeans Releases
 
@@ -10,6 +10,22 @@ All maven artifacts are available in the Maven.Central repository with the group
 
 The GPG keys in the [OpenWebBeans KEYS file](https://www.apache.org/dist/openwebbeans/KEYS) to validate our releases.
 Read more about [How to verify downloaded files](https://www.apache.org/info/verification.html)
+
+
+----------
+
+## OWB-4.0.x
+
+OWB-4.0.x implements the CDI-4.0 (Jakarta CDI) specification.
+It requires Java11 or higher. 
+
+#### Source
+The source distribution contains all OpenWebBeans source code.
+Binaries are available via the Apache Maven Central repository.
+
+* [openwebbeans-4.0.2-source-release.zip](https://www.apache.org/dyn/closer.lua/openwebbeans/4.0.2/openwebbeans-4.0.2-source-release.zip)
+* [openwebbeans-4.0.2-source-release.zip.sha512](https://www.apache.org/dist/openwebbeans/4.0.2/openwebbeans-4.0.2-source-release.zip.sha512)
+* [openwebbeans-4.0.2-source-release.zip.asc](https://www.apache.org/dist/openwebbeans/4.0.2/openwebbeans-4.0.2-source-release.zip.asc)
 
 
 ----------
@@ -35,15 +51,6 @@ Binaries are available via the Apache Maven Central repository.
 OWB-1.7.x implements the full CDI-1.2 specification.
 It uses a shaded version of ASM-5 for building our proxies and needs JavaSE 7 as minimum version.
 
-#### Binaries
-The binary distribution contains all OpenWebBeans modules.
-
-* [openwebbeans-distribution-1.7.6-binary.zip](https://www.apache.org/dyn/closer.lua/openwebbeans/1.7.6/openwebbeans-distribution-1.7.6-binary.zip)
-* [openwebbeans-distribution-1.7.6-binary.zip.sha1](https://www.apache.org/dist/openwebbeans/1.7.6/openwebbeans-distribution-1.7.6-binary.zip.sha1)
-* [openwebbeans-distribution-1.7.6-binary.zip.asc](https://www.apache.org/dist/openwebbeans/1.7.6/openwebbeans-distribution-1.7.6-binary.zip.asc)
-* [openwebbeans-distribution-1.7.6-binary.tar.gz](https://www.apache.org/dyn/closer.lua/openwebbeans/1.7.6/openwebbeans-distribution-1.7.6-binary.tar.gz)
-* [openwebbeans-distribution-1.7.6-binary.tar.gz.sha1](https://www.apache.org/dist/openwebbeans/1.7.6/openwebbeans-distribution-1.7.6-binary.tar.gz.sha1)
-* [openwebbeans-distribution-1.7.6-binary.tar.gz.asc](https://www.apache.org/dist/openwebbeans/1.7.6/openwebbeans-distribution-1.7.6-binary.tar.gz.asc)
 
 #### Source
 Should you want to build any of the above binaries, this source bundle is the right one and covers them all.

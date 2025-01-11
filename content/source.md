@@ -29,6 +29,15 @@ $> git clone https://gitbox.apache.org/repos/asf/openwebbeans.git
 
 ## Maintenance releases targetting older CDI specifications
 
+### CDI-1.2 - OpenWebBeans-2.0.x
+
+For checking out sources of the stable CDI-2.0 version of OpenWebBeans, please use the owb_2.0.x branch from here:
+
+<pre>
+$> git clone https://github.com/apache/openwebbeans
+$> git checkout owb_2.0.x
+</pre>
+
 ### CDI-1.2 - OpenWebBeans-1.7.x
 
 For checking out sources of the stable CDI-1.2 version of OpenWebBeans, please use the owb_1.7.x branch from here:

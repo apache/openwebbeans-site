@@ -6,7 +6,6 @@ If you are a new user and you would like to start using Apache OpenWebBeans,
 you can have a look at the [Documentation](documentation.html) and
 [subscribe](mailto:user-subscribe@openwebbeans.apache.org)
 our [mailing list for user](mailto:user@openwebbeans.apache.org).
-If you have troubles to find the information you are looking for, you can also ask in our [IRC-Channel](#irc).
 
 Furthermore, you can check our [mail-archives](#mailing-lists).
 
@@ -16,13 +15,11 @@ if it's a known issue in case of a bug or if there is an ongoing discussion in c
 You are very welcome to follow our twitter account [@Apache OpenWebBeansTeam](https://twitter.com/OwbTeam)
 and spread the word of Apache OpenWebBeans with Tweets, Blog-Entries,...
 
-# CDI-2.0 (JavaEE 8)
+# CDI-4.0 (JakartaEE 10)
 
-The working on a implementing the [CDI-2.0 (JSR-365)](https://jcp.org/en/jsr/proposalDetails?id=365)
-specification is finished. We are now doing minor enhancements and bugfixing in trunk.
-
-If you are interested in the specification itself then read more about our
-[Road to OpenWebBeans-2.0](openwebbeans-20-effort.html)
+The work on a implementing the [Jakarta CDI-4.0](https://projects.eclipse.org/projects/ee4j.cdi/releases/4.0)
+specification is finished. 
+We are now doing minor enhancements and bug fixing in our main branch.
 
 # Getting Involved
 
@@ -38,11 +35,7 @@ discussions on the dev list, submit patches,... . Therefore, it's essential to f
 [(I)CLA](https://www.apache.org/licenses/icla.txt) or [CLA](https://www.apache.org/licenses/cla-corporate.txt)
 and send it to secretary at apache dot org (or fax it) as early as possible.
 
-If you would like to submit a patch through Jira, just attach your patch to a created JIRA issue (123 is only a sample bug number)
-
-<pre>
-svn diff > OWB-123.patch
-</pre>
+If you would like to submit a patch through Jira, just attach your patch to a created JIRA issue.
 
 ## Committers
 
@@ -102,7 +95,7 @@ If you are running an Apache OpenWebBeans release then please make sure to read 
 
 # Issue Tracking
 
-Bug reports and feature requests will be maintained via JIRA at
+Bug reports and feature requests are handled via JIRA at
 
 [OpenWebBeans JIRA](https://issues.apache.org/jira/browse/OWB).
 
@@ -110,11 +103,6 @@ Bug reports and feature requests will be maintained via JIRA at
 
 You are very welcome e.g. to write blog entries, tweet (#OwbTeam) about the project
 or just follow our twitter account ([@OwbTeam](https://twitter.com/OwbTeam)), ...
-
-# IRC
-
-Usually discussions happen on the mailing list. Some informal discussions take place
-in our IRC-Channel [irc://irc.freenode.net/openwebbeans](irc://irc.freenode.net/openwebbeans)
 
 ```
 //with the irssi command-line client:
