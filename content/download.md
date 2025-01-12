@@ -1,4 +1,4 @@
-  Title: Source
+Title: Download
 
 # Apache OpenWebBeans Releases
 

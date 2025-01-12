@@ -30,7 +30,8 @@ asf_headings: False
 <div class="row">
     <div class="col-md-6">
         <h2>Getting Started with CDI</h2>
-        <p>OpenWebBeans is packaged as modules which get activated by simply dropping them into the classpath. The below link will take you to a step-by-step guide and get you started in no time!<p>
+        <p>OpenWebBeans is packaged as modules which get activated by simply dropping them into the classpath.
+        The below link will take you to a step-by-step guide and get you started in no time!<p>
         <p><a class="btn btn-default" href="documentation.html#module-overview">View details »</a></p>
     </div>
     <div class="col-md-6">
