@@ -107,13 +107,13 @@ PLUGINS = ['asfgenid', 'asfdata', 'pelican-gfm', 'asfreader']
 #     sitemap - produces a sitemap.xml
 
 # Configure the asfdata plugin
-ASF_DATA = {
-    'data': ASF_DATA_YAML,
-    'metadata': {
-        'site_url': SITEURL
-    },
-    'debug': True
-}
+#ASF_DATA = {
+#    'data': ASF_DATA_YAML,
+#    'metadata': {
+#        'site_url': SITEURL
+#    },
+#    'debug': True
+#}
 
 # Configure the asfgenid plugin
 ASF_GENID = {
