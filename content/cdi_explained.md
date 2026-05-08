@@ -11,6 +11,8 @@ Apache OpenWebBeans implements these standards. This page will give you an intro
 CDI in general. We will add a special hint whenever a feature is ambiguous in the specification 
 and OpenWebBeans implements it in a certain way which might be different on other CDI containers.
 
+From CDI-4.0 onwards, we did move from the `javax` to the `jakarta` package space.
+
 ## What is CDI at all?
 
 Originally developed under the name ‘Web Beans’, the CDI specification was created 
