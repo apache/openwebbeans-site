@@ -76,7 +76,11 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;properties&gt;
+  &lt;meecrowave.version&gt;2.0.0&lt;/meecrowave.version&gt;
+&lt;/properties&gt;
+
+&lt;dependency&gt;
   &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
   &lt;artifactId&gt;meecrowave-core&lt;/artifactId&gt;
   &lt;version&gt;${meecrowave.version}&lt;/version&gt;
@@ -88,29 +92,10 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
   &lt;groupId&gt;commons-cli&lt;/groupId&gt;
   &lt;artifactId&gt;commons-cli&lt;/artifactId&gt;
-  &lt;version&gt;1.4&lt;/version&gt;
-&lt;/dependency&gt;</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>Finally, if you want to develop against <code>jakarta</code> namespace instead of <code>javax</code> one, you can use the all in one <code>jakarta</code> bundle:</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;
-  &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
-  &lt;artifactId&gt;meecrowave-core&lt;/artifactId&gt;
-  &lt;version&gt;1.2.11&lt;/version&gt; &lt;!-- a least 1.2.11 is required --&gt;
-  &lt;classifier&gt;jakarta&lt;/classifier&gt;
-  &lt;exclusions&gt;
-    &lt;exclusion&gt;
-      &lt;groupId&gt;*&lt;/groupId&gt;
-      &lt;artifactId&gt;*&lt;/artifactId&gt;
-    &lt;/exclusion&gt;
-  &lt;/exclusions&gt;
+  &lt;version&gt;1.9.0&lt;/version&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
 </div>
@@ -122,7 +107,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@Path("kitchen")
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Path("kitchen")
 @ApplicationScoped
 public class HelloKitchen {
     @GET
@@ -137,7 +122,7 @@ public class HelloKitchen {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">try (final Meecrowave meecrowave = new Meecrowave().bake()) {
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">try (final Meecrowave meecrowave = new Meecrowave().bake()) {
     new Scanner(System.in).nextLine();
 }</code></pre>
 </div>
@@ -166,30 +151,18 @@ public class HelloKitchen {
 <div class="sect1">
 <h2 id="_youre_in_a_hurry_use_groovy">You&#8217;re in a hurry? Use groovy!</h2>
 <div class="sectionbody">
-<div class="admonitionblock important">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-important" title="Important"></i>
-</td>
-<td class="content">
-this feature is supported starting from version 0.3.0 only.
-</td>
-</tr>
-</table>
-</div>
 <div class="paragraph">
 <p>Create a file called <code>hello.groovy</code>:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@Grab('org.apache.meecrowave:meecrowave-core:0.3.0')
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Grab('org.apache.meecrowave:meecrowave-core:2.0.0')
 
 import org.apache.meecrowave.Meecrowave
 
-import javax.ws.rs.GET
-import javax.ws.rs.Path
-import javax.enterprise.context.ApplicationScoped
+import jakarta.ws.rs.GET
+import jakarta.ws.rs.Path
+import jakarta.enterprise.context.ApplicationScoped
 
 @Path("hello")
 @ApplicationScoped
@@ -208,7 +181,7 @@ new Meecrowave().bake().await()</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">groovy hello.groovy</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">groovy hello.groovy</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -216,7 +189,7 @@ new Meecrowave().bake().await()</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">curl http://localhost:8080/hello</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl http://localhost:8080/hello</code></pre>
 </div>
 </div>
 </div>

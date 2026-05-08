@@ -78,7 +78,7 @@ allowing you to fully configure your unit from CDI context including the datasou
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@ApplicationScoped
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
 public class JpaConfig {
     @Produces
     public PersistenceUnitInfoBuilder unit(final DataSource ds) {
@@ -107,11 +107,11 @@ a default one will be created if a single DataSource bean is available as Bean&l
 </table>
 </div>
 <div class="paragraph">
-<p>The datasource can be produces as you wish using your own configuration mecanism:</p>
+<p>The datasource can be produces as you wish using your own configuration mechanism:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@ApplicationScoped
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
 public class JpaConfig {
     @Produces // dbcp2 datasource for instance
     @ApplicationScoped
@@ -131,7 +131,7 @@ public class JpaConfig {
 <i class="fa icon-note" title="Note"></i>
 </td>
 <td class="content">
-it is recommanded to ensure the <code>DataSource</code> is normal-scoped to not get surprises in term of behavior.
+it is recommended to ensure the <code>DataSource</code> is normal-scoped to not get surprises in term of behavior.
 </td>
 </tr>
 </table>
@@ -143,7 +143,7 @@ the jpa CDI context:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@ApplicationScoped
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
 @Jpa(transactional = false)
 public class JPADao {
     @Inject
@@ -181,7 +181,7 @@ so previous bean is equivalent to:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@ApplicationScoped
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
 public class JPADao {
     @Inject
     @Unit(name = "test")

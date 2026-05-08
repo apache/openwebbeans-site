@@ -74,7 +74,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
     &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
     &lt;artifactId&gt;meecrowave-specs-api&lt;/artifactId&gt;
     &lt;version&gt;${meecrowave.version}&lt;/version&gt;
@@ -99,7 +99,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;plugin&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;plugin&gt;
     &lt;!--
     For starting meecrowave via Maven. Just run
     $&gt; mvn clean install meecrowave:run
@@ -115,7 +115,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="shell" class="language-shell hljs">mvn clean install meecrowave:run</code></pre>
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">mvn clean install meecrowave:run</code></pre>
 </div>
 </div>
 </div>
@@ -128,7 +128,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">package org.mypackage;
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.mypackage;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.GET;
@@ -161,17 +161,17 @@ public class MyEndpoint {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">package org.mypackage;
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.mypackage;
 
 import java.io.IOException;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * A simple CORS filter
@@ -222,7 +222,7 @@ public class CORSFilter implements Filter {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;servlet&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;servlet&gt;
     &lt;description&gt;My Servlet&lt;/description&gt;
     &lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;
     &lt;servlet-class&gt;org.my.servlet.ImplementationClass&lt;/servlet-class&gt;
@@ -244,13 +244,13 @@ public class CORSFilter implements Filter {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">package org.mypackage;
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.mypackage;
 
 import java.util.Set;
 
-import javax.servlet.ServletContainerInitializer;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRegistration;
+import jakarta.servlet.ServletContainerInitializer;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletRegistration;
 
 import org.my.servlet.ImplementationClass;
 
@@ -291,7 +291,7 @@ public class MyServletContainerInitializer implements ServletContainerInitialize
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">package org.mypackage;
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.mypackage;
 
 import org.apache.meecrowave.Meecrowave;
 
@@ -325,7 +325,7 @@ public class ServletContainerInitializerCustomizer implements Meecrowave.Configu
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">package org.mypackage;
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.mypackage;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -389,7 +389,7 @@ public class RewriteValveCustomizer implements Meecrowave.ConfigurationCustomize
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;plugin&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;plugin&gt;
     &lt;!--
         For starting meecrowave via Maven. Just run
         $&gt; mvn clean install meecrowave:run
@@ -434,7 +434,7 @@ we use <a href="https://yupiik.github.io/yupiik-logging/">Yupiik Logging</a> in 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;plugin&gt; &lt;!-- mvn -Parthur arthur:native-image@runtime -e --&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;plugin&gt; &lt;!-- mvn -Parthur arthur:native-image@runtime -e --&gt;
   &lt;groupId&gt;org.apache.geronimo.arthur&lt;/groupId&gt;
   &lt;artifactId&gt;arthur-maven-plugin&lt;/artifactId&gt;
   &lt;version&gt;${arthur.version}&lt;/version&gt; &lt;!-- &gt;= 1.0.3 or replace openwebbeans extension by openwebbeans 2.0.22 dep + openwebbeans-knight with arthur v1.0.2 --&gt;
@@ -780,7 +780,7 @@ we use <a href="https://yupiik.github.io/yupiik-logging/">Yupiik Logging</a> in 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependencies&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencies&gt;
   &lt;dependency&gt;
     &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
     &lt;artifactId&gt;meecrowave-specs-api&lt;/artifactId&gt;
@@ -814,7 +814,7 @@ we use <a href="https://yupiik.github.io/yupiik-logging/">Yupiik Logging</a> in 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="properties" class="language-properties hljs">tomcat-scanning = false
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">tomcat-scanning = false
 logging-global-setup = false
 log4j2-jul-bridge = false</code></pre>
 </div>
@@ -876,7 +876,7 @@ you can need to adjust a few classes depending what you use of CXF. Previous set
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">// test with:
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// test with:
 // $ curl http://localhost:8080/hello?name=foo -H 'accept: application/json'
 @Path("hello")
 @ApplicationScoped
