@@ -76,7 +76,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
   &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
   &lt;artifactId&gt;meecrowave-oauth2&lt;/artifactId&gt;
   &lt;version&gt;${meecrowave.version}&lt;/version&gt;
@@ -88,7 +88,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
   &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
   &lt;artifactId&gt;meecrowave-oauth2-minimal&lt;/artifactId&gt;
   &lt;version&gt;${meecrowave.version}&lt;/version&gt;
@@ -329,7 +329,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">java -jar meecrowave-oauth2-0.3.1-bundle.jar --users test=test --roles test=test</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">java -jar meecrowave-oauth2-0.3.1-bundle.jar --users test=test --roles test=test</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -337,7 +337,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="bash" class="language-bash hljs">curl -XPOST http://localhost:8080/oauth2/token -d username=test -d password=test -d grant_type=password</code></pre>
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -XPOST http://localhost:8080/oauth2/token -d username=test -d password=test -d grant_type=password</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -345,7 +345,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="javascript" class="language-javascript hljs">{
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">{
   "access_token":"5e2f211d4b4ccaa36a11d0876597f01e",
   "token_type":"Bearer",
   "expires_in":3600,
@@ -398,7 +398,7 @@ to mix it with another configuration starting with <code>rs.</strong></code>.</p
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="properties" class="language-properties hljs">oauth2.cxf.rs.security.keystore.type = jks
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">oauth2.cxf.rs.security.keystore.type = jks
 oauth2.cxf.rs.security.keystore.file = /opt/keystores/oauth2.jks
 oauth2.cxf.rs.security.keystore.password = password
 oauth2.cxf.rs.security.keystore.alias = alice

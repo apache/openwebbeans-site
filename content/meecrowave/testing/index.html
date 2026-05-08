@@ -74,7 +74,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
   &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
   &lt;artifactId&gt;meecrowave-junit&lt;/artifactId&gt;
   &lt;version&gt;${meecrowave.version}&lt;/version&gt;
@@ -94,7 +94,7 @@ The other one will follow the JUnit lifecycle (per class or test rule).</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@RunWith(MonoMeecrowave.Runner.class)
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@RunWith(MonoMeecrowave.Runner.class)
 public class MonoMeecrowaveRuleTest {
     /* or
     @ClassRule
@@ -124,7 +124,7 @@ it will use a standard <code>ServiceLoader</code> on type <code>org.apache.meecr
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">public class MeecrowaveRuleTest {
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">public class MeecrowaveRuleTest {
     @ClassRule // started once for the class, @Rule would be per method
     public static final MeecrowaveRule RULE = new MeecrowaveRule();
 
@@ -152,7 +152,7 @@ which is close to <code>MonoMeecrowave.Runner</code> in term of usage.</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@MeecrowaveConfig /*(some config)*/
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@MeecrowaveConfig /*(some config)*/
 @TestInstance(PER_CLASS)
 public class MeecrowaveConfigTest {
     @ConfigurationInject
@@ -171,7 +171,7 @@ public class MeecrowaveConfigTest {
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="java" class="language-java hljs">@MonoMeecrowaveConfig
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@MonoMeecrowaveConfig
 public class MeecrowaveConfigTest {
     // ...
 }</code></pre>
@@ -217,7 +217,7 @@ Having the longest life time for the container will make your test suite faster 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;dependency&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
   &lt;groupId&gt;org.apache.meecrowave&lt;/groupId&gt;
   &lt;artifactId&gt;meecrowave-arquillian&lt;/artifactId&gt;
   &lt;version&gt;${meecrowave.version}&lt;/version&gt;
@@ -233,7 +233,7 @@ Having the longest life time for the container will make your test suite faster 
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code data-lang="xml" class="language-xml hljs">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;arquillian xmlns="http://jboss.org/schema/arquillian"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://jboss.org/schema/arquillian http://jboss.org/schema/arquillian/arquillian_1_0.xsd"&gt;
@@ -304,7 +304,7 @@ Having the longest life time for the container will make your test suite faster 
       &lt;property name="ssl"&gt;false&lt;/property&gt;
       &lt;property name="sslProtocol"&gt;&lt;/property&gt;
       &lt;property name="stopPort"&gt;-1&lt;/property&gt;
-      &lt;property name="tempDir"&gt;/var/folders/18/hpcfwp_d3_g116d2t3817q_h0000gn/T/meecrowave_304138410632277&lt;/property&gt;
+      &lt;property name="tempDir"&gt;/var/folders/8m/zkfx16v576zchl3lng2q13nc0000gn/T/meecrowave_198157504277291&lt;/property&gt;
       &lt;property name="tomcatAccessLogPattern"&gt;&lt;/property&gt;
       &lt;property name="tomcatAutoSetup"&gt;true&lt;/property&gt;
       &lt;property name="tomcatFilter"&gt;&lt;/property&gt;
