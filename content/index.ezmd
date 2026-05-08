@@ -10,8 +10,8 @@ asf_headings: False
         <div class="col-md-10 col-lg-10 col-sm-10 col-xs-10">
             <p>
                 Apache OpenWebBeans delivers an implementation of the
-                <a href="https://projects.eclipse.org/projects/ee4j.cdi/releases/4.0">Contexts and Dependency injection for Jakarta EE</a> (CDI) 4.0 Specification.<br/>
-                OpenWebBeans is TCK compliant and the latest version works on Java SE 11 or later.
+                <a href="https://projects.eclipse.org/projects/ee4j.cdi/releases/4.1">Contexts and Dependency injection for Jakarta EE</a> (CDI) 4.1 Specification.<br/>
+                OpenWebBeans is TCK compliant and the latest version works on Java SE 17 or later.
             </p>
             <p>
                 Apache OpenWebBeans is
@@ -48,6 +48,11 @@ asf_headings: False
     </div>
 </div>
 <div class="row">
+    <div class="col-md-4">
+        <h4><a href="news.html">Apache OpenWebBeans-4.1.0 has been released</a></h4>
+        The Apache OpenWebBeans Team is proud to announce the release of Apache OpenWebBeans-4.1.0.
+        This implements the CDI-4.1 specification
+    </div>
     <div class="col-md-4">
         <h4><a href="news.html">Apache OpenWebBeans-4.0.3 has been released</a></h4>
         The Apache OpenWebBeans Team is proud to announce the release of Apache OpenWebBeans-4.0.3.
