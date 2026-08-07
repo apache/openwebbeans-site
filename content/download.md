@@ -14,6 +14,21 @@ Read more about [How to verify downloaded files](https://www.apache.org/info/ver
 
 ----------
 
+## OWB-4.1.x
+
+OWB-4.1.x implements the CDI-4.1 (Jakarta CDI) specification.
+It requires Java17 or higher. 
+
+#### Source
+The source distribution contains all OpenWebBeans source code.
+Binaries are available via the Apache Maven Central repository.
+
+* [openwebbeans-4.1.1-source-release.zip](https://www.apache.org/dyn/closer.lua/openwebbeans/4.0.3/openwebbeans-4.1.1-source-release.zip)
+* [openwebbeans-4.1.1-source-release.zip.sha512](https://www.apache.org/dist/openwebbeans/4.0.3/openwebbeans-4.1.1-source-release.zip.sha512)
+* [openwebbeans-4.1.1-source-release.zip.asc](https://www.apache.org/dist/openwebbeans/4.0.3/openwebbeans-4.1.1-source-release.zip.asc)
+
+----------
+
 ## OWB-4.0.x
 
 OWB-4.0.x implements the CDI-4.0 (Jakarta CDI) specification.
